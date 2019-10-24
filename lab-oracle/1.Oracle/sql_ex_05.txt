@@ -1,0 +1,53 @@
+JOIN 연습
+(모든 문제는 Oracle 방식과 ANSI 방식 두가지 SQL 문장을 작성.)
+
+1. scott 계정 사용
+1) emp 테이블과 dept 테이블을 사용해서
+부서번호, 부서이름, 각 부서 직원들의 급여 평균, 최대, 최소값, 직원수를 출력.
+소숫점은 한자리까지만 표시.
+(결과 예시)
+deptno  dname           avg     max     min     cnt
+---------------------------------------------------
+10	ACCOUNTING	2916.6	5000	1300	3
+
+
+2) emp 테이블과 dept 테이블을 사용해서
+부서번호, 부서이름, 사번, 이름, 직책(job), 급여를 출력.
+단, 모든 부서가 출력되어야 함.
+(결과 예시)
+deptno  dname           empno   ename   job sal
+---------------------------------------------
+10	ACCOUNTING	7782	CLARK	MAN 2450
+...
+40	OPERATIONS	
+
+
+3) emp, dept, salgrade 테이블에서
+부서번호, 부서이름, 사번, 이름, 매니저사번, 매니저 이름, 급여, 급여 등급을 출력.
+단, 모든 부서와 모든 사원이 출력되어야 함. 부서번호 오름차순 출력.
+(결과 예시)
+deptno  dname           empno   ename   mgr    mgr_name sal    grade
+--------------------------------------------------------------------
+10	ACCOUNTING	7934	MILLER	7782	CLARK	1300	2
+10	ACCOUNTING	7839	KING			5000	5
+...
+40	OPERATIONS						
+
+
+
+2. hr 계정
+1) employees, job_history, jobs 테이블을 사용해서
+사번, 이름, 성, job_id, job_title, job 시작일, job 종료일을 출력.
+
+2) employees, departments 테이블을 사용해서
+부서번호, 부서이름, 매니저 아이디, 매니저 이름/성을 출력.
+단, 부서 테이블의 모든 부서 이름이 출력되도록.
+
+3) 
+
+
+
+
+
+
+
