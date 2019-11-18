@@ -40,7 +40,6 @@ class Shape:
         print(f'Drawing area {self.area()} ...')
 
 
-
 # 상속:
 # class Child(Parent):
 #   body
@@ -72,8 +71,8 @@ class Circle(Shape):
     def __init__(self, r=0, x=0, y=0):
         print('Circle.__init__ 호출')
         # super 클래스의 __init__ 메소드를 반드시(!) 호출해야 함.
-        super().__init__(x, y)
-        # Shape.__init__(self, x, y)  # self를 생략 불가!
+        # super().__init__(x, y)
+        Shape.__init__(self, x, y)  # self를 생략 불가!
         # sub 클래스만 갖는 field를 초기화
         self.r = r
 
