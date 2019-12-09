@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Web 2</title>
+    <style>
+        /* CSS(Cascade Style Sheet):
+         웹(HTML) 문서의 스타일(화면 배치, 색상, 폰트, ...)을 결정
+
+         CSS Selector(선택자): 스타일을 적용하기 위해서 HTML 요소를 찾는 방법
+         1) HTML 태그 이름
+         2) .class
+         3) #id
+         4) pseudo selector
+         */
+        li {
+            list-style-type: none;  /* bullet 이미지 제거 */
+            display: inline-block;  /* 요소들을 한 줄에 표시 */
+        }
+        a {
+            text-decoration: none;  /* 링크의 밑줄을 제거 */
+        }
+        a:visited {  /* 방문했었던 링크 */
+            color: black;
+        }
+        .class1 {
+            color: blue;  /* 글자색 */
+            border: 2px solid gray; /* 테두리선 */
+            margin: 16px;  /* 바깥 여백 */
+            padding: 8px;  /* 안쪽 여백 */
+        }
+        #id1 {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>두번째로 만드는 HTML</h1>
+    <!-- List -->
+    <ul> <!-- ul: unordered list -->
+        <li>
+            <a href="https://www.google.com/">구글</a>
+        </li> <!-- li: list item -->
+        <li>
+            <a href="https://www.naver.com/">네이버</a>
+        </li>
+        <li>
+            <a href="https://www.daum.net/">다음 카카오</a>
+        </li>
+    </ul>
+
+    <div class="class1">여기는 class1입니다.</div>
+    <div class="class1">여기는 class1입니다.</div>
+    <div class="class2">여기는 class2입니다.</div>
+    <div class="class2" id="id1">여기는 class2입니다.</div>
+
+</body>
+</html>
