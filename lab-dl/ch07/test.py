@@ -1,5 +1,6 @@
 import numpy as np
 
-x = np.arange(1, 28).reshape((3, 3, 3))
+x = np.arange(1, 5)
 print(x)
-print(x[1, 1])
+print(x[[0, 3]])
+print(x[[True, False]])
