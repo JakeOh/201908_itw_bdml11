@@ -19,7 +19,7 @@ def play_one_step(env, obs, model, loss_fn):
         left_prob = model(obs[np.newaxis])  # 1D -> 2D
         action = (tf.random.uniform([1, 1]) > left_prob)  # boolean(T, F)
         y_target = tf.constant([[1.0]]) - tf.cast(action, tf.float32)
-        # y_target: 정책에서 결정된 값
+        # y_target: 신경망의 선택이 최적이라고(optimal) 가정
         loss = tf.reduce_mean(loss_fn(y_target, left_prob))
     grads = tape.gradient(loss, model.trainable_variables)
     obs, reward, done, info = env.step(int(action[0, 0].numpy()))
@@ -34,7 +34,7 @@ def play_multiple_episodes(env, n_episodes, max_steps, model, loss_fn):
     all_grads = []  # 에피소드가 끝날 때마다 계산된 gradinet들을 추가할 리스트
     for episode in range(n_episodes):
         current_rewards = []  # 각 스텝마다 받은 보상을 추가할 리스트
-        current_grads = []  # 각 스템마다 계산된 gradient를 추가할 리스트
+        current_grads = []  # 각 스텝마다 계산된 gradient를 추가할 리스트
         obs = env.reset()  # 게임 환경 초기화
         for step in range(max_steps):
             obs, reward, done, grads = play_one_step(env, obs, model, loss_fn)
@@ -48,6 +48,17 @@ def play_multiple_episodes(env, n_episodes, max_steps, model, loss_fn):
 
 
 def discount_rewards(rewards, discount_rate):
+    """
+    gamma: 할인율. 0 <= gamma <= 1.
+        미래의 보상을 현재 보상에 얼만큼 반영할 지를 결정하는 하이퍼 파라미터.
+    R(t): 현재(t 시점)에서의 예상되는 미래 수익
+    R(t) = r(t) + gamma * r(t+1) + gamma^2 * r(t+2) + gamma^3 * r(t+3) + ...
+        gamma = 1 인 경우, 미래의 모든 수익을 동등하게 고려.
+        gamma = 0 인 경우, 미래의 수익은 고려하지 않고, 단지 현재 수익만 고려.
+        0 < gamma < 1 인 경우, 미래의 몇 단계까지만 중요하게 고려.
+    R(t) = r(t) + gamma * {r(t+1) + gamma * r(t+2) + gamma^2 * r(t+3) + ...}
+         = r(t) + gamma * R(t+1)
+    """
     discounted = np.array(rewards)
     for step in range(len(rewards) - 2, -1, -1):
         discounted[step] += discount_rate * discounted[step + 1]
@@ -70,6 +81,7 @@ if __name__ == '__main__':
     discounted = discount_rewards(rewards, discount_rate=0.8)
     print(discounted)
 
+    # ragged matrix
     all_rewards = [
         [10, 0, -50],
         [10, 20]

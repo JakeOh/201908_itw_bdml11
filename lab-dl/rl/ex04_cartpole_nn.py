@@ -75,7 +75,7 @@ if __name__ == '__main__':
     # mini-batch를 사용해서 학습시킴.
     # mini-batch: 게임 환경을 여러개(50개)를 만들어서 신경망에서 사용
     n_envs = 50  # 학습에 사용할 게임 환경(environments)의 개수
-    n_iterations = 1000  # 학습 회수
+    n_iterations = 5000  # 학습 회수
 
     # 게임 환경 50개 생성
     environments = [gym.make('CartPole-v1') for _ in range(n_envs)]
@@ -97,14 +97,14 @@ if __name__ == '__main__':
         target_probs = np.array([
             ([0.] if obs[2] > 0 else [1.])
             for obs in observations
-        ])
+        ])  # 정책에 의해 결정된 target/label
         with tf.GradientTape() as tape:
-            loss_probs = model(np.array(observations))
-            loss = tf.reduce_mean(loss_fn(target_probs, loss_probs))
+            left_probs = model(np.array(observations))  # 신경망의 예측값
+            loss = tf.reduce_mean(loss_fn(target_probs, left_probs))
         print(f'Iteration #{iteration}: Loss={loss.numpy()}')
         grads = tape.gradient(loss, model.trainable_variables)
         optimizer.apply_gradients(zip(grads, model.trainable_variables))
-        actions = (np.random.rand(n_envs, 1) > loss_probs.numpy()).astype(np.int32)
+        actions = (np.random.rand(n_envs, 1) > left_probs.numpy()).astype(np.int32)
         for idx, env in enumerate(environments):
             obs, reward, done, info = env.step(actions[idx][0])
             observations[idx] = obs if not done else env.reset()
