@@ -14,6 +14,8 @@ if __name__ == '__main__':
 
     # CartPole-v1 게임 환경을 생성
     env = gym.make('CartPole-v1')
+    print(env.action_space)
+    print(env.observation_space)
 
     # 환경(environment)을 초기화
     obs = env.reset()  # observations(관찰, 관측)
