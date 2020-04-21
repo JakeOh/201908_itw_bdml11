@@ -1,20 +1,20 @@
--- Á¦¾à Á¶°Ç(constraint)
--- Á¢¼ÓÇÑ »ç¿ëÀÚ °èÁ¤ÀÇ Å×ÀÌºíµé¿¡ Àû¿ëµÈ Á¦¾àÁ¶°Ç È®ÀÎ
+-- ì œì•½ ì¡°ê±´(constraint)
+-- ì ‘ì†í•œ ì‚¬ìš©ì ê³„ì •ì˜ í…Œì´ë¸”ë“¤ì— ì ìš©ëœ ì œì•½ì¡°ê±´ í™•ì¸
 select constraint_name, constraint_type, table_name
 from user_constraints;
 
 select table_name from user_tables;
 
--- Á¦¾à Á¶°Ç
--- not null: ¹İµå½Ã °ªÀÌ ÀÖ¾î¾ß ÇÔ
--- unique: Áßº¹µÈ °ªÀÌ ÀúÀåµÉ ¼ö ¾øÀ½
--- primary key: °íÀ¯Å°. Å×ÀÌºí¿¡¼­ À¯ÀÏÇÑ ÇÑ°³ÀÇ Çà(·¹ÄÚµå)¸¦ °Ë»öÇÒ ¼ö ÀÖ´Â ÄÃ·³
--- foreign key: ¿Ü·¡Å°. ¿ÜºÎÅ°. °ü°è¸¦ ¸Î°í ÀÖ´Â ´Ù¸¥ Å×ÀÌºíÀÇ PK
--- check: Á¶°Ç(condition)À» Ã¼Å©ÇÏ´Â Á¦¾à Á¶°Ç.
--- default: ÄÃ·³ÀÇ ±âº»°ª(insertÇÏÁö ¾Ê¾Æµµ ÀÚµ¿À¸·Î ÀúÀåµÇ´Â °ª)À» ¼³Á¤
+-- ì œì•½ ì¡°ê±´
+-- not null: ë°˜ë“œì‹œ ê°’ì´ ìˆì–´ì•¼ í•¨
+-- unique: ì¤‘ë³µëœ ê°’ì´ ì €ì¥ë  ìˆ˜ ì—†ìŒ
+-- primary key: ê³ ìœ í‚¤. í…Œì´ë¸”ì—ì„œ ìœ ì¼í•œ í•œê°œì˜ í–‰(ë ˆì½”ë“œ)ë¥¼ ê²€ìƒ‰í•  ìˆ˜ ìˆëŠ” ì»¬ëŸ¼
+-- foreign key: ì™¸ë˜í‚¤. ì™¸ë¶€í‚¤. ê´€ê³„ë¥¼ ë§ºê³  ìˆëŠ” ë‹¤ë¥¸ í…Œì´ë¸”ì˜ PK
+-- check: ì¡°ê±´(condition)ì„ ì²´í¬í•˜ëŠ” ì œì•½ ì¡°ê±´.
+-- default: ì»¬ëŸ¼ì˜ ê¸°ë³¸ê°’(insertí•˜ì§€ ì•Šì•„ë„ ìë™ìœ¼ë¡œ ì €ì¥ë˜ëŠ” ê°’)ì„ ì„¤ì •
 
--- Å×ÀÌºí ÀÌ¸§: ex03
--- ÄÃ·³: col1 - number, unique
+-- í…Œì´ë¸” ì´ë¦„: ex03
+-- ì»¬ëŸ¼: col1 - number, unique
 --       col2 - varchar2(20), not null
 create table ex03 (
     col1 number unique,
@@ -24,10 +24,10 @@ create table ex03 (
 desc ex03;
 
 insert into ex03 (col1, col2)
-values (1, 'aaa');  --  insert ¼º°ø
+values (1, 'aaa');  --  insert ì„±ê³µ
 
 insert into ex03 (col1, col2) 
-values (1, 'bbb'); -- unique Á¦¾à Á¶°Ç À§¹è: insert ½ÇÆĞ
+values (1, 'bbb'); -- unique ì œì•½ ì¡°ê±´ ìœ„ë°°: insert ì‹¤íŒ¨
 
 insert into ex03 (col2)
 values ('bbb');
@@ -38,15 +38,15 @@ values (10);
 commit;
 
 
--- Å×ÀÌºí »ı¼º ½Ã Á¦¾à Á¶°Ç¿¡ ÀÌ¸§À» ÁÖ´Â ¹æ¹ı
+-- í…Œì´ë¸” ìƒì„± ì‹œ ì œì•½ ì¡°ê±´ì— ì´ë¦„ì„ ì£¼ëŠ” ë°©ë²•
 create table ex04 (
     col1 number constraint ex04_unq unique,
     col2 varchar2(20) constraint ex04_nn not null
 );
 
 
--- Å×ÀÌºí ÀÌ¸§:  ex05
--- ÄÃ·³: col1 - number, primary key
+-- í…Œì´ë¸” ì´ë¦„:  ex05
+-- ì»¬ëŸ¼: col1 - number, primary key
 --       col2 - varchar2(10)
 create table ex05 (
     col1 number constraint pk_ex05 primary key,
@@ -63,8 +63,8 @@ values ('def');
 commit;
 
 
--- Å×ÀÌºí ÀÌ¸§: ex06
--- ÄÃ·³: col - varchar2(20), Á¦¾à Á¶°ÇÀº »ğÀÔµÇ´Â ¹®ÀÚ¿­ÀÇ ±æÀÌ°¡ 8 ÀÌ»ó
+-- í…Œì´ë¸” ì´ë¦„: ex06
+-- ì»¬ëŸ¼: col - varchar2(20), ì œì•½ ì¡°ê±´ì€ ì‚½ì…ë˜ëŠ” ë¬¸ìì—´ì˜ ê¸¸ì´ê°€ 8 ì´ìƒ
 create table ex06 (
     col varchar2(20) constraint ck_ex06 check(length(col) >= 8)
 );
@@ -72,9 +72,9 @@ desc ex06;
 insert into ex06 values('abcdefgh');
 insert into ex06 values('abcd');
 
--- Å×ÀÌºí ÀÌ¸§: ex07
--- ÄÃ·³: ex_id - number, ±âº»°ª 0
---       ex_date - date, ±âº»°ª ÇöÀç½Ã°£
+-- í…Œì´ë¸” ì´ë¦„: ex07
+-- ì»¬ëŸ¼: ex_id - number, ê¸°ë³¸ê°’ 0
+--       ex_date - date, ê¸°ë³¸ê°’ í˜„ì¬ì‹œê°„
 create table ex07 (
     ex_id   number default 0,
     ex_date date default sysdate
@@ -103,18 +103,18 @@ create table ex_emp (
     deptno  number(2) constraint fk_ex_dept references ex_dept(deptno)
 );
 
--- ex_dept Å×ÀÌºí¿¡ µ¥ÀÌÅÍ°¡ ¾ø´Â °æ¿ì (ºÎ¼­ ¹øÈ£°¡ 1°³µµ ¾ø´Â °æ¿ì)
+-- ex_dept í…Œì´ë¸”ì— ë°ì´í„°ê°€ ì—†ëŠ” ê²½ìš° (ë¶€ì„œ ë²ˆí˜¸ê°€ 1ê°œë„ ì—†ëŠ” ê²½ìš°)
 insert into ex_emp
-values (1001, '¿À½Ü', 10);
--- ex_emp¿¡´Â ex_dept Å×ÀÌºí¿¡ »ı¼ºµÇ¾î ÀÖÁö ¾ÊÀº ºÎ¼­ ¹øÈ£´Â insertÇÒ ¼ö ¾ø´Ù!
--- FK°¡ ¼³Á¤µÈ ex_emp Å×ÀÌºíÀÇ deptno ÄÃ·³¿¡´Â nullÀº °¡´É
+values (1001, 'ì˜¤ìŒ¤', 10);
+-- ex_empì—ëŠ” ex_dept í…Œì´ë¸”ì— ìƒì„±ë˜ì–´ ìˆì§€ ì•Šì€ ë¶€ì„œ ë²ˆí˜¸ëŠ” insertí•  ìˆ˜ ì—†ë‹¤!
+-- FKê°€ ì„¤ì •ëœ ex_emp í…Œì´ë¸”ì˜ deptno ì»¬ëŸ¼ì—ëŠ” nullì€ ê°€ëŠ¥
 insert into ex_emp (empno, ename)
-values (1001, '¿À½Ü');
+values (1001, 'ì˜¤ìŒ¤');
 
-insert into ex_dept values(10, '°³¹ßÆÀ');
-insert into ex_dept values(20, 'ºĞ¼®ÆÀ');
+insert into ex_dept values(10, 'ê°œë°œíŒ€');
+insert into ex_dept values(20, 'ë¶„ì„íŒ€');
 
-insert into ex_emp values(2001, 'È«±æµ¿', 10);
+insert into ex_emp values(2001, 'í™ê¸¸ë™', 10);
 insert into ex_emp values(3001, 'scott', 20);
 
 select * from ex_emp;

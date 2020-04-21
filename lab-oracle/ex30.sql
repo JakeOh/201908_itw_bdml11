@@ -1,43 +1,43 @@
--- ·¹ÄÚµå & ÄÃ·º¼Ç
+-- ë ˆì½”ë“œ & ì»¬ë ‰ì…˜
 /*
--- ·¹ÄÚµå(record): µ¥ÀÌÅÍ Å¸ÀÔÀÌ ¼­·Î ´Ù¸¥ ¿©·¯°³ÀÇ °ª(µ¥ÀÌÅÍ)µéÀ» ÀúÀåÇÒ ¶§ »ç¿ë
--- ·¹ÄÚµå Á¤ÀÇ ¹æ¹ı:
-type ·¹ÄÚµåÀÌ¸§ is record (
-     º¯¼öÀÌ¸§ º¯¼öÅ¸ÀÔ,
+-- ë ˆì½”ë“œ(record): ë°ì´í„° íƒ€ì…ì´ ì„œë¡œ ë‹¤ë¥¸ ì—¬ëŸ¬ê°œì˜ ê°’(ë°ì´í„°)ë“¤ì„ ì €ì¥í•  ë•Œ ì‚¬ìš©
+-- ë ˆì½”ë“œ ì •ì˜ ë°©ë²•:
+type ë ˆì½”ë“œì´ë¦„ is record (
+     ë³€ìˆ˜ì´ë¦„ ë³€ìˆ˜íƒ€ì…,
      ...
 );
--- ·¹ÄÚµå¿¡ °ªÀ» ÀúÀå:
-·¹ÄÚµå.ÇÊµå := °ª;
+-- ë ˆì½”ë“œì— ê°’ì„ ì €ì¥:
+ë ˆì½”ë“œ.í•„ë“œ := ê°’;
 */
 
 set serveroutput on;
 
 declare 
-    -- ·¹ÄÚµå Á¤ÀÇ
+    -- ë ˆì½”ë“œ ì •ì˜
     type rec_dept is record (
         deptno number,
         dname varchar2(20),
         loc varchar2(20)
     );
     
-    -- ·¹ÄÚµåÀÇ ÀÌ¸§Àº º¯¼ö¸¦ ¼±¾ğÇÒ ¶§ »ç¿ë
-    v_dept_row rec_dept;  -- º¯¼öÀÌ¸§ Å¸ÀÔ;
+    -- ë ˆì½”ë“œì˜ ì´ë¦„ì€ ë³€ìˆ˜ë¥¼ ì„ ì–¸í•  ë•Œ ì‚¬ìš©
+    v_dept_row rec_dept;  -- ë³€ìˆ˜ì´ë¦„ íƒ€ì…;
 begin
-    -- ·¹ÄÚµå º¯¼ö¿¡ °ªÀ» ÀúÀå
+    -- ë ˆì½”ë“œ ë³€ìˆ˜ì— ê°’ì„ ì €ì¥
     v_dept_row.deptno := 99;
     v_dept_row.dname := 'ITWILL';
-    v_dept_row.loc := '¼­¿ï °­³²';
+    v_dept_row.loc := 'ì„œìš¸ ê°•ë‚¨';
     
-    -- ·¹ÄÚµå º¯¼öÀÇ °ªÀ» ÀĞ¾î¿Ã ¶§: ·¹ÄÚµåº¯¼ö.ÇÊµå 
-    dbms_output.put_line('¹øÈ£: ' || v_dept_row.deptno);
-    dbms_output.put_line('ÀÌ¸§: ' || v_dept_row.dname);
-    dbms_output.put_line('À§Ä¡: ' || v_dept_row.loc);
+    -- ë ˆì½”ë“œ ë³€ìˆ˜ì˜ ê°’ì„ ì½ì–´ì˜¬ ë•Œ: ë ˆì½”ë“œë³€ìˆ˜.í•„ë“œ 
+    dbms_output.put_line('ë²ˆí˜¸: ' || v_dept_row.deptno);
+    dbms_output.put_line('ì´ë¦„: ' || v_dept_row.dname);
+    dbms_output.put_line('ìœ„ì¹˜: ' || v_dept_row.loc);
 end;
 /
 
 select * from dept2;
 
--- dept2 Å×ÀÌºí¿¡ ·¹ÄÚµå¸¦ insert
+-- dept2 í…Œì´ë¸”ì— ë ˆì½”ë“œë¥¼ insert
 declare
     type rec_dept is record (
         deptno  dept2.deptno%type,
@@ -50,28 +50,28 @@ declare
     v_row2 rec_dept;
 begin
     v_row.deptno := 11;
-    v_row.dname := 'µ¥ÀÌÅÍº£ÀÌ½º';
+    v_row.dname := 'ë°ì´í„°ë² ì´ìŠ¤';
     v_row.loc := 'Seoul';
     
-    -- dept2 Å×ÀÌºí¿¡ v_row ·¹ÄÚµå¸¦ ÀúÀå(insert)
+    -- dept2 í…Œì´ë¸”ì— v_row ë ˆì½”ë“œë¥¼ ì €ì¥(insert)
 --    insert into dept2
 --    values (v_row.deptno, v_row.dname, v_row.loc);
     insert into dept2 values v_row;
     
-    -- ·¹ÄÚµå Å¸ÀÔÀÇ º¯¼ö¸¦ »ç¿ëÇÑ dept2 Å×ÀÌºí update
+    -- ë ˆì½”ë“œ íƒ€ì…ì˜ ë³€ìˆ˜ë¥¼ ì‚¬ìš©í•œ dept2 í…Œì´ë¸” update
     -- update dept2 set deptno = ?, dname = '', loc = '' where deptno = 11;
     v_row.deptno := 99;
     v_row.dname := 'PL/SQL';
-    v_row.loc := '°­³²';
+    v_row.loc := 'ê°•ë‚¨';
     update dept2 set row = v_row where deptno = 11;
 end;
 /
 select * from dept2;
 
 declare
-    -- row Å¸ÀÔ ÂüÁ¶ º¯¼ö ¼±¾ğ
+    -- row íƒ€ì… ì°¸ì¡° ë³€ìˆ˜ ì„ ì–¸
     v_row1 dept%rowtype;
-    -- Å×ÀÌºíÀÇ ±¸Á¶(ÄÃ·³ ÀÌ¸§/Å¸ÀÔ)¿Í ¶È°°Àº ·¹ÄÚµå Å¸ÀÔ
+    -- í…Œì´ë¸”ì˜ êµ¬ì¡°(ì»¬ëŸ¼ ì´ë¦„/íƒ€ì…)ì™€ ë˜‘ê°™ì€ ë ˆì½”ë“œ íƒ€ì…
 begin
     v_row1.deptno := 22;
     v_row1.dname := 'ABC';
@@ -81,14 +81,14 @@ begin
 end;
 /
 
--- ·¹ÄÚµå¸¦ »ç¿ëÇÑ select
+-- ë ˆì½”ë“œë¥¼ ì‚¬ìš©í•œ select
 declare
-    -- Å×ÀÌºíÀÇ ¸ğµç ÄÃ·³À» °Ë»öÇÏ´Â °æ¿ì¿¡´Â
-    -- ·¹ÄÚµå¸¦ Á÷Á¢ Á¤ÀÇÇÏ´Â °Íº¸´Ù %rowtype ÂüÁ¶¸¦ »ç¿ëÇÏ´Â °ÍÀÌ Æí¸®ÇÔ.
+    -- í…Œì´ë¸”ì˜ ëª¨ë“  ì»¬ëŸ¼ì„ ê²€ìƒ‰í•˜ëŠ” ê²½ìš°ì—ëŠ”
+    -- ë ˆì½”ë“œë¥¼ ì§ì ‘ ì •ì˜í•˜ëŠ” ê²ƒë³´ë‹¤ %rowtype ì°¸ì¡°ë¥¼ ì‚¬ìš©í•˜ëŠ” ê²ƒì´ í¸ë¦¬í•¨.
     v_emp_row1 emp%rowtype;
     
-    -- Å×ÀÌºíÀÇ ÀÏºÎ ÄÃ·³¸¸ °Ë»öÇÏ°Å³ª, µÎ°³ ÀÌ»óÀÇ Å×ÀÌºí¿¡¼­ Á¶ÀÎÇÏ´Â °æ¿ì¿¡´Â
-    -- »ç¿ëÀÚ Á¤ÀÇ ·¹ÄÚµå¸¦ ¼±¾ğÇÏ´Â °Ô Æí¸®ÇÔ.
+    -- í…Œì´ë¸”ì˜ ì¼ë¶€ ì»¬ëŸ¼ë§Œ ê²€ìƒ‰í•˜ê±°ë‚˜, ë‘ê°œ ì´ìƒì˜ í…Œì´ë¸”ì—ì„œ ì¡°ì¸í•˜ëŠ” ê²½ìš°ì—ëŠ”
+    -- ì‚¬ìš©ì ì •ì˜ ë ˆì½”ë“œë¥¼ ì„ ì–¸í•˜ëŠ” ê²Œ í¸ë¦¬í•¨.
     type rec_emp is record (
         empno   emp.empno%type,
         ename   emp.ename%type,
@@ -96,11 +96,11 @@ declare
     );
     v_emp_row2 rec_emp;
 begin
-    -- Å×ÀÌºí¿¡¼­ ÀüÃ¼ ÄÃ·³ °Ë»ö
+    -- í…Œì´ë¸”ì—ì„œ ì „ì²´ ì»¬ëŸ¼ ê²€ìƒ‰
     select * into v_emp_row1 from emp where empno = 7788;
     dbms_output.put_line(v_emp_row1.empno || ', ' || v_emp_row1.ename);
     
-    -- Å×ÀÌºí¿¡¼­ ÀÏºÎ ÄÃ·³¸¸ °Ë»ö
+    -- í…Œì´ë¸”ì—ì„œ ì¼ë¶€ ì»¬ëŸ¼ë§Œ ê²€ìƒ‰
     select empno, ename, job into v_emp_row2
     from emp
     where empno = 7839;
@@ -111,10 +111,10 @@ end;
 /
 
 
--- emp Å×ÀÌºí°ú dept Å×ÀÌºí¿¡¼­
--- »ç¹ø, ÀÌ¸§, ±Ş¿©, ºÎ¼­ ÀÌ¸§, ºÎ¼­ À§Ä¡
--- º¯¼öµéÀ» ÀúÀåÇÒ ¼ö ÀÖ´Â ·¹ÄÚµå(emp_dept)¸¦ Á¤ÀÇ
--- Á¶ÀÎ(join) ¹®ÀåÀ» ÀÛ¼ºÇØ¼­ SCOTTÀÇ Á¤º¸¸¦ Ãâ·ÂÇÏ´Â PL/SQL
+-- emp í…Œì´ë¸”ê³¼ dept í…Œì´ë¸”ì—ì„œ
+-- ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬, ë¶€ì„œ ì´ë¦„, ë¶€ì„œ ìœ„ì¹˜
+-- ë³€ìˆ˜ë“¤ì„ ì €ì¥í•  ìˆ˜ ìˆëŠ” ë ˆì½”ë“œ(emp_dept)ë¥¼ ì •ì˜
+-- ì¡°ì¸(join) ë¬¸ì¥ì„ ì‘ì„±í•´ì„œ SCOTTì˜ ì •ë³´ë¥¼ ì¶œë ¥í•˜ëŠ” PL/SQL
 declare
     type emp_dept is record (
         empno   emp.empno%type,
@@ -140,10 +140,10 @@ end;
 /
 
 
--- emp Å×ÀÌºí°ú salgrade Å×ÀÌºí¿¡¼­
--- »ç¹ø, ÀÌ¸§, ±Ş¿©, ±Ş¿© µî±Ş 
--- 4°³ÀÇ º¯¼öµéÀ» ÀúÀåÇÒ ¼ö ÀÖ´Â ·¹ÄÚµå(emp_sal)¸¦ Á¤ÀÇ
--- Á¶ÀÎ(join) ¹®ÀåÀ» ÀÛ¼ºÇØ¼­ SCOTTÀÇ Á¤º¸¸¦ Ãâ·ÂÇÏ´Â PL/SQL
+-- emp í…Œì´ë¸”ê³¼ salgrade í…Œì´ë¸”ì—ì„œ
+-- ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬, ê¸‰ì—¬ ë“±ê¸‰ 
+-- 4ê°œì˜ ë³€ìˆ˜ë“¤ì„ ì €ì¥í•  ìˆ˜ ìˆëŠ” ë ˆì½”ë“œ(emp_sal)ë¥¼ ì •ì˜
+-- ì¡°ì¸(join) ë¬¸ì¥ì„ ì‘ì„±í•´ì„œ SCOTTì˜ ì •ë³´ë¥¼ ì¶œë ¥í•˜ëŠ” PL/SQL
 declare
     type emp_sal is record (
         empno   emp.empno%type,

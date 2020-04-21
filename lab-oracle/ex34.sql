@@ -1,32 +1,32 @@
 /*
 error
-(1) ÄÄÆÄÀÏ ¿¡·¯(compilation error): SQL ¶Ç´ÂPL/SQL ¹®¹ı¿¡ ¸ÂÁö ¾Ê¾Æ¼­ 
-½ÇÇà ÀÚÃ¼°¡ µÇÁö ¾Ê´Â ¿À·ù
--> ¹®¹ı¿¡ Æ²¸° ºÎºĞÀ» Ã£¾Æ¼­ ¹®¹ı¿¡ ¸Â°Ô²û ¼öÁ¤ÇØ¾ß¸¸ ÇÔ
--> ¹®¹ı¿¡ ¸Â°Ô²û °íÄ¡Áö ¾ÊÀ¸¸é ½ÇÇàÀÌ µÇÁö ¾Ê±â ¶§¹®¿¡ exception Ã³¸®°¡ µÇÁö ¾ÊÀ½
+(1) ì»´íŒŒì¼ ì—ëŸ¬(compilation error): SQL ë˜ëŠ”PL/SQL ë¬¸ë²•ì— ë§ì§€ ì•Šì•„ì„œ 
+ì‹¤í–‰ ìì²´ê°€ ë˜ì§€ ì•ŠëŠ” ì˜¤ë¥˜
+-> ë¬¸ë²•ì— í‹€ë¦° ë¶€ë¶„ì„ ì°¾ì•„ì„œ ë¬¸ë²•ì— ë§ê²Œë” ìˆ˜ì •í•´ì•¼ë§Œ í•¨
+-> ë¬¸ë²•ì— ë§ê²Œë” ê³ ì¹˜ì§€ ì•Šìœ¼ë©´ ì‹¤í–‰ì´ ë˜ì§€ ì•Šê¸° ë•Œë¬¸ì— exception ì²˜ë¦¬ê°€ ë˜ì§€ ì•ŠìŒ
 
-(2) ½ÇÇàÁß ¿¡·¯(runtime error):
-¹®¹ı¿¡ ¸Â°Ô ÀÛ¼ºÀÌ µÇ¼­ ÄÄÆÄÀÏ µÇ°í ½ÇÇàÀº µÇÁö¸¸, 
-½ÇÇà Áß¿¡ ¾î¶² ÀÌÀ¯·Î ¹ß»ıÇÏ´Â ¿¡·¯
--> ¿¹¿Ü(exception) Ã³¸®ÀÇ ´ë»óÀÌ µÊ.
+(2) ì‹¤í–‰ì¤‘ ì—ëŸ¬(runtime error):
+ë¬¸ë²•ì— ë§ê²Œ ì‘ì„±ì´ ë˜ì„œ ì»´íŒŒì¼ ë˜ê³  ì‹¤í–‰ì€ ë˜ì§€ë§Œ, 
+ì‹¤í–‰ ì¤‘ì— ì–´ë–¤ ì´ìœ ë¡œ ë°œìƒí•˜ëŠ” ì—ëŸ¬
+-> ì˜ˆì™¸(exception) ì²˜ë¦¬ì˜ ëŒ€ìƒì´ ë¨.
 
 
-¿¹¿Ü/¿À·ù(exception/error) Ã³¸®
+ì˜ˆì™¸/ì˜¤ë¥˜(exception/error) ì²˜ë¦¬
 declare
-    -- ¼±¾ğºÎ: º¯¼ö ¼±¾ğ, Å¸ÀÔ(record, collection) ¼±¾ğ, Ä¿¼­ ¼±¾ğ
+    -- ì„ ì–¸ë¶€: ë³€ìˆ˜ ì„ ì–¸, íƒ€ì…(record, collection) ì„ ì–¸, ì»¤ì„œ ì„ ì–¸
 begin
-    -- ½ÇÇàºÎ: ÀıÂ÷ÀûÀ¸·Î ÁøÇàÇÒ ÄÚµåµé
+    -- ì‹¤í–‰ë¶€: ì ˆì°¨ì ìœ¼ë¡œ ì§„í–‰í•  ì½”ë“œë“¤
 exception
-    -- ¿¹¿ÜÃ³¸®ºÎ: ½ÇÇàºÎ(begin ~)ÀÇ ÄÚµåµéÀ» ½ÇÇàÇÏ´Ù°¡ ¿À·ù°¡ ¹ß»ıÇßÀ» ¶§ 
-    -- ±× ¿¹¿Ü¸¦ Ã³¸®ÇÏ´Â ºÎºĞ
-    when ¿¹¿ÜÀÌ¸§1 then
-        ¿¹¿Ü1°¡ ¹ß»ıÇßÀ» ¶§ Ã³¸®ÇÒ ÄÚµå;
-    when ¿¹¿ÜÀÌ¸§2 then
-        ¿¹¿Ü2°¡ ¹ß»ıÇßÀ» ¶§ Ã³¸®ÇÒ ÄÚµå;
+    -- ì˜ˆì™¸ì²˜ë¦¬ë¶€: ì‹¤í–‰ë¶€(begin ~)ì˜ ì½”ë“œë“¤ì„ ì‹¤í–‰í•˜ë‹¤ê°€ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆì„ ë•Œ 
+    -- ê·¸ ì˜ˆì™¸ë¥¼ ì²˜ë¦¬í•˜ëŠ” ë¶€ë¶„
+    when ì˜ˆì™¸ì´ë¦„1 then
+        ì˜ˆì™¸1ê°€ ë°œìƒí–ˆì„ ë•Œ ì²˜ë¦¬í•  ì½”ë“œ;
+    when ì˜ˆì™¸ì´ë¦„2 then
+        ì˜ˆì™¸2ê°€ ë°œìƒí–ˆì„ ë•Œ ì²˜ë¦¬í•  ì½”ë“œ;
     ...
     when others then
-        À§¿¡¼­ ¼±¾ğÇÑ ¿¹¿ÜµéÀÌ ¾Æ´Ï°Å³ª ¶Ç´Â ¿¹¿Ü ÀÌ¸§À» ¸ğ¸¦ ¶§
-        Ã³¸®ÇÒ ÄÚµåµé;
+        ìœ„ì—ì„œ ì„ ì–¸í•œ ì˜ˆì™¸ë“¤ì´ ì•„ë‹ˆê±°ë‚˜ ë˜ëŠ” ì˜ˆì™¸ ì´ë¦„ì„ ëª¨ë¥¼ ë•Œ
+        ì²˜ë¦¬í•  ì½”ë“œë“¤;
 end;
 */
 
@@ -35,7 +35,7 @@ set serveroutput on;
 declare
     v_result number;
 begin
-    dbms_output.put_line('½ÇÇà Àü...');
+    dbms_output.put_line('ì‹¤í–‰ ì „...');
     -- v_result := 'abc';
     -- v_result := 123 / 0;
     -- select ename into v_result from emp where empno = 7788;
@@ -44,31 +44,31 @@ begin
 end;
 /
 
--- ¿¹¿Ü Ã³¸® ±¸¹®
+-- ì˜ˆì™¸ ì²˜ë¦¬ êµ¬ë¬¸
 declare
     v_result number;
 begin
-    dbms_output.put_line('¿¹¿Ü ¹ß»ı Àü');
+    dbms_output.put_line('ì˜ˆì™¸ ë°œìƒ ì „');
     v_result := 'abc';
     dbms_output.put_line(v_result);
 exception
     when value_error then
-        dbms_output.put_line('¼ıÀÚ°¡ ¾Æ´Õ´Ï´Ù!');
+        dbms_output.put_line('ìˆ«ìê°€ ì•„ë‹™ë‹ˆë‹¤!');
 end;
 /
 
 declare
     v_result number;
 begin
-    dbms_output.put_line('¿¹¿Ü ¹ß»ı Àü...');
+    dbms_output.put_line('ì˜ˆì™¸ ë°œìƒ ì „...');
     v_result := 123 / 0;
     dbms_output.put_line(v_result);
 --exception
 --    when zero_divide then
---        dbms_output.put_line('0À¸·Î ³ª´­ ¼ö ¾ø½À´Ï´Ù.');
+--        dbms_output.put_line('0ìœ¼ë¡œ ë‚˜ëˆŒ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.');
 --    when others then
---        dbms_output.put_line('¿¡·¯ ÄÚµå: ' || sqlcode);
---        dbms_output.put_line('¿¡·¯ ¸Ş½ÃÁö: ' || sqlerrm);
+--        dbms_output.put_line('ì—ëŸ¬ ì½”ë“œ: ' || sqlcode);
+--        dbms_output.put_line('ì—ëŸ¬ ë©”ì‹œì§€: ' || sqlerrm);
 end;
 /
 
@@ -86,7 +86,7 @@ exception
     when value_error then
         dbms_output.put_line('Value Error');
     when too_many_rows then
-        dbms_output.put_line('°á°ú ÇàÀÌ ³Ê¹« ¸¹¾Æ¿ä.');
+        dbms_output.put_line('ê²°ê³¼ í–‰ì´ ë„ˆë¬´ ë§ì•„ìš”.');
     when others then
         dbms_output.put_line(sqlcode || ', ' || sqlerrm);
 end;

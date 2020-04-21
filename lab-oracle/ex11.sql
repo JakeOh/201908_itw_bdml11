@@ -1,56 +1,56 @@
 -- join
 
--- Oracle ¹æ½ÄÀÇ Cross Join(Cartesian Product)
+-- Oracle ë°©ì‹ì˜ Cross Join(Cartesian Product)
 select *
 from emp, dept;
 
--- ANSI(Ç¥ÁØ) ¹æ½ÄÀÇ Cross Join
+-- ANSI(í‘œì¤€) ë°©ì‹ì˜ Cross Join
 select *
 from emp cross join dept;
 
--- Oracle ¹æ½ÄÀÇ Join
+-- Oracle ë°©ì‹ì˜ Join
 select *
 from emp, dept
 where emp.deptno = dept.deptno
 order by emp.empno;
 
--- ANSI ¹æ½ÄÀÇ Join
+-- ANSI ë°©ì‹ì˜ Join
 select *
 from emp e join dept d
     on e.deptno = d.deptno
 order by e.empno;
 
--- emp Å×ÀÌºí°ú dept Å×ÀÌºí¿¡¼­
--- »ç¹ø, ÀÌ¸§, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§À» Ãâ·Â
--- 1) Oracle ¹æ½Ä
+-- emp í…Œì´ë¸”ê³¼ dept í…Œì´ë¸”ì—ì„œ
+-- ì‚¬ë²ˆ, ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„ì„ ì¶œë ¥
+-- 1) Oracle ë°©ì‹
 select e.empno, e.ename, e.deptno, d.dname
 from emp e, dept d
 where e.deptno = d.deptno
 order by e.empno;
--- 2) ANSI ¹æ½Ä
+-- 2) ANSI ë°©ì‹
 select e.empno, e.ename, e.deptno, d.dname
 from emp e join dept d
     on e.deptno = d.deptno
 order by e.empno;
 
--- emp Å×ÀÌºí°ú dept Å×ÀÌºí¿¡¼­
--- »ç¹ø, ÀÌ¸§, ±Ş¿©, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§À» °Ë»ö
--- ´Ü, ±Ş¿©°¡ 2000 ÀÌ»óÀÎ Á÷¿ø¸¸ ¼±ÅÃ
--- 1) Oracle ¹æ½Ä
+-- emp í…Œì´ë¸”ê³¼ dept í…Œì´ë¸”ì—ì„œ
+-- ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„ì„ ê²€ìƒ‰
+-- ë‹¨, ê¸‰ì—¬ê°€ 2000 ì´ìƒì¸ ì§ì›ë§Œ ì„ íƒ
+-- 1) Oracle ë°©ì‹
 select e.empno, e.ename, e.sal, d.deptno, d.dname
 from emp e, dept d
 where e.deptno = d.deptno 
       and
       e.sal >= 2000;
--- 2) ANSI ¹æ½Ä
+-- 2) ANSI ë°©ì‹
 select e.empno, e.ename, e.sal, d.deptno, d.dname
 from emp e join dept d
     on e.deptno = d.deptno
 where e.sal >= 2000;
 
 
--- emp Å×ÀÌºí°ú salgrade Å×ÀÌºí¿¡¼­
--- »ç¹ø, ÀÌ¸§, ±Ş¿©, ±Ş¿© µî±ŞÀ» Ãâ·Â
+-- emp í…Œì´ë¸”ê³¼ salgrade í…Œì´ë¸”ì—ì„œ
+-- ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬, ê¸‰ì—¬ ë“±ê¸‰ì„ ì¶œë ¥
 -- 1) Oracel
 select e.empno, e.ename, e.sal, s.grade
 from emp e, salgrade s
@@ -62,8 +62,8 @@ from emp e join salgrade s
            -- on e.sal between s.losal and s.hisal;
 
 
--- emp, dept, salgrade Å×ÀÌºí¿¡¼­
--- »ç¹ø, ÀÌ¸§, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§, ±Ş¿©, ±Ş¿© µî±ŞÀ» Ãâ·Â
+-- emp, dept, salgrade í…Œì´ë¸”ì—ì„œ
+-- ì‚¬ë²ˆ, ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„, ê¸‰ì—¬, ê¸‰ì—¬ ë“±ê¸‰ì„ ì¶œë ¥
 -- 1) Oracle
 select e.empno, e.ename, e.deptno, d.dname, e.sal, s.grade
 from emp e, dept d, salgrade s
@@ -78,7 +78,7 @@ from emp e join dept d
            on e.sal between s.losal and s.hisal;
 
            
--- emp Å×ÀÌºí¿¡¼­ »ç¹ø, ÀÌ¸§, ¸Å´ÏÀú »ç¹ø, ¸Å´ÏÀú ÀÌ¸§ Ãâ·Â
+-- emp í…Œì´ë¸”ì—ì„œ ì‚¬ë²ˆ, ì´ë¦„, ë§¤ë‹ˆì € ì‚¬ë²ˆ, ë§¤ë‹ˆì € ì´ë¦„ ì¶œë ¥
 -- 1) Oracle
 select e1.empno, e1.ename, e1.mgr, e2.ename
 from emp e1, emp e2
@@ -89,8 +89,8 @@ from emp e1 join emp e2
      on e1.mgr = e2.empno;
 
 
--- emp, deptÅ×ÀÌºí¿¡¼­ »ç¹ø, ÀÌ¸§, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§À» Ãâ°Ü
--- dept Å×ÀÌºíÀÇ ¸ğµç ºÎ¼­ Á¤º¸¸¦ Ãâ·Â
+-- emp, deptí…Œì´ë¸”ì—ì„œ ì‚¬ë²ˆ, ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„ì„ ì¶œê²¨
+-- dept í…Œì´ë¸”ì˜ ëª¨ë“  ë¶€ì„œ ì •ë³´ë¥¼ ì¶œë ¥
 -- 1) Oracle
 select e.empno, e.ename, d.deptno, d.dname
 from emp e, dept d
@@ -109,8 +109,8 @@ from dept d left join emp e
     on d.deptno = e.deptno;
 
 
--- emp Å×ÀÌºí¿¡¼­ »ç¹ø, ÀÌ¸§, ¸Å´ÏÀú »ç¹ø, ¸Å´ÏÀú ÀÌ¸§ Ãâ·Â
--- ¸Å´ÏÀú°¡ Á¸ÀçÇÏÁö ¾Ê´Â KingÀÇ Á¤º¸µµ ÇÔ²² Ãâ·Â
+-- emp í…Œì´ë¸”ì—ì„œ ì‚¬ë²ˆ, ì´ë¦„, ë§¤ë‹ˆì € ì‚¬ë²ˆ, ë§¤ë‹ˆì € ì´ë¦„ ì¶œë ¥
+-- ë§¤ë‹ˆì €ê°€ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” Kingì˜ ì •ë³´ë„ í•¨ê»˜ ì¶œë ¥
 -- 1) Oracle
 select e1.empno, e1.ename, e1.mgr, e2.ename
 from emp e1, emp e2
@@ -120,7 +120,7 @@ select e1.empno, e1.ename, e1.mgr, e2.ename
 from emp e1 left join emp e2
     on e1.mgr = e2.empno;
 
--- ºÎÇÏ Á÷¿øÀÌ ¾ø´Â »ç¿øµéÀÇ Á¤º¸¸¦ ÇÔ²² Ãâ·Â(21 records)
+-- ë¶€í•˜ ì§ì›ì´ ì—†ëŠ” ì‚¬ì›ë“¤ì˜ ì •ë³´ë¥¼ í•¨ê»˜ ì¶œë ¥(21 records)
 select e1.empno, e1.ename, e2.empno, e2.ename
 from emp e1, emp e2
 where e1.mgr(+) = e2.empno;
@@ -131,11 +131,11 @@ from emp e1 right join emp e2
 
 
 -- full (outer) join
--- full joinÀº ANSI ¹æ½ÄÀÇ ¹®¹ı¸¸ ÀÖ°í, Oracle ¹æ½ÄÀÇ ¹®¹ıÀº ¾øÀ½
+-- full joinì€ ANSI ë°©ì‹ì˜ ë¬¸ë²•ë§Œ ìˆê³ , Oracle ë°©ì‹ì˜ ë¬¸ë²•ì€ ì—†ìŒ
 select e1.empno, e1.ename, e2.empno, e2.ename
 from emp e1 full join emp e2
     on e1.mgr = e2.empno;
--- Oracle ¹æ½ÄÀ¸·Î full joinÀ» ÇÏ·Á¸é UNION(ÇÕÁıÇÕ) ¿¬»êÀÚ¸¦ »ç¿ëÇØ¾ß ÇÔ
+-- Oracle ë°©ì‹ìœ¼ë¡œ full joinì„ í•˜ë ¤ë©´ UNION(í•©ì§‘í•©) ì—°ì‚°ìë¥¼ ì‚¬ìš©í•´ì•¼ í•¨
 select e1.empno, e1.ename, e2.empno, e2.ename
 from emp e1, emp e2 where e1.mgr = e2.empno(+)
 union

@@ -1,35 +1,40 @@
--- ´ÙÁßÇà ÇÔ¼ö(multi-row function, group function)
--- ¿©·¯°³ÀÇ ÇàÀÌ ÇÔ¼öÀÇ argument·Î Àü´ŞµÇ¼­ ÇÏ³ªÀÇ °á°ú°ªÀÌ Ãâ·ÂµÇ´Â ÇÔ¼ö
+-- ë‹¤ì¤‘í–‰ í•¨ìˆ˜(multi-row function, group function)
+-- ì—¬ëŸ¬ê°œì˜ í–‰ì´ í•¨ìˆ˜ì˜ argumentë¡œ ì „ë‹¬ë˜ì„œ í•˜ë‚˜ì˜ ê²°ê³¼ê°’ì´ ì¶œë ¥ë˜ëŠ” í•¨ìˆ˜
 
--- ¸ğµç »ç¿øÀÇ ±Ş¿©ÀÇ ÃÑ ÇÕ°è, Æò±Õ, ÃÖ´ñ°ª, ÃÖ¼Ú°ª, ºĞ»ê, Ç¥ÁØÆíÂ÷
+-- ëª¨ë“  ì‚¬ì›ì˜ ê¸‰ì—¬ì˜ ì´ í•©ê³„, í‰ê· , ìµœëŒ“ê°’, ìµœì†Ÿê°’, ë¶„ì‚°, í‘œì¤€í¸ì°¨
 select sum(sal), round(avg(sal), 2), max(sal), min(sal), 
         variance(sal), stddev(sal)
 from emp;
 
--- count(º¯¼ö): µ¥ÀÌÅÍÀÇ °¹¼ö¸¦ ¸®ÅÏ
+
+-- ëª¨ë“  ê·¸ë£¹ í•¨ìˆ˜ëŠ” ê¸°ë³¸ì ìœ¼ë¡œ nullì„ ì œì™¸í•˜ê³  ê¸°ëŠ¥ì„ ìˆ˜í–‰
+select sum(comm), avg(comm), avg(nvl(comm, 0)) 
+from emp;
+
+-- count(ë³€ìˆ˜): ë°ì´í„°ì˜ ê°¯ìˆ˜ë¥¼ ë¦¬í„´
 select count(*) from emp;
 select count(empno) from emp;
-select count(mgr) from emp;  -- count ÇÔ¼ö´Â nullÀÌ ¾Æ´Ñ °ªµéÀÇ °¹¼ö¸¦ ¸®ÅÏ
+select count(mgr) from emp;  -- count í•¨ìˆ˜ëŠ” nullì´ ì•„ë‹Œ ê°’ë“¤ì˜ ê°¯ìˆ˜ë¥¼ ë¦¬í„´
 select count(deptno), count(distinct deptno) from emp;
--- count(distinct º¯¼ö): Áßº¹µÇÁö ¾Ê´Â °ªµéÀÇ °¹¼ö¸¦ ¸®ÅÏ
+-- count(distinct ë³€ìˆ˜): ì¤‘ë³µë˜ì§€ ì•ŠëŠ” ê°’ë“¤ì˜ ê°¯ìˆ˜ë¥¼ ë¦¬í„´
 
--- (ÁÖÀÇ) ¿©·¯ ÇàÀÌ °á°ú·Î Ãâ·ÂµÇ´Â º¯¼ö¿Í ±×·ì ÇÔ¼ö´Â ÇÔ²² selectÇÒ ¼ö ¾ø´Ù!
-select empno, count(empno) from emp;  -- ¿¡·¯ ¹ß»ı 
+-- (ì£¼ì˜) ì—¬ëŸ¬ í–‰ì´ ê²°ê³¼ë¡œ ì¶œë ¥ë˜ëŠ” ë³€ìˆ˜ì™€ ê·¸ë£¹ í•¨ìˆ˜ëŠ” í•¨ê»˜ selectí•  ìˆ˜ ì—†ë‹¤!
+select empno, count(empno) from emp;  -- ì—ëŸ¬ ë°œìƒ 
 
 
--- max(), min() ÇÔ¼ö´Â date Å¸ÀÔ¿¡µµ »ç¿ëÇÒ ¼ö ÀÖÀ½.
+-- max(), min() í•¨ìˆ˜ëŠ” date íƒ€ì…ì—ë„ ì‚¬ìš©í•  ìˆ˜ ìˆìŒ.
 select max(hiredate), min(hiredate) from emp;
 
--- order by º¯¼ö(ÄÃ·³)ÀÌ¸§ Á¤·Ä¹æ½Ä
--- Á¤·Ä ¹æ½Ä: ¿À¸§Â÷¼ø(asc), ³»¸²Â÷¼ø(desc)
--- ¿À¸§Â÷¼ø Á¤·ÄÀÌ ±âº»°ªÀÌ¹Ç·Î asc´Â »ı·« °¡´É
+-- order by ë³€ìˆ˜(ì»¬ëŸ¼)ì´ë¦„ ì •ë ¬ë°©ì‹
+-- ì •ë ¬ ë°©ì‹: ì˜¤ë¦„ì°¨ìˆœ(asc), ë‚´ë¦¼ì°¨ìˆœ(desc)
+-- ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ì´ ê¸°ë³¸ê°’ì´ë¯€ë¡œ ascëŠ” ìƒëµ ê°€ëŠ¥
 select * from emp order by empno desc;
--- ºÎ¼­¹øÈ£ ¿À¸§Â÷¼ø Á¤·Ä
+-- ë¶€ì„œë²ˆí˜¸ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
 select * from emp order by deptno;
 
 select * from emp order by deptno asc, empno desc;
 
--- 30¹ø ºÎ¼­ »ç¿øµéÀÇ ±Ş¿©ÀÇ ÇÕ°è, ÃÖ¼Ú°ª, ÃÖ´ñ°ª, Æò±Õ, ºĞ»ê, Ç¥ÁØÆíÂ÷ °è»ê
+-- 30ë²ˆ ë¶€ì„œ ì‚¬ì›ë“¤ì˜ ê¸‰ì—¬ì˜ í•©ê³„, ìµœì†Ÿê°’, ìµœëŒ“ê°’, í‰ê· , ë¶„ì‚°, í‘œì¤€í¸ì°¨ ê³„ì‚°
 select 30 as DEPTNO,
         sum(sal) as SUM,
         min(sal) as MIN,
@@ -60,61 +65,55 @@ select 20 as DEPTNO,
 from emp
 where deptno = 20;
 
--- ºÎ¼­º° ±Ş¿©ÀÇ ÃÖ¼Ò/ÃÖ´ë/Æò±Õ°ªÀ» Ãâ·Â
+-- ë¶€ì„œë³„ ê¸‰ì—¬ì˜ ìµœì†Œ/ìµœëŒ€/í‰ê· ê°’ì„ ì¶œë ¥
 select 10 as DEPTNO, min(sal), max(sal), avg(sal) from emp where deptno = 10
 union
 select 20 as DEPTNO, min(sal), max(sal), avg(sal) from emp where deptno = 30
 union
 select 30 as DEPTNO, min(sal), max(sal), avg(sal) from emp where deptno = 30;
 
-
--- ¸ğµç ±×·ì ÇÔ¼ö´Â ±âº»ÀûÀ¸·Î nullÀ» Á¦¿ÜÇÏ°í ±â´ÉÀ» ¼öÇà
-select sum(comm), avg(comm), avg(nvl(comm, 0)) 
-from emp;
-
-
--- group by¸¦ »ç¿ëÇÑ Äõ¸®
+-- group byë¥¼ ì‚¬ìš©í•œ ì¿¼ë¦¬
 select deptno, avg(sal)
 from emp
 group by deptno
 order by deptno;
 
--- Á÷Ã¥º° ±Ş¿© Æò±Õ, ÃÖ¼Ú°ª, ÃÖ´ñ°ª
+-- ì§ì±…ë³„ ê¸‰ì—¬ í‰ê· , ìµœì†Ÿê°’, ìµœëŒ“ê°’
 select job, avg(sal), min(sal), max(sal)
 from emp
 group by job;
 
--- ¸Å´ÏÀúº° ±Ş¿© Æò±Õ
+-- ë§¤ë‹ˆì €ë³„ ê¸‰ì—¬ í‰ê· 
 select mgr, avg(sal) 
 from emp
 group by mgr;
 
 select ename, deptno, avg(sal)
 from emp
-group by detpno; -- ¿¡·¯ ¹ß»ı
--- group by¿¡¼­ »ç¿ëµÇÁö ¾ÊÀº º¯¼ö(ÄÃ·³)Àº selectÇÒ ¼ö ¾øÀ½!
+group by detpno; -- ì—ëŸ¬ ë°œìƒ
+-- group byì—ì„œ ì‚¬ìš©ë˜ì§€ ì•Šì€ ë³€ìˆ˜(ì»¬ëŸ¼)ì€ selectí•  ìˆ˜ ì—†ìŒ!
 
 
--- ºÎ¼­º° ±Ş¿© Æò±Õ Ãâ·Â. ´Ü, Æò±Õ ±Ş¿©°¡ 2000 ÀÌ»óÀÎ ºÎ¼­¸¸ Ãâ·Â.
+-- ë¶€ì„œë³„ ê¸‰ì—¬ í‰ê·  ì¶œë ¥. ë‹¨, í‰ê·  ê¸‰ì—¬ê°€ 2000 ì´ìƒì¸ ë¶€ì„œë§Œ ì¶œë ¥.
 select deptno, avg(sal)
 from emp
 where avg(sal) >= 2000
-group by deptno; -- ¿À·ù ¹ß»ı
--- ±×·ì ÇÔ¼ö´Â where Àı¿¡¼­ »ç¿ëÇÒ ¼ö ¾øÀ½!
+group by deptno; -- ì˜¤ë¥˜ ë°œìƒ
+-- ê·¸ë£¹ í•¨ìˆ˜ëŠ” where ì ˆì—ì„œ ì‚¬ìš©í•  ìˆ˜ ì—†ìŒ!
 
 select deptno, avg(sal)
 from emp
 group by deptno
 having avg(sal) >= 2000;
 
--- ¸Å´ÏÀú°¡ nullÀÌ ¾Æ´Ñ Á÷¿øµé Áß¿¡¼­, ¸Å´ÏÀú º°·Î Æò±Õ ±Ş¿© Ãâ·Â
+-- ë§¤ë‹ˆì €ê°€ nullì´ ì•„ë‹Œ ì§ì›ë“¤ ì¤‘ì—ì„œ, ë§¤ë‹ˆì € ë³„ë¡œ í‰ê·  ê¸‰ì—¬ ì¶œë ¥
 select mgr, avg(sal)
 from emp
 where mgr is not null
 group by mgr;
 
 
--- ºÎ¼­º°, Á÷Ã¥º° Æò±Õ ±Ş¿©
+-- ë¶€ì„œë³„, ì§ì±…ë³„ í‰ê·  ê¸‰ì—¬
 select deptno, job, avg(sal)
 from emp
 group by deptno, job
@@ -126,8 +125,8 @@ group by job, deptno
 order by job, deptno;
 
 
--- 1) ºÎ¼­¹øÈ£, ºÎ¼­º° Æò±Õ ±Ş¿©, ºÎ¼­º° ÃÖ°í/ÃÖ¼Ò ±Ş¿©, »ç¿ø¼ö¸¦ Ãâ·Â
--- ºÎ¼­¹øÈ£ ¿À¸§Â÷¼øÀ¸·Î Ãâ·Â. ¼Ò¼ıÁ¡Àº ¹İ¿Ã¸²ÇØ¼­ ÇÑÀÚ¸®±îÁö¸¸ Ãâ·Â
+-- 1) ë¶€ì„œë²ˆí˜¸, ë¶€ì„œë³„ í‰ê·  ê¸‰ì—¬, ë¶€ì„œë³„ ìµœê³ /ìµœì†Œ ê¸‰ì—¬, ì‚¬ì›ìˆ˜ë¥¼ ì¶œë ¥
+-- ë¶€ì„œë²ˆí˜¸ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì¶œë ¥. ì†Œìˆ«ì ì€ ë°˜ì˜¬ë¦¼í•´ì„œ í•œìë¦¬ê¹Œì§€ë§Œ ì¶œë ¥
 select deptno, round(avg(sal), 1) as AVG,
         max(sal) as MAX, min(sal) as MIN,
         count(*) as CNT
@@ -135,29 +134,29 @@ from emp
 group by deptno
 order by deptno;
 
--- 2) °°Àº Á÷Ã¥À» °®´Â »ç¿ø¼ö°¡ 3¸í ÀÌ»óÀÎ Á÷Ã¥¿¡ ´ëÇØ¼­, Á÷Ã¥º° »ç¿ø¼ö¸¦ Ãâ·Â
+-- 2) ê°™ì€ ì§ì±…ì„ ê°–ëŠ” ì‚¬ì›ìˆ˜ê°€ 3ëª… ì´ìƒì¸ ì§ì±…ì— ëŒ€í•´ì„œ, ì§ì±…ë³„ ì‚¬ì›ìˆ˜ë¥¼ ì¶œë ¥
 select job, count(*) as CNT
 from emp
 group by job
 having count(*) >= 3
 order by CNT;
--- select¿¡¼­ ¸¸µç ÄÃ·³ÀÇ º°¸í(alias)´Â 
--- group by ¶Ç´Â having Àı¿¡¼­´Â »ç¿ëÇÒ ¼ö ¾øÀ½!
+-- selectì—ì„œ ë§Œë“  ì»¬ëŸ¼ì˜ ë³„ëª…(alias)ëŠ” 
+-- group by ë˜ëŠ” having ì ˆì—ì„œëŠ” ì‚¬ìš©í•  ìˆ˜ ì—†ìŒ!
 
--- 3) ÀÔ»ç ¿¬µµº° ±Ş¿© Æò±Õ, ±Ş¿© ÃÖ¼Ò/ÃÖ´ñ°ªÀ» Ãâ·Â. ÀÔ»ç¿¬µµ¸¦ 'YYYY' Çü½ÄÀ¸·Î Ãâ·Â.
+-- 3) ì…ì‚¬ ì—°ë„ë³„ ê¸‰ì—¬ í‰ê· , ê¸‰ì—¬ ìµœì†Œ/ìµœëŒ“ê°’ì„ ì¶œë ¥. ì…ì‚¬ì—°ë„ë¥¼ 'YYYY' í˜•ì‹ìœ¼ë¡œ ì¶œë ¥.
 select to_char(hiredate, 'YYYY') as H_YEAR,
         avg(sal) as AVG, min(sal) as MIN, max(sal) as MAX
 from emp
 group by to_char(hiredate, 'YYYY')
 order by H_YEAR;
 
--- 4) ÀÔ»ç ¿¬µµº°, ºÎ¼­º°·Î ¸î¸íÀÌ ÀÔ»çÇß´Â Áö¸¦ Ãâ·Â
+-- 4) ì…ì‚¬ ì—°ë„ë³„, ë¶€ì„œë³„ë¡œ ëª‡ëª…ì´ ì…ì‚¬í–ˆëŠ” ì§€ë¥¼ ì¶œë ¥
 select to_char(hiredate, 'YYYY') as YEAR, deptno, count(*)
 from emp
 group by to_char(hiredate, 'YYYY'), deptno
 order by YEAR, deptno;
 
--- 5) ¼ö´ç(comm)À» ¹Ş´Â Á÷¿ø¼ö¿Í ¹ŞÁö ¾Ê´Â Á÷¿ø¼ö¸¦ Ãâ·Â
+-- 5) ìˆ˜ë‹¹(comm)ì„ ë°›ëŠ” ì§ì›ìˆ˜ì™€ ë°›ì§€ ì•ŠëŠ” ì§ì›ìˆ˜ë¥¼ ì¶œë ¥
 select nvl2(comm, 'y', 'n'), count(*)
 from emp
 group by nvl2(comm, 'y', 'n');

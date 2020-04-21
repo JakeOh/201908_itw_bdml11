@@ -1,6 +1,6 @@
--- ¹®ÀÚ¿­ ÇÔ¼ö
+-- ë¬¸ìì—´ í•¨ìˆ˜
 -- upper('Sql Course');
--- ÇÔ¼ö È£ÃâÀÇ °á°ú¸¦ Ãâ·ÂÇÏ±â À§ÇÑ ´õ¹Ì Å×ÀÌºí: dual
+-- í•¨ìˆ˜ í˜¸ì¶œì˜ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ê¸° ìœ„í•œ ë”ë¯¸ í…Œì´ë¸”: dual
 select upper('Sql Course') from dual;
 select lower('Sql Course') from dual;
 select initcap('sql course') from dual;
@@ -11,15 +11,15 @@ from emp;
 select * from emp
 where upper(ename) = upper('scott');
 
--- Á÷¿ø ÀÌ¸§ Áß¿¡ 'la'°¡ Æ÷ÇÔµÈ ¸ğµç Á÷¿øµéÀÇ Á¤º¸ Ãâ·Â
+-- ì§ì› ì´ë¦„ ì¤‘ì— 'la'ê°€ í¬í•¨ëœ ëª¨ë“  ì§ì›ë“¤ì˜ ì •ë³´ ì¶œë ¥
 select * from emp
 where lower(ename) like lower('%la%');
 
 select concat('Hello', 'World') from dual;
 
--- substr(¹®ÀÚ¿­, ½ÃÀÛÀÎµ¦½º, ¹®ÀÚ°¹¼ö)
--- ¼¼¹øÂ° argumentÀÎ Àß¶ó³¾ ¹®ÀÚ °¹¼ö¸¦ Àü´ŞÇÏÁö ¾Ê´Â °æ¿ì¿¡´Â
--- ¹®ÀÚ¿­¿¡¼­ ½ÃÀÛÀÎµ¦½ººÎÅÍ ±× ¹®ÀÚ¿­ÀÇ ³¡±îÁö Àß¶ó³¿
+-- substr(ë¬¸ìì—´, ì‹œì‘ì¸ë±ìŠ¤, ë¬¸ìê°¯ìˆ˜)
+-- ì„¸ë²ˆì§¸ argumentì¸ ì˜ë¼ë‚¼ ë¬¸ì ê°¯ìˆ˜ë¥¼ ì „ë‹¬í•˜ì§€ ì•ŠëŠ” ê²½ìš°ì—ëŠ”
+-- ë¬¸ìì—´ì—ì„œ ì‹œì‘ì¸ë±ìŠ¤ë¶€í„° ê·¸ ë¬¸ìì—´ì˜ ëê¹Œì§€ ì˜ë¼ëƒ„
 -- Hello
 -- 12345
 select substr('HelloWorld', 1, 5) from dual;
@@ -28,11 +28,11 @@ select substr('HelloWorld', 2, 4) from dual;
 select substr('HelloWorld', 2) from dual;
 select substr('http://www.google.com', 8) from dual;
 
--- length(¹®ÀÚ¿­): ±ÛÀÚ¼ö(¹®ÀÚÀÇ °¹¼ö)¸¦ ¸®ÅÏ 
+-- length(ë¬¸ìì—´): ê¸€ììˆ˜(ë¬¸ìì˜ ê°¯ìˆ˜)ë¥¼ ë¦¬í„´ 
 select length('Hello'), lengthb('Hello') from dual;
-select length('ÇÑ±Û'), lengthb('ÇÑ±Û') from dual;
+select length('í•œê¸€'), lengthb('í•œê¸€') from dual;
 
--- emp Å×ÀÌºí¿¡¼­ Á÷¿ø ÀÌ¸§ÀÌ 6±ÛÀÚ ÀÌ»óÀÎ Á÷¿øµéÀÇ ·¹ÄÚµå¸¦ Ãâ·Â
+-- emp í…Œì´ë¸”ì—ì„œ ì§ì› ì´ë¦„ì´ 6ê¸€ì ì´ìƒì¸ ì§ì›ë“¤ì˜ ë ˆì½”ë“œë¥¼ ì¶œë ¥
 select ename from emp where length(ename) > 5;
 
 select instr('HelloWorld', 'W') from dual;
@@ -51,25 +51,25 @@ select replace('jack and jue', 'j', 'bl') from dual;
 select trim('h' from 'hhello hello ollehhhh') from dual;
 select trim(' ' from '     hello     hello     olleh     ') from dual;
 
--- ¼ıÀÚ °ü·Ã ÇÔ¼ö
--- round():  ¹İ¿Ã¸² 
+-- ìˆ«ì ê´€ë ¨ í•¨ìˆ˜
+-- round():  ë°˜ì˜¬ë¦¼ 
 select round(1234.5678, 0), round(1234.5678, 1), round(1234.5678, 2),
        round(1234.5678, -1), round(1234.5678, -2)
 from dual;
 
--- trunc(): ¹ö¸²
+-- trunc(): ë²„ë¦¼
 select trunc(1234.5678, 0), trunc(1234.5678, 1), trunc(1234.5678, 2),
        trunc(1234.5678, -1), trunc(1234.5678, -2)
 from dual;
 
--- mod(): ³ª´« ³ª¸ÓÁö¸¦ °è»ê 
+-- mod(): ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ë¥¼ ê³„ì‚° 
 select mod(7, 3) from dual;
 select trunc(7 / 3, 0), mod(7, 3) from dual;
 
 select ceil(3.14), floor(3.14) from dual;
 select ceil(-3.14), floor(-3.14) from dual;
 
--- ³¯Â¥ °ü·Ã ÇÔ¼ö
+-- ë‚ ì§œ ê´€ë ¨ í•¨ìˆ˜
 select sysdate from dual;
 select add_months(sysdate, 1) from dual;
 
@@ -86,27 +86,27 @@ select trunc(sysdate, 'YYYY'), trunc(sysdate, 'Q')
 from dual;
 
 
--- µ¥ÀÌÅÍ Å¸ÀÔ º¯È¯ ÇÔ¼ö
--- to_char(): ¹®ÀÚ¿­À» ¸®ÅÏ
--- to_number(): ¼ıÀÚ¸¦ ¸®ÅÏ
--- to_date(): ³¯Â¥¸¦ ¸®ÅÏ
+-- ë°ì´í„° íƒ€ì… ë³€í™˜ í•¨ìˆ˜
+-- to_char(): ë¬¸ìì—´ì„ ë¦¬í„´
+-- to_number(): ìˆ«ìë¥¼ ë¦¬í„´
+-- to_date(): ë‚ ì§œë¥¼ ë¦¬í„´
 
--- ¿À¶óÅ¬¿¡¼­ »çÄ¢¿¬»êÀÚ(+, -, *, /)´Â ¼ıÀÚ Å¸ÀÔ¿¡¼­¸¸ »ç¿ë °¡´É
--- (date Å¸ÀÔÀº +, -°¡ °¡´É)
+-- ì˜¤ë¼í´ì—ì„œ ì‚¬ì¹™ì—°ì‚°ì(+, -, *, /)ëŠ” ìˆ«ì íƒ€ì…ì—ì„œë§Œ ì‚¬ìš© ê°€ëŠ¥
+-- (date íƒ€ì…ì€ +, -ê°€ ê°€ëŠ¥)
 select '1000' + '100' from dual;
--- ¿À¶óÅ¬Àº ¼ıÀÚ·Î º¯È¯ÇÒ ¼ö ÀÖ´Â ¹®ÀÚ¿­µéÀÎ °æ¿ì¿¡´Â
--- ¹¬½ÃÀûÀ¸·Î Å¸ÀÔ º¯È¯À» ¼öÇàÇÑ ÈÄ »çÄ¢ ¿¬»ê °è»êÀ» ÇÔ
+-- ì˜¤ë¼í´ì€ ìˆ«ìë¡œ ë³€í™˜í•  ìˆ˜ ìˆëŠ” ë¬¸ìì—´ë“¤ì¸ ê²½ìš°ì—ëŠ”
+-- ë¬µì‹œì ìœ¼ë¡œ íƒ€ì… ë³€í™˜ì„ ìˆ˜í–‰í•œ í›„ ì‚¬ì¹™ ì—°ì‚° ê³„ì‚°ì„ í•¨
 select '1000' + 'abc' from dual;
--- ¼ıÀÚ·Î º¯È¯ÇÒ ¼ö ¾ø´Â ¹®ÀÚ¿­ÀÎ °æ¿ì »çÄ¢ ¿¬»êÀ» ÇÏ¸é invalid number ¿¡·¯°¡ ¹ß»ıµÊ
+-- ìˆ«ìë¡œ ë³€í™˜í•  ìˆ˜ ì—†ëŠ” ë¬¸ìì—´ì¸ ê²½ìš° ì‚¬ì¹™ ì—°ì‚°ì„ í•˜ë©´ invalid number ì—ëŸ¬ê°€ ë°œìƒë¨
 
 select '1,000' + '100' from dual; -- invalid number
 select to_number('12,000', '999,999') + to_number('100', '999') 
 from dual;
 
 
--- ³¯Â¥(date) Å¸ÀÔÀÇ °ªÀº SQL DeveloperÀÇ È¯°æ¼³Á¤¿¡¼­ ¼³Á¤µÈ Çü½ÄÀ¸·Î Ãâ·ÂµÊ
--- µµ±¸ -> È¯°æ¼³Á¤ -> µ¥ÀÌÅÍº£ÀÌ½º -> NLS(National Language Support)
--- ³¯Â¥ µ¥ÀÌÅÍ¸¦ ¿øÇÏ´Â Çü½ÄÀ¸·Î Ãâ·ÂÇÏ°í ½ÍÀ» ¶§ to_char(³¯Â¥, Çü½Ä) ÇÔ¼ö¸¦ »ç¿ë
+-- ë‚ ì§œ(date) íƒ€ì…ì˜ ê°’ì€ SQL Developerì˜ í™˜ê²½ì„¤ì •ì—ì„œ ì„¤ì •ëœ í˜•ì‹ìœ¼ë¡œ ì¶œë ¥ë¨
+-- ë„êµ¬ -> í™˜ê²½ì„¤ì • -> ë°ì´í„°ë² ì´ìŠ¤ -> NLS(National Language Support)
+-- ë‚ ì§œ ë°ì´í„°ë¥¼ ì›í•˜ëŠ” í˜•ì‹ìœ¼ë¡œ ì¶œë ¥í•˜ê³  ì‹¶ì„ ë•Œ to_char(ë‚ ì§œ, í˜•ì‹) í•¨ìˆ˜ë¥¼ ì‚¬ìš©
 select sysdate, 
        to_char(sysdate, 'YY-MM-DD'),
        to_char(sysdate, 'AM HH:MI:SS'),
@@ -114,7 +114,7 @@ select sysdate,
        to_char(sysdate, 'DAY')
 from dual;
 
--- to_date(¹®ÀÚ¿­, ³¯Â¥Çü½Ä)
+-- to_date(ë¬¸ìì—´, ë‚ ì§œí˜•ì‹)
 select to_date('2019/08/29'), to_date('19/08/29') from  dual;
 select to_date('2019/08/29', 'YYYY/MM/DD'), 
        to_date('99/08/29', 'YY/MM/DD'),
@@ -125,8 +125,8 @@ select to_date('17:10:15', 'HH24:MI:SS')
 from dual;
 
 -- null value
--- nvl(º¯¼ö, nullÀ» ´ëÃ¼ÇÒ °ª)
--- nvl2(º¯¼ö, nullÀÌ ¾Æ´Ò ¶§ ´ëÃ¼ÇÒ °ª, nullÀÏ ¶§ ´ëÃ¼ÇÒ °ª)
+-- nvl(ë³€ìˆ˜, nullì„ ëŒ€ì²´í•  ê°’)
+-- nvl2(ë³€ìˆ˜, nullì´ ì•„ë‹ ë•Œ ëŒ€ì²´í•  ê°’, nullì¼ ë•Œ ëŒ€ì²´í•  ê°’)
 select comm, nvl(comm, 0), nvl2(comm, 'True', 'False') from emp;
 
 

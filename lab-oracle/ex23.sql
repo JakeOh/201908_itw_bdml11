@@ -1,65 +1,65 @@
 set SERVEROUTPUT ON;
 
-accept p_name prompt 'ÀÌ¸§ ÀÔ·ÂÇÏ¼¼¿ä...';
+accept p_name prompt 'ì´ë¦„ ì…ë ¥í•˜ì„¸ìš”...';
 begin
     dbms_output.put_line('&p_name');
 end;
 /
 
--- ÀÌ¸§À» ÀÔ·Â ¹Ş¾Æ¼­
--- »ç¹ø, ºÎ¼­¹øÈ£¸¦ °Ë»öÇØ¼­
--- »ç¹ø, ÀÌ¸§, ºÎ¼­¹øÈ£¸¦ Ãâ·Â
-accept p_name prompt 'ÀÌ¸§ ÀÔ·ÂÇÏ¼¼¿ä...';
+-- ì´ë¦„ì„ ì…ë ¥ ë°›ì•„ì„œ
+-- ì‚¬ë²ˆ, ë¶€ì„œë²ˆí˜¸ë¥¼ ê²€ìƒ‰í•´ì„œ
+-- ì‚¬ë²ˆ, ì´ë¦„, ë¶€ì„œë²ˆí˜¸ë¥¼ ì¶œë ¥
+accept p_name prompt 'ì´ë¦„ ì…ë ¥í•˜ì„¸ìš”...';
 declare
-    v_empno number(4); -- »ç¹øÀ» ÀúÀåÇÒ º¯¼ö
-    v_deptno number(2); -- ºÎ¼­ ¹øÈ£¸¦ ÀúÀåÇÒ º¯¼ö
-    v_ename varchar2(100) := upper('&p_name'); -- ÀÔ·Â¹ŞÀº ÀÌ¸§(¹®ÀÚ¿­)À» ÀúÀåÇÑ º¯¼ö 
+    v_empno number(4); -- ì‚¬ë²ˆì„ ì €ì¥í•  ë³€ìˆ˜
+    v_deptno number(2); -- ë¶€ì„œ ë²ˆí˜¸ë¥¼ ì €ì¥í•  ë³€ìˆ˜
+    v_ename varchar2(100) := upper('&p_name'); -- ì…ë ¥ë°›ì€ ì´ë¦„(ë¬¸ìì—´)ì„ ì €ì¥í•œ ë³€ìˆ˜ 
 begin
     select empno, deptno into v_empno, v_deptno
     from emp
     where upper(ename) = v_ename;
     
-    dbms_output.put_line('»ç¹ø: ' || v_empno);
-    dbms_output.put_line('ÀÌ¸§: ' || v_ename);
-    dbms_output.put_line('ºÎ¼­ ¹øÈ£: ' || v_deptno);
+    dbms_output.put_line('ì‚¬ë²ˆ: ' || v_empno);
+    dbms_output.put_line('ì´ë¦„: ' || v_ename);
+    dbms_output.put_line('ë¶€ì„œ ë²ˆí˜¸: ' || v_deptno);
 end;
 /
 
 
--- ÀÌ¸§À» ÀÔ·Â ¹Ş¾Æ¼­
--- emp, dept Å×ÀÌºíÀ» »ç¿ëÇØ¼­(JOIN)
--- 'SCOTTÀº DALLASÀÇ RESEARCHºÎ¼­¿¡¼­ ±Ù¹«ÇÕ´Ï´Ù.'¿Í °°Àº Çü½ÄÀ¸·Î Ãâ·Â
-accept p_name prompt 'ÀÌ¸§ ÀÔ·ÂÇÏ¼¼¿ä...';
+-- ì´ë¦„ì„ ì…ë ¥ ë°›ì•„ì„œ
+-- emp, dept í…Œì´ë¸”ì„ ì‚¬ìš©í•´ì„œ(JOIN)
+-- 'SCOTTì€ DALLASì˜ RESEARCHë¶€ì„œì—ì„œ ê·¼ë¬´í•©ë‹ˆë‹¤.'ì™€ ê°™ì€ í˜•ì‹ìœ¼ë¡œ ì¶œë ¥
+accept p_name prompt 'ì´ë¦„ ì…ë ¥í•˜ì„¸ìš”...';
 declare
-    v_ename varchar2(100) := '&p_name';  -- ÀÔ·Â¹ŞÀº ÀÌ¸§À» ÀúÀåÇÏ´Â º¯¼ö
-    v_loc varchar2(13);  -- ºÎ¼­ À§Ä¡(loc)¸¦ ÀúÀåÇÒ º¯¼ö
-    v_dname varchar2(14);  -- ºÎ¼­ ÀÌ¸§À» ÀúÀåÇÒ º¯¼ö
+    v_ename varchar2(100) := '&p_name';  -- ì…ë ¥ë°›ì€ ì´ë¦„ì„ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
+    v_loc varchar2(13);  -- ë¶€ì„œ ìœ„ì¹˜(loc)ë¥¼ ì €ì¥í•  ë³€ìˆ˜
+    v_dname varchar2(14);  -- ë¶€ì„œ ì´ë¦„ì„ ì €ì¥í•  ë³€ìˆ˜
 begin
     select d.dname, d.loc into v_dname, v_loc
     from emp e , dept d
     where e.deptno = d.deptno
             and upper(e.ename) = upper(trim(v_ename));
     
-    dbms_output.put_line(v_ename || 'Àº(´Â) ' ||
-                        v_loc || 'ÀÇ ' ||
-                        v_dname || 'ºÎ¼­¿¡¼­ ±Ù¹«ÇÕ´Ï´Ù.');
+    dbms_output.put_line(v_ename || 'ì€(ëŠ”) ' ||
+                        v_loc || 'ì˜ ' ||
+                        v_dname || 'ë¶€ì„œì—ì„œ ê·¼ë¬´í•©ë‹ˆë‹¤.');
 end;
 /
 
--- ÀÔ·ÂµÈ ÀÌ¸§ÀÌ ´ë/¼Ò¹®ÀÚ¿¡ »ó°ü¾øÀÌ °á°ú¸¦ Ãâ·ÂÇÒ ¼ö ÀÖµµ·Ï
+-- ì…ë ¥ëœ ì´ë¦„ì´ ëŒ€/ì†Œë¬¸ìì— ìƒê´€ì—†ì´ ê²°ê³¼ë¥¼ ì¶œë ¥í•  ìˆ˜ ìˆë„ë¡
 
-accept p_name prompt 'ÀÌ¸§ ÀÔ·ÂÇÏ¼¼¿ä...';
+accept p_name prompt 'ì´ë¦„ ì…ë ¥í•˜ì„¸ìš”...';
 declare
     v_ename varchar2(20) := upper(trim('&p_name'));
     v_dname varchar2(14);
     v_loc varchar2(13);
     v_deptno number(2);
 begin
-    -- »ç¿ø ÀÌ¸§À¸·Î ±× »ç¿øÀÌ ±Ù¹«ÇÏ´Â ºÎ¼­ ¹øÈ£¸¦ °Ë»ö
+    -- ì‚¬ì› ì´ë¦„ìœ¼ë¡œ ê·¸ ì‚¬ì›ì´ ê·¼ë¬´í•˜ëŠ” ë¶€ì„œ ë²ˆí˜¸ë¥¼ ê²€ìƒ‰
     select deptno into v_deptno from emp where upper(ename) = v_ename;
-    -- ºÎ¼­ ¹øÈ£¸¦ »ç¿ëÇØ¼­ ºÎ¼­ÀÇ ÀÌ¸§, À§Ä¡¸¦ °Ë»ö
+    -- ë¶€ì„œ ë²ˆí˜¸ë¥¼ ì‚¬ìš©í•´ì„œ ë¶€ì„œì˜ ì´ë¦„, ìœ„ì¹˜ë¥¼ ê²€ìƒ‰
     select dname, loc into v_dname, v_loc from dept where deptno = v_deptno;
-    -- °Ë»öÇÑ Á¤º¸¸¦ È­¸é Ãâ·Â
+    -- ê²€ìƒ‰í•œ ì •ë³´ë¥¼ í™”ë©´ ì¶œë ¥
     dbms_output.put_line(v_ename || ' : ' || v_loc || ' : ' || v_dname );
 end;
 /

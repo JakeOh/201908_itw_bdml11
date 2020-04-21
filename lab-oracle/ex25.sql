@@ -1,25 +1,25 @@
-/* Á¶°Ç¹®(Conditional Statement)
+/* ì¡°ê±´ë¬¸(Conditional Statement)
 (1)
-if Á¶°Ç½Ä then
-    Á¶°Ç½ÄÀÌ ÂüÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
+if ì¡°ê±´ì‹ then
+    ì¡°ê±´ì‹ì´ ì°¸ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ì¥;
 end if;
 
 (2)
-if Á¶°Ç½Ä then
-    Á¶°Ç½ÄÀÌ ÂüÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
+if ì¡°ê±´ì‹ then
+    ì¡°ê±´ì‹ì´ ì°¸ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ì¥;
 else
-    Á¶°Ç½ÄÀÌ °ÅÁşÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
+    ì¡°ê±´ì‹ì´ ê±°ì§“ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ì¥;
 end if;
 
 (3)
-if Á¶°Ç½Ä1 then
-    Á¶°Ç½Ä1ÀÌ ÂüÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
-elsif Á¶°Ç½Ä2 then
-    Á¶°Ç½Ä2ÀÌ ÂüÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
+if ì¡°ê±´ì‹1 then
+    ì¡°ê±´ì‹1ì´ ì°¸ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ì¥;
+elsif ì¡°ê±´ì‹2 then
+    ì¡°ê±´ì‹2ì´ ì°¸ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ì¥;
 elsif ...
     ...
 else
-    À§ÀÇ ¸ğµç Á¶°ÇÀÌ °ÅÁşÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
+    ìœ„ì˜ ëª¨ë“  ì¡°ê±´ì´ ê±°ì§“ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ì¥;
 end if;
 */
 
@@ -30,14 +30,14 @@ declare
     v_num number := 122;
 begin
     if mod(v_num, 2) = 1 then
-        dbms_output.put_line('È¦¼ö');
+        dbms_output.put_line('í™€ìˆ˜');
     end if;
     
     dbms_output.put_line('End PL/SQL');
 end;
 /
 
-accept p_num prompt '¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä...';
+accept p_num prompt 'ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”...';
 declare
     v_test number := &p_num;
 begin
@@ -51,10 +51,10 @@ begin
 end;
 /
 
--- ½ÃÇè Á¡¼ö°¡ 90Á¡ ÀÌ»óÀÌ¸é 'A'
--- ½ÃÇè Á¡¼ö°¡ 80Á¡ ÀÌ»óÀÌ¸é 'B'
--- ½ÃÇè Á¡¼ö°¡ 70Á¡ ÀÌ»óÀÌ¸é 'C'
--- ½ÃÇè Á¡¼ö°¡ 70Á¡ ¹Ì¸¸ÀÌ¸é 'F'
+-- ì‹œí—˜ ì ìˆ˜ê°€ 90ì  ì´ìƒì´ë©´ 'A'
+-- ì‹œí—˜ ì ìˆ˜ê°€ 80ì  ì´ìƒì´ë©´ 'B'
+-- ì‹œí—˜ ì ìˆ˜ê°€ 70ì  ì´ìƒì´ë©´ 'C'
+-- ì‹œí—˜ ì ìˆ˜ê°€ 70ì  ë¯¸ë§Œì´ë©´ 'F'
 declare
     v_score number := 68;
 begin
@@ -70,21 +70,21 @@ begin
 end;
 /
 
--- ÀÔ·Â¹ŞÀº ¼ıÀÚ°¡ 
--- 1. Â¦¼öÀÌ¸é, 'even number'¶ó°í Ãâ·Â
---    (1) 4ÀÇ ¹è¼öÀÌ¸é, '4ÀÇ ¹è¼ö'¶ó°í Ãâ·Â
---    (2) ±×·¸Áö ¾ÊÀ¸¸é, '4ÀÇ ¹è¼ö°¡ ¾Æ´Õ´Ï´Ù.'¶ó°í Ãâ·Â 
--- 2. È¦¼öÀÌ¸é, 'odd number'¶ó°í Ãâ·Â
-accept p_num prompt 'Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä...';
+-- ì…ë ¥ë°›ì€ ìˆ«ìê°€ 
+-- 1. ì§ìˆ˜ì´ë©´, 'even number'ë¼ê³  ì¶œë ¥
+--    (1) 4ì˜ ë°°ìˆ˜ì´ë©´, '4ì˜ ë°°ìˆ˜'ë¼ê³  ì¶œë ¥
+--    (2) ê·¸ë ‡ì§€ ì•Šìœ¼ë©´, '4ì˜ ë°°ìˆ˜ê°€ ì•„ë‹™ë‹ˆë‹¤.'ë¼ê³  ì¶œë ¥ 
+-- 2. í™€ìˆ˜ì´ë©´, 'odd number'ë¼ê³  ì¶œë ¥
+accept p_num prompt 'ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”...';
 declare
     v_test number := &p_num;
 begin
     if mod(v_test, 2) = 0 then
         dbms_output.put_line('even number');
         if mod(v_test, 4) = 0 then
-            dbms_output.put_line('4ÀÇ ¹è¼ö');
+            dbms_output.put_line('4ì˜ ë°°ìˆ˜');
         else
-            dbms_output.put_line('4ÀÇ ¹è¼ö°¡ ¾Æ´Õ´Ï´Ù.');
+            dbms_output.put_line('4ì˜ ë°°ìˆ˜ê°€ ì•„ë‹™ë‹ˆë‹¤.');
         end if;
     else 
         dbms_output.put_line('odd number');
@@ -93,16 +93,16 @@ end;
 /
 
 select power(5, 2) from dual;
--- »ï°¢ÇüÀÇ ¼¼ º¯ÀÇ ±æÀÌ¸¦ ÀÔ·Â
--- ÇÇÅ¸°í¶ó½º Á¤¸®¸¦ ÀÌ¿ëÇØ¼­, Á÷°¢»ï°¢ÇüÀÎÁö ¾Æ´ÑÁö¸¦ Ãâ·Â
-accept a prompt '»ï°¢Çü ¹Øº¯ÀÇ ±æÀÌ?';
-accept b prompt '»ï°¢ÇüÀÇ ³ôÀÌ?';
-accept c prompt '»ï°¢Çü ºøº¯ÀÇ ±æÀÌ?';
+-- ì‚¼ê°í˜•ì˜ ì„¸ ë³€ì˜ ê¸¸ì´ë¥¼ ì…ë ¥
+-- í”¼íƒ€ê³ ë¼ìŠ¤ ì •ë¦¬ë¥¼ ì´ìš©í•´ì„œ, ì§ê°ì‚¼ê°í˜•ì¸ì§€ ì•„ë‹Œì§€ë¥¼ ì¶œë ¥
+accept a prompt 'ì‚¼ê°í˜• ë°‘ë³€ì˜ ê¸¸ì´?';
+accept b prompt 'ì‚¼ê°í˜•ì˜ ë†’ì´?';
+accept c prompt 'ì‚¼ê°í˜• ë¹—ë³€ì˜ ê¸¸ì´?';
 begin
     if power(&a, 2) + power(&b, 2) = power(&c, 2) then
-        dbms_output.put_line('Á÷°¢»ï°¢Çü');
+        dbms_output.put_line('ì§ê°ì‚¼ê°í˜•');
     else
-        dbms_output.put_line('NOT Á÷°¢»ï°¢Çü');
+        dbms_output.put_line('NOT ì§ê°ì‚¼ê°í˜•');
     end if;
 end;
 

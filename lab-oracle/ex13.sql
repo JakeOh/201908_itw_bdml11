@@ -1,56 +1,56 @@
--- Å×ÀÌºí »ı¼º
+-- í…Œì´ë¸” ìƒì„±
 create table ex1 (
     ex_id       number,
     ex_text     varchar2(10),
     ex_date     date
 );
 
--- Å×ÀÌºí ±¸Á¶(ÄÃ·³ ÀÌ¸§, µ¥ÀÌÅÍ Å¸ÀÔ, Null ¿©ºÎ) È®ÀÎ
+-- í…Œì´ë¸” êµ¬ì¡°(ì»¬ëŸ¼ ì´ë¦„, ë°ì´í„° íƒ€ì…, Null ì—¬ë¶€) í™•ì¸
 desc ex1;
 
--- Å×ÀÌºí¿¡ µ¥ÀÌÅÍ(·¹ÄÚµå) ÀúÀå(»ğÀÔ)
+-- í…Œì´ë¸”ì— ë°ì´í„°(ë ˆì½”ë“œ) ì €ì¥(ì‚½ì…)
 insert into ex1 (ex_id, ex_text, ex_date)
-values (1, '¾È³çÇÏ¼¼¿ä', sysdate);
+values (1, 'ì•ˆë…•í•˜ì„¸ìš”', sysdate);
 
--- Å×ÀÌºí¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ(·¹ÄÚµå)¸¦ °Ë»ö
+-- í…Œì´ë¸”ì— ì €ì¥ëœ ë°ì´í„°(ë ˆì½”ë“œ)ë¥¼ ê²€ìƒ‰
 select * from ex1;
 
--- º¯°æµÈ µ¥ÀÌÅÍ¸¦ DBMS¿¡ ¿µ±¸ ÀúÀå
+-- ë³€ê²½ëœ ë°ì´í„°ë¥¼ DBMSì— ì˜êµ¬ ì €ì¥
 commit;
 
--- DDL(Data Defintion Language): µ¥ÀÌÅÍ Á¤ÀÇ ¾ğ¾î
+-- DDL(Data Defintion Language): ë°ì´í„° ì •ì˜ ì–¸ì–´
 -- create, alter, drop, truncate
--- DDL ¸í·ÉÀº ½ÇÇàÀÌ µÇ¸é ÀÚµ¿À¸·Î commitÀÌ µÊ.
+-- DDL ëª…ë ¹ì€ ì‹¤í–‰ì´ ë˜ë©´ ìë™ìœ¼ë¡œ commitì´ ë¨.
 
--- DML(Data Manpulation Language): µ¥ÀÌÅÍ Á¶ÀÛ ¾ğ¾î
+-- DML(Data Manpulation Language): ë°ì´í„° ì¡°ì‘ ì–¸ì–´
 -- insert, update, delete
--- DB¿¡ Á¢¼ÓÇÑ »ç¿ëÀÚ°¡ commit ¸í·ÉÀ» ¼öÇàÇØ¾ß¸¸ DBMS¿¡ ¿µ±¸ÀûÀ¸·Î ¹İ¿µµÊ!
+-- DBì— ì ‘ì†í•œ ì‚¬ìš©ìê°€ commit ëª…ë ¹ì„ ìˆ˜í–‰í•´ì•¼ë§Œ DBMSì— ì˜êµ¬ì ìœ¼ë¡œ ë°˜ì˜ë¨!
 
 insert into ex1 (ex_id, ex_text)
 values (2, 'abc');
 select * from ex1;
 
 insert into ex1 (ex_text, ex_id)
-values ('ÅØ½ºÆ®', 10);
+values ('í…ìŠ¤íŠ¸', 10);
 select * from ex1;
 
--- Å×ÀÌºíÀÇ ¸ğµç ÄÃ·³¿¡ °ªÀ» ÀúÀåÇÒ ¶§´Â
--- insert into ±¸¹®¿¡¼­ ÄÃ·³ ÀÌ¸§À» »ı·«ÇÒ ¼ö ÀÖ´Ù.
--- ´Ü, values´Â Å×ÀÌºíÀÇ ÄÃ·³ ¼ø¼­¿¡ ÀÏÄ¡½ÃÄÑ¼­ ¸ğµç °ªÀ» Àü´ŞÇØ¾ß ÇÔ!
+-- í…Œì´ë¸”ì˜ ëª¨ë“  ì»¬ëŸ¼ì— ê°’ì„ ì €ì¥í•  ë•ŒëŠ”
+-- insert into êµ¬ë¬¸ì—ì„œ ì»¬ëŸ¼ ì´ë¦„ì„ ìƒëµí•  ìˆ˜ ìˆë‹¤.
+-- ë‹¨, valuesëŠ” í…Œì´ë¸”ì˜ ì»¬ëŸ¼ ìˆœì„œì— ì¼ì¹˜ì‹œì¼œì„œ ëª¨ë“  ê°’ì„ ì „ë‹¬í•´ì•¼ í•¨!
 insert into ex1
 values (11, 'data', sysdate);
 
-insert into ex1 values (20); -- valuesÀÇ °¹¼ö¿Í ÄÃ·³ÀÇ °¹¼ö°¡ ´Ù¸§.
-insert into ex1 values(sysdate, 'test', 0); -- values¿Í Å×ÀÌºí ÄÃ·³ÀÇ µ¥ÀÌÅÍ Å¸ÀÔÀÌ ´Ù¸§.
+insert into ex1 values (20); -- valuesì˜ ê°¯ìˆ˜ì™€ ì»¬ëŸ¼ì˜ ê°¯ìˆ˜ê°€ ë‹¤ë¦„.
+insert into ex1 values(sysdate, 'test', 0); -- valuesì™€ í…Œì´ë¸” ì»¬ëŸ¼ì˜ ë°ì´í„° íƒ€ì…ì´ ë‹¤ë¦„.
 
 insert into ex1 (ex_text)
-values ('Àç¹ÌÀÖ³ª¿ä?'); -- varchar2(10)¿¡ ÀúÀåÇÒ ¼ö ÀÖ´Â ¹®ÀÚ¿­ ±æÀÌ¸¦ ÃÊ°ú 
+values ('ì¬ë¯¸ìˆë‚˜ìš”?'); -- varchar2(10)ì— ì €ì¥í•  ìˆ˜ ìˆëŠ” ë¬¸ìì—´ ê¸¸ì´ë¥¼ ì´ˆê³¼ 
 
 commit;
 
 
--- Å×ÀÌºí ÀÌ¸§: ex02
--- ÄÃ·³: ex_id - number(2), ex_text - varchar2(5 char)
+-- í…Œì´ë¸” ì´ë¦„: ex02
+-- ì»¬ëŸ¼: ex_id - number(2), ex_text - varchar2(5 char)
 create table ex02 (
     ex_id number(2),
     ex_text varchar2(5 char)
@@ -59,7 +59,7 @@ create table ex02 (
 desc ex02;
 
 insert into ex02
-values (1, '¾È³çÇÏ¼¼¿ä');
+values (1, 'ì•ˆë…•í•˜ì„¸ìš”');
 select * from ex02;
 commit;
 

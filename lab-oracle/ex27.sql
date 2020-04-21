@@ -1,21 +1,21 @@
-/* ¹İº¹¹®
+/* ë°˜ë³µë¬¸
 (1) LOOP
 loop
-    ¹İº¹ÇÒ ¹®Àå;
-    exit when Á¶°Ç½Ä;
+    ë°˜ë³µí•  ë¬¸ì¥;
+    exit when ì¡°ê±´ì‹;
 end loop;
 
 (2) WHILE LOOP
-while Á¶°Ç½Ä loop
-    Á¶°Ç½ÄÀÌ ÂüÀÏ ¶§ ¹İº¹ÇÒ ¹®Àå;
+while ì¡°ê±´ì‹ loop
+    ì¡°ê±´ì‹ì´ ì°¸ì¼ ë•Œ ë°˜ë³µí•  ë¬¸ì¥;
 end loop;
 
 (3) FOR LOOP
-for º¯¼ö in ½ÃÀÛ°ª..¸¶Áö¸·°ª loop
-    ¹İº¹ÇÒ ¹®Àå;
+for ë³€ìˆ˜ in ì‹œì‘ê°’..ë§ˆì§€ë§‰ê°’ loop
+    ë°˜ë³µí•  ë¬¸ì¥;
 end loop;
-for-loop¿¡¼­ »ç¿ëÇÏ´Â º¯¼ö´Â delcare ±¸¹®¿¡¼­ ¼±¾ğÇÏÁö ¾ÊÀ½!
-for-loop¿¡¼­ »ç¿ëÇÏ´Â º¯¼ö´Â ¹İº¹µÉ ¶§¸¶´Ù ÀÚµ¿À¸·Î 1¾¿ Áõ°¡µÊ!
+for-loopì—ì„œ ì‚¬ìš©í•˜ëŠ” ë³€ìˆ˜ëŠ” delcare êµ¬ë¬¸ì—ì„œ ì„ ì–¸í•˜ì§€ ì•ŠìŒ!
+for-loopì—ì„œ ì‚¬ìš©í•˜ëŠ” ë³€ìˆ˜ëŠ” ë°˜ë³µë  ë•Œë§ˆë‹¤ ìë™ìœ¼ë¡œ 1ì”© ì¦ê°€ë¨!
 */
 
 set serveroutput on;
@@ -24,17 +24,17 @@ declare
     v_num number := 1;
 begin
     loop
-        -- v_numÀÇ °ªÀ» Ãâ·Â
+        -- v_numì˜ ê°’ì„ ì¶œë ¥
         dbms_output.put_line('v_num = ' || v_num);  
-        -- v_numÀÇ °ªÀ» 1 Áõ°¡
+        -- v_numì˜ ê°’ì„ 1 ì¦ê°€
         v_num := v_num + 1;
-        -- loop Á¾·á Á¶°Ç
+        -- loop ì¢…ë£Œ ì¡°ê±´
         exit when v_num > 5;
     end loop;
 end;
 /
 
--- loop¸¦ »ç¿ëÇÑ ±¸±¸´Ü 2´Ü Ãâ·Â
+-- loopë¥¼ ì‚¬ìš©í•œ êµ¬êµ¬ë‹¨ 2ë‹¨ ì¶œë ¥
 declare
     v_num number := 1;
 begin
@@ -47,7 +47,7 @@ end;
 /
 
 
--- while loop¸¦ »ç¿ëÇØ¼­ 1 ~ 5±îÁö Ãâ·Â
+-- while loopë¥¼ ì‚¬ìš©í•´ì„œ 1 ~ 5ê¹Œì§€ ì¶œë ¥
 declare
     v_num number := 1;
 begin
@@ -58,7 +58,7 @@ begin
 end;
 /
 
--- while loopÀ» »ç¿ëÇØ¼­ ±¸±¸´Ü 3´ÜÀ» Ãâ·Â
+-- while loopì„ ì‚¬ìš©í•´ì„œ êµ¬êµ¬ë‹¨ 3ë‹¨ì„ ì¶œë ¥
 declare
     v_num number := 1;
 begin
@@ -70,7 +70,7 @@ end;
 /
 
 
--- for loopÀ» »ç¿ëÇØ¼­ 1 ~ 5±îÁö Ãâ·Â
+-- for loopì„ ì‚¬ìš©í•´ì„œ 1 ~ 5ê¹Œì§€ ì¶œë ¥
 begin
     for i in 1..5 loop
         dbms_output.put_line('i = ' || i);
@@ -78,7 +78,7 @@ begin
 end;
 /
 
--- for loopÀ» »ç¿ëÇØ¼­ ±¸±¸´Ü 4´ÜÀ» Ãâ·Â
+-- for loopì„ ì‚¬ìš©í•´ì„œ êµ¬êµ¬ë‹¨ 4ë‹¨ì„ ì¶œë ¥
 begin
     for x in 1..9 loop
         dbms_output.put_line('4 x ' || x || ' = ' || (4 * x));
@@ -87,7 +87,7 @@ end;
 /
 
 
--- while loop¿¡¼­ exit »ç¿ë
+-- while loopì—ì„œ exit ì‚¬ìš©
 declare
     v_num number := 1;
 begin
@@ -99,7 +99,7 @@ begin
 end;
 /
 
--- for loop¿¡¼­ exit »ç¿ëÇÏ±â 
+-- for loopì—ì„œ exit ì‚¬ìš©í•˜ê¸° 
 begin
     for i in 1..10 loop
         dbms_output.put_line('i = ' || i);
@@ -108,7 +108,7 @@ begin
 end;
 /
 
--- for loop¿¡¼­ ¹üÀ§ÀÇ ¿ª¼øÀ¸·Î °¨¼Ò½ÃÅ°¸é¼­ ¹İº¹
+-- for loopì—ì„œ ë²”ìœ„ì˜ ì—­ìˆœìœ¼ë¡œ ê°ì†Œì‹œí‚¤ë©´ì„œ ë°˜ë³µ
 begin
     for i in reverse 1..5 loop
         dbms_output.put_line('i = ' || i);
@@ -117,9 +117,9 @@ end;
 /
 
 
--- ¹İº¹¹®(loop, while, for) ¾È¿¡¼­
--- 1) exit when Á¶°Ç½Ä: Á¶°Ç½ÄÀ» ¸¸Á·ÇÏ´Â °æ¿ì¿¡ ¹İº¹¹®À» Á¾·á
--- 2) continue when Á¶°Ç½Ä: Á¶°Ç½ÄÀ» ¸¸Á·ÇÏ´Â °æ¿ì¿¡ ¹İº¹¹®ÀÇ ½ÃÀÛºÎºĞÀ¸·Î µ¹¾Æ°¨
+-- ë°˜ë³µë¬¸(loop, while, for) ì•ˆì—ì„œ
+-- 1) exit when ì¡°ê±´ì‹: ì¡°ê±´ì‹ì„ ë§Œì¡±í•˜ëŠ” ê²½ìš°ì— ë°˜ë³µë¬¸ì„ ì¢…ë£Œ
+-- 2) continue when ì¡°ê±´ì‹: ì¡°ê±´ì‹ì„ ë§Œì¡±í•˜ëŠ” ê²½ìš°ì— ë°˜ë³µë¬¸ì˜ ì‹œì‘ë¶€ë¶„ìœ¼ë¡œ ëŒì•„ê°
 
 begin
     for i in 1..10 loop

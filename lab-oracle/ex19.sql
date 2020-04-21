@@ -1,16 +1,16 @@
 -- Session, Transaction, Lock
--- SQL Á¾·ù
--- DML(Data Manipluation Language): µ¥ÀÌÅÍ Á¶ÀÛ ¾ğ¾î
+-- SQL ì¢…ë¥˜
+-- DML(Data Manipluation Language): ë°ì´í„° ì¡°ì‘ ì–¸ì–´
 --      insert, update, delete
--- DDL(Data Definition Language): µ¥ÀÌÅÍ Á¤ÀÇ ¾ğ¾î
+-- DDL(Data Definition Language): ë°ì´í„° ì •ì˜ ì–¸ì–´
 --      create, alter, truncate, drop
--- DQL(Data Query Language): µ¥ÀÌÅÍ Äõ¸®(ÁúÀÇ) ¾ğ¾î. select
--- TCL(Transaction Control Language): Æ®·£Àè¼Ç °ü¸® ¾ğ¾î. commit, rollback
+-- DQL(Data Query Language): ë°ì´í„° ì¿¼ë¦¬(ì§ˆì˜) ì–¸ì–´. select
+-- TCL(Transaction Control Language): íŠ¸ëœì­ì…˜ ê´€ë¦¬ ì–¸ì–´. commit, rollback
 
 select * from dept2;
 
 update dept2 
-set loc = '¼­¿ïSeoul'
+set loc = 'ì„œìš¸Seoul'
 where deptno = 50;
 select * from dept2;
 
@@ -20,6 +20,6 @@ insert into dept2
 values (90, 'itwill', 'gangnam');
 select * from dept2;
 
-update dept2 set loc = '´º¿å' where deptno = 10;
+update dept2 set loc = 'ë‰´ìš•' where deptno = 10;
 
 commit;

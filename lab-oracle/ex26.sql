@@ -1,22 +1,22 @@
-/*  case ~ when ±¸¹®
+/*  case ~ when êµ¬ë¬¸
 (1)
-case ºñ±³´ë»ó
-    when °ª1 then 
-        ºñ±³´ë»ó =  °ª1 ¸¸Á·ÇÒ ¶§ ½ÇÇàÇÒ ¹®Àå;
-    when °ª2 then 
-        ºñ±³´ë»ó =  °ª2 ¸¸Á·ÇÒ ¶§ ½ÇÇàÇÒ ¹®Àå;
+case ë¹„êµëŒ€ìƒ
+    when ê°’1 then 
+        ë¹„êµëŒ€ìƒ =  ê°’1 ë§Œì¡±í•  ë•Œ ì‹¤í–‰í•  ë¬¸ìž¥;
+    when ê°’2 then 
+        ë¹„êµëŒ€ìƒ =  ê°’2 ë§Œì¡±í•  ë•Œ ì‹¤í–‰í•  ë¬¸ìž¥;
     ...
-    else ºñ±³´ë»óÀÌ À§ÀÇ ¸ðµç °ª°ú ÀÏÄ¡ÇÏÁö ¾ÊÀ» ¶§ ½ÇÇàÇÒ ¹®Àå;
+    else ë¹„êµëŒ€ìƒì´ ìœ„ì˜ ëª¨ë“  ê°’ê³¼ ì¼ì¹˜í•˜ì§€ ì•Šì„ ë•Œ ì‹¤í–‰í•  ë¬¸ìž¥;
 end case;
 
 (2)
 case
-    when Á¶°Ç½Ä1 then
-        Á¶°Ç½Ä1ÀÌ ÂüÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
-    when Á¶°Ç½Ä2 then
-        Á¶°Ç½Ä2ÀÌ ÂüÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
+    when ì¡°ê±´ì‹1 then
+        ì¡°ê±´ì‹1ì´ ì°¸ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ìž¥;
+    when ì¡°ê±´ì‹2 then
+        ì¡°ê±´ì‹2ì´ ì°¸ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ìž¥;
     ...
-    else À§ÀÇ ¸ðµç Á¶°ÇÀÌ °ÅÁþÀÏ ¶§ ½ÇÇàÇÒ ¹®Àå;
+    else ìœ„ì˜ ëª¨ë“  ì¡°ê±´ì´ ê±°ì§“ì¼ ë•Œ ì‹¤í–‰í•  ë¬¸ìž¥;
 end case;
 */
 

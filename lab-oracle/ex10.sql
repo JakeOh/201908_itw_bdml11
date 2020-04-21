@@ -1,5 +1,5 @@
--- hr °èÁ¤
--- ºÎ¼­º° ±Þ¿© ÃÖ¼Ò°ª
+-- hr ê³„ì •
+-- ë¶€ì„œë³„ ê¸‰ì—¬ ìµœì†Œê°’
 select min(salary) from employees
 group by department_id;
 

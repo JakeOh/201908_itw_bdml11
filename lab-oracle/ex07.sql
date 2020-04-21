@@ -22,10 +22,10 @@ select empno, ename, sal,
 from emp;
 
 -- 3)
-select sysdate, next_day(sysdate, '±Ý') from dual;
+select sysdate, next_day(sysdate, 'ê¸ˆ') from dual;
 
 select empno, ename, 
         to_char(hiredate, 'YYYY-MM-DD') as hiredate,
-        to_char(next_day(add_months(hiredate, 3), '¿ù'), 'YYYY-MM-DD') as regular,
-        to_char(next_day(add_months(hiredate, 3)-1, '¿ù'), 'YYYY-MM-DD') as regular2
+        to_char(next_day(add_months(hiredate, 3), 'ì›”'), 'YYYY-MM-DD') as regular,
+        to_char(next_day(add_months(hiredate, 3)-1, 'ì›”'), 'YYYY-MM-DD') as regular2
 from emp;

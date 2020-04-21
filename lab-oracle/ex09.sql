@@ -1,7 +1,7 @@
 -- Sub Query
--- »ç¹øÀÌ 7369¹ø »ç¿øÀÇ ¸Å´ÏÀú »ç¹ø
+-- ì‚¬ë²ˆì´ 7369ë²ˆ ì‚¬ì›ì˜ ë§¤ë‹ˆì € ì‚¬ë²ˆ
 select mgr from emp where empno = 7369;
--- »ç¹øÀÌ 7902¹ø »ç¿øÀÇ ÀÌ¸§
+-- ì‚¬ë²ˆì´ 7902ë²ˆ ì‚¬ì›ì˜ ì´ë¦„
 select ename from emp where empno = 7902;
 
 select ename from emp
@@ -9,25 +9,25 @@ where empno = (
     select mgr from emp where empno = 7369
 );
 
--- »ç¿ø Å×ÀÌºí¿¡¼­ Æò±Õ ±Ş¿©º¸´Ù ´õ ¸¹Àº ±Ş¿©¸¦ ¹Ş´Â Á÷¿øµé¸¸ Ãâ·Â
+-- ì‚¬ì› í…Œì´ë¸”ì—ì„œ í‰ê·  ê¸‰ì—¬ë³´ë‹¤ ë” ë§ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì§ì›ë“¤ë§Œ ì¶œë ¥
 select *
 from emp
 where sal > (
     select avg(sal) from emp
 );
 
--- ALLENº¸´Ù commÀ» ´õ ¸¹ÀÌ ¹Ş´Â Á÷¿ø Á¤º¸ Ãâ·Â
+-- ALLENë³´ë‹¤ commì„ ë” ë§ì´ ë°›ëŠ” ì§ì› ì •ë³´ ì¶œë ¥
 select *
 from emp
 where comm > (
     select comm from emp where ename = 'ALLEN'
 );
 
--- ºÎ¼­ ¹øÈ£°¡ 20 ¶Ç´Â 30¹øÀÎ Á÷¿øµéÀÇ Á¤º¸ Ãâ·Â
+-- ë¶€ì„œ ë²ˆí˜¸ê°€ 20 ë˜ëŠ” 30ë²ˆì¸ ì§ì›ë“¤ì˜ ì •ë³´ ì¶œë ¥
 select * from emp where deptno = 20 or deptno = 30;
 select * from emp where deptno in (20, 30);
 
--- °¢ ºÎ¼­ÀÇ ±Ş¿© ÃÖ¼Ú°ª°ú °°Àº ±Ş¿©¸¦ ¹Ş´Â Á÷¿øµéÀÇ Á¤º¸ Ãâ·Â
+-- ê° ë¶€ì„œì˜ ê¸‰ì—¬ ìµœì†Ÿê°’ê³¼ ê°™ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì§ì›ë“¤ì˜ ì •ë³´ ì¶œë ¥
 select min(sal) from emp group by deptno;
 select * from emp where sal in (950, 800, 1300);
 
@@ -36,7 +36,7 @@ where sal in (
     select min(sal) from emp group by deptno
 );
 
---  °¢ ºÎ¼­¿¡¼­ ±Ş¿© ÃÖ¼Ú°ªÀ» ¹Ş´Â Á÷¿ø Á¤º¸¸¦ Ãâ·Â
+--  ê° ë¶€ì„œì—ì„œ ê¸‰ì—¬ ìµœì†Ÿê°’ì„ ë°›ëŠ” ì§ì› ì •ë³´ë¥¼ ì¶œë ¥
 select deptno, min(sal) from emp group by deptno;
 
 select * from emp
@@ -45,7 +45,7 @@ where (deptno, sal) in (
 );
 
 
--- sub query¿Í all/any
+-- sub queryì™€ all/any
 select min(sal) from emp group by deptno;
 select * from emp where sal in (950, 800, 1300);
 select * from emp where sal = any (950, 800, 1300);

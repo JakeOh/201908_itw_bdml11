@@ -1,9 +1,9 @@
 /*
-Ä¿¼­(cursor): PL/SQL ³»ºÎ¿¡¼­ SQL ¹®ÀåÀ» Ã³¸®ÇÏ´Â Á¤º¸¸¦ ÀúÀåÇÑ ¸Ş¸ğ¸® °ø°£
-(1) ¸í½ÃÀû Ä¿¼­(explicit cursor): °³¹ßÀÚ°¡ Á÷Á¢ ÀÌ¸§À» ¼±¾ğÇÏ°í »ç¿ëÇÏ´Â Ä¿¼­
-(2) ¹¬½ÃÀû Ä¿¼­(implicit cursor): º°´Ù¸¥ ¼±¾ğ ¾øÀÌ »ç¿ëÇÏ´Â Ä¿¼­
+ì»¤ì„œ(cursor): PL/SQL ë‚´ë¶€ì—ì„œ SQL ë¬¸ì¥ì„ ì²˜ë¦¬í•˜ëŠ” ì •ë³´ë¥¼ ì €ì¥í•œ ë©”ëª¨ë¦¬ ê³µê°„
+(1) ëª…ì‹œì  ì»¤ì„œ(explicit cursor): ê°œë°œìê°€ ì§ì ‘ ì´ë¦„ì„ ì„ ì–¸í•˜ê³  ì‚¬ìš©í•˜ëŠ” ì»¤ì„œ
+(2) ë¬µì‹œì  ì»¤ì„œ(implicit cursor): ë³„ë‹¤ë¥¸ ì„ ì–¸ ì—†ì´ ì‚¬ìš©í•˜ëŠ” ì»¤ì„œ
 
-¸í½ÃÀû Ä¿¼­: ¼±¾ğ -> open -> fetch -> close
+ëª…ì‹œì  ì»¤ì„œ: ì„ ì–¸ -> open -> fetch -> close
 
 */
 
@@ -15,74 +15,74 @@ declare
     v_dept dept%rowtype;
 begin 
     select * into v_dept from dept where deptno = 10;
-    -- ¿À¶óÅ¬ DB ³»ºÎ¿¡¼­ ¹¬½ÃÀû Ä¿¼­°¡ ÀÚµ¿À¸·Î »ı¼ºµÊ.
+    -- ì˜¤ë¼í´ DB ë‚´ë¶€ì—ì„œ ë¬µì‹œì  ì»¤ì„œê°€ ìë™ìœ¼ë¡œ ìƒì„±ë¨.
     dbms_output.put_line(v_dept.deptno);
 end;
 /
 
 
--- select into ±¸¹®Àº 1°³ ÀÌ»óÀÇ Çà(row)°¡ selectµÇ´Â °æ¿ì´Â »ç¿ëÇÒ ¼ö ¾ø´Ù.
--- ¸í½ÃÀû Ä¿¼­´Â selectÀÇ °á°ú ÇàÀÇ °¹¼ö¿¡ »ó°ü¾øÀÌ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+-- select into êµ¬ë¬¸ì€ 1ê°œ ì´ìƒì˜ í–‰(row)ê°€ selectë˜ëŠ” ê²½ìš°ëŠ” ì‚¬ìš©í•  ìˆ˜ ì—†ë‹¤.
+-- ëª…ì‹œì  ì»¤ì„œëŠ” selectì˜ ê²°ê³¼ í–‰ì˜ ê°¯ìˆ˜ì— ìƒê´€ì—†ì´ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
 declare
-    -- ¸í½ÃÀû Ä¿¼­ ¼±¾ğ:
-    -- cursor Ä¿¼­ÀÌ¸§ is (SQL ¹®Àå);
+    -- ëª…ì‹œì  ì»¤ì„œ ì„ ì–¸:
+    -- cursor ì»¤ì„œì´ë¦„ is (SQL ë¬¸ì¥);
     cursor my_cursor is (
         select * from dept where deptno = 10
     );
     
-    v_row dept%rowtype;  -- Ä¿¼­ÀÇ µ¥ÀÌÅÍ¸¦ ÀúÀå(fetch)ÇÒ ¶§ »ç¿ëÇÒ º¯¼ö
+    v_row dept%rowtype;  -- ì»¤ì„œì˜ ë°ì´í„°ë¥¼ ì €ì¥(fetch)í•  ë•Œ ì‚¬ìš©í•  ë³€ìˆ˜
 begin
-    -- Ä¿¼­ open(¿­±â, SQL ¹®Àå ½ÇÇà)
+    -- ì»¤ì„œ open(ì—´ê¸°, SQL ë¬¸ì¥ ì‹¤í–‰)
     open my_cursor;
     
-    -- Ä¿¼­ fetch(µ¥ÀÌÅÍ ÀĞ±â)
+    -- ì»¤ì„œ fetch(ë°ì´í„° ì½ê¸°)
     fetch my_cursor into v_row;
     dbms_output.put_line(v_row.deptno || ', ' ||
                         v_row.dname || ', ' ||
                         v_row.loc);
     
-    -- Ä¿¼­ close(´İ±â)
+    -- ì»¤ì„œ close(ë‹«ê¸°)
     close my_cursor;
 end;
 /
 
 
--- °á°ú ÇàÀÌ 1°³ÀÎ ¸í½ÃÀû Ä¿¼­
+-- ê²°ê³¼ í–‰ì´ 1ê°œì¸ ëª…ì‹œì  ì»¤ì„œ
 declare
-    -- (1) Ä¿¼­ ¼±¾ğ
+    -- (1) ì»¤ì„œ ì„ ì–¸
     cursor sel_emp is (
         select * from emp where empno = 7788
     );
-    v_row emp%rowtype;  -- Ä¿¼­ °á°ú¸¦ ÀúÀå(fetch)ÇÒ º¯¼ö
+    v_row emp%rowtype;  -- ì»¤ì„œ ê²°ê³¼ë¥¼ ì €ì¥(fetch)í•  ë³€ìˆ˜
 begin
-    -- (2) Ä¿¼­ open
+    -- (2) ì»¤ì„œ open
     open sel_emp;
     
-    -- (3) Ä¿¼­ ½ÇÇà °á°ú ÀĞ±â(fetch)
+    -- (3) ì»¤ì„œ ì‹¤í–‰ ê²°ê³¼ ì½ê¸°(fetch)
     fetch sel_emp into v_row;
     dbms_output.put_line(v_row.empno || ', ' || v_row.ename);
     
-    -- (4) Ä¿¼­ close
+    -- (4) ì»¤ì„œ close
     close sel_emp;
 end;
 /
 
--- °á°ú ÇàÀÌ ¿©·¯°³°¡ µÉ ¼ö ÀÖ´Â ¸í½ÃÀû Ä¿¼­
+-- ê²°ê³¼ í–‰ì´ ì—¬ëŸ¬ê°œê°€ ë  ìˆ˜ ìˆëŠ” ëª…ì‹œì  ì»¤ì„œ
 declare
-    -- ¸í½ÃÀû Ä¿¼­ ¼±¾ğ
+    -- ëª…ì‹œì  ì»¤ì„œ ì„ ì–¸
     cursor sel_dept is (
         select * from dept
     );
-    -- Ä¿¼­ ½ÇÇà °á°ú¸¦ fetchÇÒ ¶§ »ç¿ëÇÒ º¯¼ö
+    -- ì»¤ì„œ ì‹¤í–‰ ê²°ê³¼ë¥¼ fetchí•  ë•Œ ì‚¬ìš©í•  ë³€ìˆ˜
     v_row dept%rowtype;
 begin
     -- (2) open
     open sel_dept;
     
-    -- (3) fetch -- °á°ú ÇàÀÌ ¿©·¯°³ÀÏ °æ¿ì ¹İº¹¹® ¾È¿¡¼­ fetch
+    -- (3) fetch -- ê²°ê³¼ í–‰ì´ ì—¬ëŸ¬ê°œì¼ ê²½ìš° ë°˜ë³µë¬¸ ì•ˆì—ì„œ fetch
     loop
         fetch sel_dept into v_row;
-        -- Ä¿¼­¿¡¼­ ´õÀÌ»ó ÀĞÀ» ·¹ÄÚµå°¡ ¾øÀ» ¶§ loop¸¦ Á¾·á
+        -- ì»¤ì„œì—ì„œ ë”ì´ìƒ ì½ì„ ë ˆì½”ë“œê°€ ì—†ì„ ë•Œ loopë¥¼ ì¢…ë£Œ
         exit when sel_dept%notfound;
         
         dbms_output.put_line(v_row.deptno || ', ' 
@@ -96,7 +96,7 @@ end;
 /
 
 
--- emp Å×ÀÌºí¿¡¼­ ºÎ¼­¹øÈ£°¡ 30¹øÀÎ Á÷¿øµéÀÇ »ç¹ø, ÀÌ¸§, ±Ş¿©¸¦ Ãâ·Â 
+-- emp í…Œì´ë¸”ì—ì„œ ë¶€ì„œë²ˆí˜¸ê°€ 30ë²ˆì¸ ì§ì›ë“¤ì˜ ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¶œë ¥ 
 declare
     cursor sel_emp is (
         select * from emp where deptno = 30
@@ -150,9 +150,9 @@ end;
 /
 
 
--- ¸í½ÃÀû Ä¿¼­¸¦ for loop¿¡¼­ »ç¿ë
--- open, fetch, close°¡ ÀÚµ¿À¸·Î ¼öÇàµÊ
--- for º¯¼ö in Ä¿¼­ loop ... end loop;
+-- ëª…ì‹œì  ì»¤ì„œë¥¼ for loopì—ì„œ ì‚¬ìš©
+-- open, fetch, closeê°€ ìë™ìœ¼ë¡œ ìˆ˜í–‰ë¨
+-- for ë³€ìˆ˜ in ì»¤ì„œ loop ... end loop;
 declare
     cursor my_cursor is (
         select * from dept
@@ -164,8 +164,8 @@ begin
 end;
 /
 
--- ¸í½ÃÀû Ä¿¼­, for loop¸¦ »ç¿ëÇØ¼­ 
--- 20¹ø ºÎ¼­ÀÇ Á÷¿øµéÀÇ »ç¹ø, ÀÌ¸§, ±Ş¿©¸¦ Ãâ·Â 
+-- ëª…ì‹œì  ì»¤ì„œ, for loopë¥¼ ì‚¬ìš©í•´ì„œ 
+-- 20ë²ˆ ë¶€ì„œì˜ ì§ì›ë“¤ì˜ ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¶œë ¥ 
 declare
     cursor my_cursor is (
         select empno, ename name, sal from emp where deptno = 20
@@ -177,7 +177,7 @@ begin
 end;
 /
 
--- ÀüÃ¼ Á÷¿øÀÇ ±Ş¿© Æò±Õº¸´Ù ÀûÀº ±Ş¿©¸¦ ¹Ş´Â Á÷¿øµéÀÇ ÀÌ¸§À» Ãâ·ÂÇÏ´Â PL/SQL
+-- ì „ì²´ ì§ì›ì˜ ê¸‰ì—¬ í‰ê· ë³´ë‹¤ ì ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì§ì›ë“¤ì˜ ì´ë¦„ì„ ì¶œë ¥í•˜ëŠ” PL/SQL
 select avg(sal) from emp;
 select ename from emp where sal < ?;
 select ename from emp where sal < (select avg(sal) from emp);
@@ -196,18 +196,18 @@ begin
 end;
 /
 
---  ÆÄ¶ó¹ÌÅÍ(parameter, ¸Å°³º¯¼ö)¸¦ °®´Â Ä¿¼­ ¼±¾ğ
--- cursor Ä¿¼­ÀÌ¸§(º¯¼ö Å¸ÀÔ, º¯¼ö Å¸ÀÔ, ...) is SQL¹®Àå;
+--  íŒŒë¼ë¯¸í„°(parameter, ë§¤ê°œë³€ìˆ˜)ë¥¼ ê°–ëŠ” ì»¤ì„œ ì„ ì–¸
+-- cursor ì»¤ì„œì´ë¦„(ë³€ìˆ˜ íƒ€ì…, ë³€ìˆ˜ íƒ€ì…, ...) is SQLë¬¸ì¥;
 declare
     v_avg number;
     cursor my_cursor(p_avg number) is
         select ename from emp where sal < p_avg;
 begin
-    -- ÀüÃ¼ Á÷¿øÀÇ ±Ş¿© Æò±ÕÀ» ¾Ë¾Æ³¿
+    -- ì „ì²´ ì§ì›ì˜ ê¸‰ì—¬ í‰ê· ì„ ì•Œì•„ëƒ„
     select avg(sal) into v_avg from emp;
     dbms_output.put_line(v_avg);
     
-    -- ÆÄ¶ó¹ÌÅÍ¸¦ °®´Â Ä¿¼­¸¦ open/fetch/close
+    -- íŒŒë¼ë¯¸í„°ë¥¼ ê°–ëŠ” ì»¤ì„œë¥¼ open/fetch/close
     for row in my_cursor(v_avg) loop
         dbms_output.put_line(row.ename);
     end loop;
@@ -215,8 +215,8 @@ end;
 /
 
 
--- 10¹ø ºÎ¼­¿¡¼­, 10¹ø ºÎ¼­ Á÷¿øµéÀÇ ±Ş¿© Æò±Õº¸´Ù ÀûÀº ±Ş¿©¸¦ ¹Ş´Â Á÷¿øµéÀÇ 
--- ÀÌ¸§À» Ãâ·ÂÇÏ´Â PL/SQL
+-- 10ë²ˆ ë¶€ì„œì—ì„œ, 10ë²ˆ ë¶€ì„œ ì§ì›ë“¤ì˜ ê¸‰ì—¬ í‰ê· ë³´ë‹¤ ì ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì§ì›ë“¤ì˜ 
+-- ì´ë¦„ì„ ì¶œë ¥í•˜ëŠ” PL/SQL
 select deptno, ename from emp
 where sal < (
     select avg(sal) from emp where deptno = 10
@@ -247,8 +247,8 @@ begin
 end;
 /
 
--- °¢ ºÎ¼­¿¡¼­, ±× ºÎ¼­ Á÷¿øµéÀÇ ±Ş¿© Æò±Õº¸´Ù ÀûÀº ±Ş¿©¸¦ ¹Ş´Â Á÷¿øµéÀÇ 
--- ºÎ¼­¹øÈ£¿Í Á÷¿ø ÀÌ¸§À» Ãâ·ÂÇÏ´Â PL/SQL
+-- ê° ë¶€ì„œì—ì„œ, ê·¸ ë¶€ì„œ ì§ì›ë“¤ì˜ ê¸‰ì—¬ í‰ê· ë³´ë‹¤ ì ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì§ì›ë“¤ì˜ 
+-- ë¶€ì„œë²ˆí˜¸ì™€ ì§ì› ì´ë¦„ì„ ì¶œë ¥í•˜ëŠ” PL/SQL
 declare
     cursor get_deptno is 
         select deptno from dept;

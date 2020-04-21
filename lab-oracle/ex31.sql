@@ -1,33 +1,33 @@
 /*
-ÄÃ·º¼Ç(collection): °°Àº Å¸ÀÔÀÇ µ¥ÀÌÅÍ ¿©·¯°³¸¦ ÀúÀåÇÒ ¶§ »ç¿ë
-1) ¿¬°ü ¹è¿­(associative array, index-by table)
-2) ÁßÃ¸ Å×ÀÌºí(nested table)
+ì»¬ë ‰ì…˜(collection): ê°™ì€ íƒ€ìž…ì˜ ë°ì´í„° ì—¬ëŸ¬ê°œë¥¼ ì €ìž¥í•  ë•Œ ì‚¬ìš©
+1) ì—°ê´€ ë°°ì—´(associative array, index-by table)
+2) ì¤‘ì²© í…Œì´ë¸”(nested table)
 3) VARRAY(variable-size array)
 
-¿¬°ü ¹è¿­: key/index¿Í valueÀÇ ½ÖÀ¸·Î ±¸¼ºµÇ´Â ÄÃ·º¼Ç
-¿¬°ü ¹è¿­¿¡¼­ key/index´Â 
-binary_integer(Á¤¼ö), pls_integer(¾çÀÇ Á¤¼ö), varchar2(¹®ÀÚ¿­) Å¸ÀÔÀÌ °¡´É.
+ì—°ê´€ ë°°ì—´: key/indexì™€ valueì˜ ìŒìœ¼ë¡œ êµ¬ì„±ë˜ëŠ” ì»¬ë ‰ì…˜
+ì—°ê´€ ë°°ì—´ì—ì„œ key/indexëŠ” 
+binary_integer(ì •ìˆ˜), pls_integer(ì–‘ì˜ ì •ìˆ˜), varchar2(ë¬¸ìžì—´) íƒ€ìž…ì´ ê°€ëŠ¥.
 
-¿¬°ü ¹è¿­À» ¼±¾ð(Á¤ÀÇ)ÇÏ´Â ¹æ¹ý:
-type ¹è¿­ÀÌ¸§ is table of µ¥ÀÌÅÍÅ¸ÀÔ index by ÀÎµ¦½ºÅ¸ÀÔ;
+ì—°ê´€ ë°°ì—´ì„ ì„ ì–¸(ì •ì˜)í•˜ëŠ” ë°©ë²•:
+type ë°°ì—´ì´ë¦„ is table of ë°ì´í„°íƒ€ìž… index by ì¸ë±ìŠ¤íƒ€ìž…;
 */
 
 set serveroutput on;
 
 declare
-    -- ¹®ÀÚ¿­À» ¿ø¼Ò·Î °®°í, ¾çÀÇ Á¤¼ö¸¦ ÀÎµ¦½º·Î »ç¿ëÇÏ´Â ¿¬°ü ¹è¿­À» Á¤ÀÇ
+    -- ë¬¸ìžì—´ì„ ì›ì†Œë¡œ ê°–ê³ , ì–‘ì˜ ì •ìˆ˜ë¥¼ ì¸ë±ìŠ¤ë¡œ ì‚¬ìš©í•˜ëŠ” ì—°ê´€ ë°°ì—´ì„ ì •ì˜
     type students is table of varchar2(20) 
         index by pls_integer;
     
-    -- Á¤ÀÇÇÑ ¿¬°ü ¹è¿­ Å¸ÀÔÀÇ º¯¼ö ¼±¾ð
+    -- ì •ì˜í•œ ì—°ê´€ ë°°ì—´ íƒ€ìž…ì˜ ë³€ìˆ˜ ì„ ì–¸
     v_stu students;
 begin
-    -- ¿¬°ü ¹è¿­¿¡ µ¥ÀÌÅÍ ÀúÀå: ¹è¿­ÀÌ¸§(ÀÎµ¦½º) := °ª;
-    v_stu(1) := '°­´ÙÇý';
-    v_stu(2) := '±è¼öÀÎ';
-    v_stu(3) := '±è¿µ±¤';
+    -- ì—°ê´€ ë°°ì—´ì— ë°ì´í„° ì €ìž¥: ë°°ì—´ì´ë¦„(ì¸ë±ìŠ¤) := ê°’;
+    v_stu(1) := 'ê°•ë‹¤í˜œ';
+    v_stu(2) := 'ê¹€ìˆ˜ì¸';
+    v_stu(3) := 'ê¹€ì˜ê´‘';
     
-    -- ¿¬°ü ¹è¿­¿¡ ÀúÀåµÈ ¿ø¼Ò(µ¥ÀÌÅÍ)ÀÇ °ªÀ» ÀÐÀ» ¶§: ¹è¿­ÀÌ¸§(ÀÎµ¦½º)
+    -- ì—°ê´€ ë°°ì—´ì— ì €ìž¥ëœ ì›ì†Œ(ë°ì´í„°)ì˜ ê°’ì„ ì½ì„ ë•Œ: ë°°ì—´ì´ë¦„(ì¸ë±ìŠ¤)
     -- dbms_output.put_line(v_stu(1));
     for i in 1..3 loop
         dbms_output.put_line(i || ':' || v_stu(i));
@@ -36,53 +36,53 @@ end;
 /
 
 declare
-    -- ÀÎµ¦½º Å¸ÀÔ: varchar2(20), ¿ø¼ÒÀÇ Å¸ÀÔ: numberÀÎ ¿¬°ü ¹è¿­À» Á¤ÀÇ(¼±¾ð)
+    -- ì¸ë±ìŠ¤ íƒ€ìž…: varchar2(20), ì›ì†Œì˜ íƒ€ìž…: numberì¸ ì—°ê´€ ë°°ì—´ì„ ì •ì˜(ì„ ì–¸)
     type arr_menu is table of number index by varchar2(20);
     
-    -- ¿¬°ü ¹è¿­ Å¸ÀÔÀÇ º¯¼ö¸¦ ¼±¾ð
+    -- ì—°ê´€ ë°°ì—´ íƒ€ìž…ì˜ ë³€ìˆ˜ë¥¼ ì„ ì–¸
     v_menu arr_menu;
 begin
-    -- ¿¬°ü ¹è¿­¿¡ µ¥ÀÌÅÍ¸¦ 3°³ ÀúÀå
-    v_menu('Â¥Àå¸é') := 1000;
-    v_menu('º¸½Ó') := 5000;
-    v_menu('ÆÄ½ºÅ¸') := 3000;
+    -- ì—°ê´€ ë°°ì—´ì— ë°ì´í„°ë¥¼ 3ê°œ ì €ìž¥
+    v_menu('ì§œìž¥ë©´') := 1000;
+    v_menu('ë³´ìŒˆ') := 5000;
+    v_menu('íŒŒìŠ¤íƒ€') := 3000;
     
-    -- ¿¬°ü ¹è¿­¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ Ãâ·Â
-    DBMS_OUTPUT.PUT_LINE(v_menu('Â¥Àå¸é'));
-    DBMS_OUTPUT.PUT_LINE(v_menu('º¸½Ó'));
-    DBMS_OUTPUT.PUT_LINE(v_menu('ÆÄ½ºÅ¸'));
+    -- ì—°ê´€ ë°°ì—´ì— ì €ìž¥ëœ ë°ì´í„°ë¥¼ ì¶œë ¥
+    DBMS_OUTPUT.PUT_LINE(v_menu('ì§œìž¥ë©´'));
+    DBMS_OUTPUT.PUT_LINE(v_menu('ë³´ìŒˆ'));
+    DBMS_OUTPUT.PUT_LINE(v_menu('íŒŒìŠ¤íƒ€'));
 end;
 /
 
 declare
-    -- ÀÎµ¦½º: ¾çÀÇ Á¤¼ö, ¿ø¼Ò(µ¥ÀÌÅÍ Å¸ÀÔ): ¼ýÀÚÀÎ ¿¬°ü ¹è¿­(arr_numbers)À» ¼±¾ð(Á¤ÀÇ)
+    -- ì¸ë±ìŠ¤: ì–‘ì˜ ì •ìˆ˜, ì›ì†Œ(ë°ì´í„° íƒ€ìž…): ìˆ«ìžì¸ ì—°ê´€ ë°°ì—´(arr_numbers)ì„ ì„ ì–¸(ì •ì˜)
     type arr_numbers is table of number index by pls_integer;
-    -- ¿¬°ü ¹è¿­ Å¸ÀÔÀÇ º¯¼ö(v_scores)¸¦ ¼±¾ð
+    -- ì—°ê´€ ë°°ì—´ íƒ€ìž…ì˜ ë³€ìˆ˜(v_scores)ë¥¼ ì„ ì–¸
     v_scores arr_numbers;
-    v_sum number; -- Á¡¼öµéÀÇ ÇÕ°è¸¦ ÀúÀåÇÒ º¯¼ö
-    v_avg number; -- Á¡¼öµéÀÇ Æò±ÕÀ» ÀúÀåÇÒ º¯¼ö
+    v_sum number; -- ì ìˆ˜ë“¤ì˜ í•©ê³„ë¥¼ ì €ìž¥í•  ë³€ìˆ˜
+    v_avg number; -- ì ìˆ˜ë“¤ì˜ í‰ê· ì„ ì €ìž¥í•  ë³€ìˆ˜
 begin
-    -- ¿¬°ü ¹è¿­ v_scores¿¡ 5°³ÀÇ Á¤¼ö(0 ~ 100)¸¦ ÀÔ·Â
+    -- ì—°ê´€ ë°°ì—´ v_scoresì— 5ê°œì˜ ì •ìˆ˜(0 ~ 100)ë¥¼ ìž…ë ¥
     v_scores(1) := 90;
     v_scores(2) := 80;
     v_scores(3) := 70;
     v_scores(4) := 90;
     v_scores(5) := 80;
-    -- 5°³ Á¤¼öÀÇ ÇÕ°è¸¦ °è»êÇØ¼­ Ãâ·Â
+    -- 5ê°œ ì •ìˆ˜ì˜ í•©ê³„ë¥¼ ê³„ì‚°í•´ì„œ ì¶œë ¥
     -- v_sum := v_scores(1) + v_scores(2) + v_scores(3) + v_scores(4) + v_scores(5);
     v_sum := 0;
     for i in 1..v_scores.count loop
         v_sum := v_sum + v_scores(i);
     end loop;
     dbms_output.put_line('sum = ' || v_sum);
-    -- 5°³ Á¤¼öÀÇ Æò±ÕÀ» °è»êÇØ¼­ Ãâ·Â
+    -- 5ê°œ ì •ìˆ˜ì˜ í‰ê· ì„ ê³„ì‚°í•´ì„œ ì¶œë ¥
     v_avg := v_sum / v_scores.count;
     dbms_output.put_line('avg = ' || v_avg);
 end;
 /
 
 select sum(sal), avg(sal), variance(sal), stddev(sal) from emp;
--- emp Å×ÀÌºí¿¡¼­ ±Þ¿©ÀÇ ÃÑÇÕ, Æò±Õ, ºÐ»ê, Ç¥ÁØÆíÂ÷¸¦ Ãâ·ÂÇÏ´Â PL/SQL
+-- emp í…Œì´ë¸”ì—ì„œ ê¸‰ì—¬ì˜ ì´í•©, í‰ê· , ë¶„ì‚°, í‘œì¤€íŽ¸ì°¨ë¥¼ ì¶œë ¥í•˜ëŠ” PL/SQL
 declare
     v_sum number;
     v_avg number;
@@ -100,108 +100,108 @@ begin
 end;
 /
 
--- ÄÃ·º¼Ç ¸Þ¼Òµå:
--- ¹è¿­ º¯¼ö ÀÌ¸§.count: ¹è¿­ÀÇ ¿ø¼ÒÀÇ °¹¼ö (¿¹. v_scores.count)
--- ¹è¿­ º¯¼ö ÀÌ¸§.first: ¹è¿­ÀÇ Ã¹¹øÂ° ÀÎµ¦½º (¿¹. v_scores.first)
--- ¹è¿­ º¯¼ö ÀÌ¸§.last: ¹è¿­ÀÇ ¸¶Áö¸· ÀÎµ¦½º (¿¹. v_scores.last)
+-- ì»¬ë ‰ì…˜ ë©”ì†Œë“œ:
+-- ë°°ì—´ ë³€ìˆ˜ ì´ë¦„.count: ë°°ì—´ì˜ ì›ì†Œì˜ ê°¯ìˆ˜ (ì˜ˆ. v_scores.count)
+-- ë°°ì—´ ë³€ìˆ˜ ì´ë¦„.first: ë°°ì—´ì˜ ì²«ë²ˆì§¸ ì¸ë±ìŠ¤ (ì˜ˆ. v_scores.first)
+-- ë°°ì—´ ë³€ìˆ˜ ì´ë¦„.last: ë°°ì—´ì˜ ë§ˆì§€ë§‰ ì¸ë±ìŠ¤ (ì˜ˆ. v_scores.last)
 
--- ÀÎµ¦½º´Â ¾çÀÇ Á¤¼ö, ¹è¿­ÀÇ ¿ø¼Ò(µ¥ÀÌÅÍ)´Â ¼ýÀÚ Å¸ÀÔÀÎ ¿¬°ü ¹è¿­À» Á¤ÀÇ
--- ³­¼ö(dbms_random.value(x, y)) ÇÔ¼ö¿Í trunc() ÇÔ¼ö¸¦ »ç¿ë
--- for loop¸¦ »ç¿ëÇØ¼­ ¿¬°ü ¹è¿­¿¡ 10°³ÀÇ ½ÃÇè ¼ºÀû(0 ~ 100)À» ÀúÀå
--- 10°³ ½ÃÇè Á¡¼öÀÇ ÃÑÇÕ, Æò±Õ, ºÐ»ê, Ç¥ÁØÆíÂ÷, ÃÖ´ñ°ª, ÃÖ¼Ú°ªÀ» °è»êÇÏ´Â ½ÄÀ» ±¸Çö
+-- ì¸ë±ìŠ¤ëŠ” ì–‘ì˜ ì •ìˆ˜, ë°°ì—´ì˜ ì›ì†Œ(ë°ì´í„°)ëŠ” ìˆ«ìž íƒ€ìž…ì¸ ì—°ê´€ ë°°ì—´ì„ ì •ì˜
+-- ë‚œìˆ˜(dbms_random.value(x, y)) í•¨ìˆ˜ì™€ trunc() í•¨ìˆ˜ë¥¼ ì‚¬ìš©
+-- for loopë¥¼ ì‚¬ìš©í•´ì„œ ì—°ê´€ ë°°ì—´ì— 10ê°œì˜ ì‹œí—˜ ì„±ì (0 ~ 100)ì„ ì €ìž¥
+-- 10ê°œ ì‹œí—˜ ì ìˆ˜ì˜ ì´í•©, í‰ê· , ë¶„ì‚°, í‘œì¤€íŽ¸ì°¨, ìµœëŒ“ê°’, ìµœì†Ÿê°’ì„ ê³„ì‚°í•˜ëŠ” ì‹ì„ êµ¬í˜„
 -- power(x, y) = x ** y, sqrt(x)
--- Å×ÀÌºí¿¡ 10°³ÀÇ ½ÃÇè ¼ºÀûÀ» insert
+-- í…Œì´ë¸”ì— 10ê°œì˜ ì‹œí—˜ ì„±ì ì„ insert
 -- select sum(score), avg(score), variance(score), stddev(score), max(score), min(score) from ex_scores;
--- °è»êÇÑ °á°ú¿Í SQLÀ» ÀÌ¿ëÇÑ °á°ú°¡ °°Àº Áö ºñ±³
+-- ê³„ì‚°í•œ ê²°ê³¼ì™€ SQLì„ ì´ìš©í•œ ê²°ê³¼ê°€ ê°™ì€ ì§€ ë¹„êµ
 create table ex_scores (
     sid number primary key,
     score number not null
 );
 
 declare
-    -- ¿¬°ü ¹è¿­ Á¤ÀÇ(¼±¾ð)
+    -- ì—°ê´€ ë°°ì—´ ì •ì˜(ì„ ì–¸)
     type arr_numbers is table of number index by pls_integer;
-    -- ¹è¿­¿¡ ÀúÀåÇÒ ½ÃÇè ¼ºÀûÀÇ °¹¼ö - »ó¼ö·Î ¼±¾ð
+    -- ë°°ì—´ì— ì €ìž¥í•  ì‹œí—˜ ì„±ì ì˜ ê°¯ìˆ˜ - ìƒìˆ˜ë¡œ ì„ ì–¸
     v_cnt constant number := 10;
-    -- ¿©·¯°³ÀÇ ½ÃÇè ¼ºÀûµéÀ» ÀúÀåÇÒ ¼ö ÀÖ´Â º¯¼ö ¼±¾ð
+    -- ì—¬ëŸ¬ê°œì˜ ì‹œí—˜ ì„±ì ë“¤ì„ ì €ìž¥í•  ìˆ˜ ìžˆëŠ” ë³€ìˆ˜ ì„ ì–¸
     v_scores arr_numbers;
-    -- ½ÃÇè ¼ºÀûµéÀÇ ±â¼ú Åë°è·®(descriptive statistics) º¯¼öµé
-    v_sum number;  -- ÃÑÇÕ
-    v_avg number;  -- Æò±Õ
-    v_var number;  -- ºÐ»ê
-    v_std number;  -- Ç¥ÁØ ÆíÂ÷
-    v_max number;  -- ÃÖ´ñ°ª
-    v_min number;  -- ÃÖ¼Ú°ª
+    -- ì‹œí—˜ ì„±ì ë“¤ì˜ ê¸°ìˆ  í†µê³„ëŸ‰(descriptive statistics) ë³€ìˆ˜ë“¤
+    v_sum number;  -- ì´í•©
+    v_avg number;  -- í‰ê· 
+    v_var number;  -- ë¶„ì‚°
+    v_std number;  -- í‘œì¤€ íŽ¸ì°¨
+    v_max number;  -- ìµœëŒ“ê°’
+    v_min number;  -- ìµœì†Ÿê°’
     v_ss number; -- sum of squares
 begin
-    -- 10°³ÀÇ ³­¼ö¸¦ »ý¼ºÇØ¼­ ¿¬°ü ¹è¿­¿¡ ÀúÀå
+    -- 10ê°œì˜ ë‚œìˆ˜ë¥¼ ìƒì„±í•´ì„œ ì—°ê´€ ë°°ì—´ì— ì €ìž¥
     for i in 1..v_cnt loop
         v_scores(i) := trunc(dbms_random.value(0, 101), 0);
     end loop;
     
-    -- ¿¬°ü ¹è¿­¿¡ ÀúÀåµÈ Á¡¼öµéÀ» È®ÀÎ 
+    -- ì—°ê´€ ë°°ì—´ì— ì €ìž¥ëœ ì ìˆ˜ë“¤ì„ í™•ì¸ 
     for i in 1..v_scores.count loop
         dbms_output.put_line(i || ' : ' || v_scores(i));
     end loop;
     
-    -- ex_scores Å×ÀÌºí¿¡ »ý¼ºµÈ Á¡¼öµéÀ» insert
-    delete from ex_scores; -- Å×ÀÌºí¿¡ µ¥ÀÌÅÍ°¡ ÀÖ´Ù¸é ÀüºÎ »èÁ¦
+    -- ex_scores í…Œì´ë¸”ì— ìƒì„±ëœ ì ìˆ˜ë“¤ì„ insert
+    delete from ex_scores; -- í…Œì´ë¸”ì— ë°ì´í„°ê°€ ìžˆë‹¤ë©´ ì „ë¶€ ì‚­ì œ
     for i in 1..v_scores.count loop
         insert into ex_scores(sid, score) values(i, v_scores(i));
     end loop;
     commit;
     
-    -- SQL¿¡¼­ Á¦°øÇÏ´Â ÇÔ¼öµé(sum, avg, variance, ....)À» ÀÌ¿ëÇØ¼­ ±âÃÊ Åë°è·®À» Ã£À½
+    -- SQLì—ì„œ ì œê³µí•˜ëŠ” í•¨ìˆ˜ë“¤(sum, avg, variance, ....)ì„ ì´ìš©í•´ì„œ ê¸°ì´ˆ í†µê³„ëŸ‰ì„ ì°¾ìŒ
     select sum(score), avg(score), variance(score), 
             stddev(score), max(score), min(score)
     into v_sum, v_avg, v_var, v_std, v_max, v_min
     from ex_scores;
     
-    -- ±â¼ú Åë°è·® È®ÀÎ 
-    dbms_output.put_line('ÇÕ°è: ' || v_sum);
-    dbms_output.put_line('Æò±Õ: ' || v_avg);
-    dbms_output.put_line('ºÐ»ê: ' || v_var);
-    dbms_output.put_line('Ç¥ÁØÆíÂ÷: ' || v_std);
-    dbms_output.put_line('ÃÖ´ñ°ª: ' || v_max);
-    dbms_output.put_line('ÃÖ¼Ú°ª: ' || v_min);
+    -- ê¸°ìˆ  í†µê³„ëŸ‰ í™•ì¸ 
+    dbms_output.put_line('í•©ê³„: ' || v_sum);
+    dbms_output.put_line('í‰ê· : ' || v_avg);
+    dbms_output.put_line('ë¶„ì‚°: ' || v_var);
+    dbms_output.put_line('í‘œì¤€íŽ¸ì°¨: ' || v_std);
+    dbms_output.put_line('ìµœëŒ“ê°’: ' || v_max);
+    dbms_output.put_line('ìµœì†Ÿê°’: ' || v_min);
     
     dbms_output.put_line('=================================');
     v_sum := 0;
     for i in v_scores.first .. v_scores.last loop
         v_sum := v_sum + v_scores(i);
     end loop;
-    dbms_output.put_line('ÇÕ°è: ' || v_sum);
+    dbms_output.put_line('í•©ê³„: ' || v_sum);
     
     v_avg := v_sum / v_scores.count;
-    dbms_output.put_line('Æò±Õ: ' || v_avg);
+    dbms_output.put_line('í‰ê· : ' || v_avg);
     
     v_ss := 0;
     for i in 1 .. v_scores.count loop
         v_ss := v_ss + (v_avg - v_scores(i)) ** 2;
     end loop;
     v_var := v_ss / (v_scores.count - 1);
-    dbms_output.put_line('ºÐ»ê: ' || v_var);
+    dbms_output.put_line('ë¶„ì‚°: ' || v_var);
     
     v_std := sqrt(v_var);
-    dbms_output.put_line('Ç¥ÁØÆíÂ÷: ' || v_std);
+    dbms_output.put_line('í‘œì¤€íŽ¸ì°¨: ' || v_std);
     
-    -- ÃÖ´ñ°ª Ã£±â
+    -- ìµœëŒ“ê°’ ì°¾ê¸°
     v_max := v_scores(1);
     for i in 2 .. v_scores.count loop
         if v_scores(i) > v_max then
             v_max := v_scores(i);
         end if;
     end loop;
-    dbms_output.put_line('ÃÖ´ñ°ª: ' || v_max);
+    dbms_output.put_line('ìµœëŒ“ê°’: ' || v_max);
     
-    -- ÃÖ¼Ú°ª Ã£±â
+    -- ìµœì†Ÿê°’ ì°¾ê¸°
     v_min := v_scores(1);
     for i in 2 .. v_scores.count loop
         if v_scores(i) < v_min then
             v_min := v_scores(i);
         end if;
     end loop;
-    dbms_output.put_line('ÃÖ¼Ú°ª: ' || v_min);
+    dbms_output.put_line('ìµœì†Ÿê°’: ' || v_min);
 end;
 /
 

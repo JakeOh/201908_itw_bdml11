@@ -1,20 +1,20 @@
--- º¯¼ö(variable): ÇÁ·Î±×·¥(ÇÁ·Î½ÃÀú)¿¡¼­ ÇÊ¿äÇÑ µ¥ÀÌÅÍ(°ª)À» ÀúÀåÇÏ´Â °ø°£
--- »ó¼ö(constant): °ªÀÌ ÇÑ¹ø ÀúÀå(ÇÒ´ç)µÇ¸é °ªÀ» º¯°æÇÒ ¼ö ¾ø´Â º¯¼ö
--- ¸®ÅÍ·²(literal): ÇÁ·Î±×·¥(ÇÁ·Î½ÃÀú)¿¡¼­ Á¤ÀûÀ¸·Î »ç¿ëµÇ´Â °ª
+-- ë³€ìˆ˜(variable): í”„ë¡œê·¸ë¨(í”„ë¡œì‹œì €)ì—ì„œ í•„ìš”í•œ ë°ì´í„°(ê°’)ì„ ì €ì¥í•˜ëŠ” ê³µê°„
+-- ìƒìˆ˜(constant): ê°’ì´ í•œë²ˆ ì €ì¥(í• ë‹¹)ë˜ë©´ ê°’ì„ ë³€ê²½í•  ìˆ˜ ì—†ëŠ” ë³€ìˆ˜
+-- ë¦¬í„°ëŸ´(literal): í”„ë¡œê·¸ë¨(í”„ë¡œì‹œì €)ì—ì„œ ì •ì ìœ¼ë¡œ ì‚¬ìš©ë˜ëŠ” ê°’
 
 declare
-    var1 number := 1;   -- º¯¼ö ¼±¾ğ & ÃÊ±âÈ­
-    var2 varchar2(20);  -- º¯¼ö ¼±¾ğ
-    -- »ó¼ö ¼±¾ğ:
-    -- º¯¼öÀÌ¸§ constant µ¥ÀÌÅÍÅ¸ÀÔ := °ª;
-    -- »ó¼ö´Â ¼±¾ğ°ú µ¿½Ã¿¡ ÃÊ±âÈ­¸¦ ÇØ¾ß ÇÔ!
+    var1 number := 1;   -- ë³€ìˆ˜ ì„ ì–¸ & ì´ˆê¸°í™”
+    var2 varchar2(20);  -- ë³€ìˆ˜ ì„ ì–¸
+    -- ìƒìˆ˜ ì„ ì–¸:
+    -- ë³€ìˆ˜ì´ë¦„ constant ë°ì´í„°íƒ€ì… := ê°’;
+    -- ìƒìˆ˜ëŠ” ì„ ì–¸ê³¼ ë™ì‹œì— ì´ˆê¸°í™”ë¥¼ í•´ì•¼ í•¨!
     const1 constant number := 3.14;
     -- const2 constant number;
 begin
-    var1 := 2;  -- º¯¼öµéÀº ¾ğÁ¦µçÁö °ªÀ» º¯°æ(¼öÁ¤, ÀçÇÒ´ç)ÇÒ ¼ö ÀÖ´Ù.
-    var2 := '°¡³ª´Ù';  -- ¼±¾ğ¸¸ µÈ º¯¼ö¿¡ °ªÀ» ÀúÀå(ÇÒ´ç)
+    var1 := 2;  -- ë³€ìˆ˜ë“¤ì€ ì–¸ì œë“ ì§€ ê°’ì„ ë³€ê²½(ìˆ˜ì •, ì¬í• ë‹¹)í•  ìˆ˜ ìˆë‹¤.
+    var2 := 'ê°€ë‚˜ë‹¤';  -- ì„ ì–¸ë§Œ ëœ ë³€ìˆ˜ì— ê°’ì„ ì €ì¥(í• ë‹¹)
     -- const1 := 3.141592;  
-    -- constant·Î ¼±¾ğµÈ º¯¼ö(»ó¼ö)´Â °ªÀ» º¯°æ(ÀçÇÒ´ç)ÇÒ ¼ö ¾ø´Ù.
+    -- constantë¡œ ì„ ì–¸ëœ ë³€ìˆ˜(ìƒìˆ˜)ëŠ” ê°’ì„ ë³€ê²½(ì¬í• ë‹¹)í•  ìˆ˜ ì—†ë‹¤.
 end;
 /
 
@@ -28,33 +28,33 @@ end;
 
 
 declare
-    v_num1 number := 10;  -- nullÀÌ µÉ ¼ö ÀÖ´Â º¯¼ö(nullable)
-    v_num2 number not null := 20;  -- nullÀÌ µÉ ¼ö ¾ø´Â º¯¼ö
+    v_num1 number := 10;  -- nullì´ ë  ìˆ˜ ìˆëŠ” ë³€ìˆ˜(nullable)
+    v_num2 number not null := 20;  -- nullì´ ë  ìˆ˜ ì—†ëŠ” ë³€ìˆ˜
 begin
     v_num1 := null;
---    v_num2 := null;  -- not null º¯¼ö¿¡´Â nullÀ» ÇÒ´çÇÒ ¼ö ¾ø´Ù
+--    v_num2 := null;  -- not null ë³€ìˆ˜ì—ëŠ” nullì„ í• ë‹¹í•  ìˆ˜ ì—†ë‹¤
 end;
 /
 
 
 declare
-    -- »ç¿øÀÇ ±Ş¿©¸¦ ÀúÀåÇÒ ¼ö ÀÖ´Â º¯¼ö¸¦ ¼±¾ğ
+    -- ì‚¬ì›ì˜ ê¸‰ì—¬ë¥¼ ì €ì¥í•  ìˆ˜ ìˆëŠ” ë³€ìˆ˜ë¥¼ ì„ ì–¸
     v_sal number;
 begin
-    -- emp Å×ÀÌºí¿¡¼­ 7788¹ø »ç¿øÀÇ ±Ş¿©¸¦ °Ë»ö
+    -- emp í…Œì´ë¸”ì—ì„œ 7788ë²ˆ ì‚¬ì›ì˜ ê¸‰ì—¬ë¥¼ ê²€ìƒ‰
     select sal into v_sal from emp where empno = 7788;
-    -- °Ë»öÇÑ 7788¹ø »ç¿øÀÇ ±Ş¿©¸¦ È­¸é¿¡ Ãâ·Â
-    dbms_output.put_line('±Ş¿©: ' || v_sal);
+    -- ê²€ìƒ‰í•œ 7788ë²ˆ ì‚¬ì›ì˜ ê¸‰ì—¬ë¥¼ í™”ë©´ì— ì¶œë ¥
+    dbms_output.put_line('ê¸‰ì—¬: ' || v_sal);
 end;
 /
 
--- »ç¹øÀ» ÀÔ·Â ¹Ş¾Æ¼­(accept ~ prompt ... )
--- ÀÔ·Â¹ŞÀº »ç¹øÀÇ »ç¿ø ÀÌ¸§°ú ºÎ¼­ ¹øÈ£¸¦ °Ë»öÇØ¼­ È­¸é¿¡ Ãâ·Â
-accept p_empno prompt '»ç¹ø ÀÔ·Â';
+-- ì‚¬ë²ˆì„ ì…ë ¥ ë°›ì•„ì„œ(accept ~ prompt ... )
+-- ì…ë ¥ë°›ì€ ì‚¬ë²ˆì˜ ì‚¬ì› ì´ë¦„ê³¼ ë¶€ì„œ ë²ˆí˜¸ë¥¼ ê²€ìƒ‰í•´ì„œ í™”ë©´ì— ì¶œë ¥
+accept p_empno prompt 'ì‚¬ë²ˆ ì…ë ¥';
 declare
-    v_ename varchar2(10);  --  »ç¿ø ÀÌ¸§À» ÀúÀåÇÒ º¯¼ö
-    v_deptno number(2);  -- ºÎ¼­ ¹øÈ£¸¦ ÀúÀåÇÒ º¯¼ö
---    v_empno number(4) := &p_empno;  -- ÇÁ·ÒÇÁÆ®¿¡¼­ ÀÔ·Â¹ŞÀº »ç¹øÀ» º¯¼ö¿¡ ÀúÀå
+    v_ename varchar2(10);  --  ì‚¬ì› ì´ë¦„ì„ ì €ì¥í•  ë³€ìˆ˜
+    v_deptno number(2);  -- ë¶€ì„œ ë²ˆí˜¸ë¥¼ ì €ì¥í•  ë³€ìˆ˜
+--    v_empno number(4) := &p_empno;  -- í”„ë¡¬í”„íŠ¸ì—ì„œ ì…ë ¥ë°›ì€ ì‚¬ë²ˆì„ ë³€ìˆ˜ì— ì €ì¥
 begin
 --    select ename into v_ename from emp where empno = v_empno;
 --    select deptno into v_deptno from emp where empno = v_empno;
@@ -63,32 +63,32 @@ begin
     from emp
     where empno = &p_empno; -- v_empno;
     
-    dbms_output.put_line('»ç¹ø: ' || &p_empno);
-    dbms_output.put_line('ÀÌ¸§: ' || v_ename);
-    dbms_output.put_line('ºÎ¼­ ¹øÈ£: ' || v_deptno);
+    dbms_output.put_line('ì‚¬ë²ˆ: ' || &p_empno);
+    dbms_output.put_line('ì´ë¦„: ' || v_ename);
+    dbms_output.put_line('ë¶€ì„œ ë²ˆí˜¸: ' || v_deptno);
 end;
 /
 
--- Ctrl + /: ÇöÀç Ä¿¼­°¡ ÀÖ´Â À§Ä¡ÀÇ ÇÑÁÙÀ» ÁÖ¼® Ã³¸®/ÇØÁ¦ (toggle)
+-- Ctrl + /: í˜„ì¬ ì»¤ì„œê°€ ìˆëŠ” ìœ„ì¹˜ì˜ í•œì¤„ì„ ì£¼ì„ ì²˜ë¦¬/í•´ì œ (toggle)
 
--- »ç¹øÀ» ÀÔ·Â ¹Ş¾Æ¼­ ÇØ´ç Á÷¿øÀÇ ÃÑ±Ş¿©(sal + comm)À» È­¸é¿¡ Ãâ·Â
--- commÀÌ nullÀÎ °æ¿ì´Â 0À¸·Î °è»ê
-accept p_empno prompt '»ç¹ø ÀÔ·Â...';
+-- ì‚¬ë²ˆì„ ì…ë ¥ ë°›ì•„ì„œ í•´ë‹¹ ì§ì›ì˜ ì´ê¸‰ì—¬(sal + comm)ì„ í™”ë©´ì— ì¶œë ¥
+-- commì´ nullì¸ ê²½ìš°ëŠ” 0ìœ¼ë¡œ ê³„ì‚°
+accept p_empno prompt 'ì‚¬ë²ˆ ì…ë ¥...';
 declare
-    v_total_sal number(7, 2);  -- ÃÑ±Ş¿©(sal+comm)À» ÀúÀåÇÒ º¯¼ö ¼±¾ğ.
+    v_total_sal number(7, 2);  -- ì´ê¸‰ì—¬(sal+comm)ì„ ì €ì¥í•  ë³€ìˆ˜ ì„ ì–¸.
 begin
     select sal + nvl(comm, 0) into v_total_sal
     from emp
     where empno = &p_empno;
     
-    dbms_output.put_line('»ç¹ø ' || &p_empno || ' »ç¿øÀÇ ÃÑ±Ş¿©´Â ' || v_total_sal);
+    dbms_output.put_line('ì‚¬ë²ˆ ' || &p_empno || ' ì‚¬ì›ì˜ ì´ê¸‰ì—¬ëŠ” ' || v_total_sal);
 end;
 /
 
 declare
-    v_sal number(7, 2);  -- ±Ş¿©(sal)À» ÀúÀåÇÒ º¯¼ö ¼±¾ğ.
-    v_comm number(7, 2);  -- ¼ö´ç(comm)À» ÀúÀåÇÒ º¯¼ö ¼±¾ğ.
-    -- ÃÑ±Ş¿©(sal+comm)À» ÀúÀåÇÒ º¯¼ö ¼±¾ğ
+    v_sal number(7, 2);  -- ê¸‰ì—¬(sal)ì„ ì €ì¥í•  ë³€ìˆ˜ ì„ ì–¸.
+    v_comm number(7, 2);  -- ìˆ˜ë‹¹(comm)ì„ ì €ì¥í•  ë³€ìˆ˜ ì„ ì–¸.
+    -- ì´ê¸‰ì—¬(sal+comm)ì„ ì €ì¥í•  ë³€ìˆ˜ ì„ ì–¸
     v_total_sal number(7, 2); 
 begin
     select sal, nvl(comm, 0) into v_sal, v_comm
@@ -96,8 +96,8 @@ begin
     where empno = &p_empno;
     
     v_total_sal := v_sal + v_comm;
-    dbms_output.put_line('»ç¹ø ' || &p_empno || 
-                    ' »ç¿øÀÇ ÃÑ±Ş¿©´Â ' || v_total_sal);
+    dbms_output.put_line('ì‚¬ë²ˆ ' || &p_empno || 
+                    ' ì‚¬ì›ì˜ ì´ê¸‰ì—¬ëŠ” ' || v_total_sal);
 end;
 /
 

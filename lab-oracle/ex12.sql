@@ -36,7 +36,7 @@ from departments d left join employees e
 order by d.department_id;
 
 
--- ex 3. »ç¹ø, ÀÌ¸§, Áö¿ª ÀÌ¸§
+-- ex 3. ì‚¬ë²ˆ, ì´ë¦„, ì§€ì—­ ì´ë¦„
 select e.employee_id, e.last_name,
        e.department_id,
        d.location_id,

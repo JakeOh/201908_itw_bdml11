@@ -1,4 +1,4 @@
--- ex 1. customers Å×ÀÌºí
+-- ex 1. customers í…Œì´ë¸”
 create table customers1 (
     customer_id     varchar2(20) 
             constraint pk1 primary key 
@@ -56,7 +56,7 @@ values('########', 'pw123456', 2.5);
 
 select * from customers1;
 
--- customers1 Å×ÀÌºí¿¡¼­ ¼ºº°ÀÇ °ªÀÌ ¾ø´Â °í°´ÀÇ ¼ºº°À» 2·Î º¯°æ
+-- customers1 í…Œì´ë¸”ì—ì„œ ì„±ë³„ì˜ ê°’ì´ ì—†ëŠ” ê³ ê°ì˜ ì„±ë³„ì„ 2ë¡œ ë³€ê²½
 update customers1
 set customer_gender = 2
 where customer_gender is null;
@@ -67,12 +67,12 @@ values(100001, 123456);
 
 select * from orders;
 
--- orders Å×ÀÌºí¿¡¼­ sales_rep_id°¡ nullÀÎ °÷À» 100À¸·Î ¼öÁ¤
+-- orders í…Œì´ë¸”ì—ì„œ sales_rep_idê°€ nullì¸ ê³³ì„ 100ìœ¼ë¡œ ìˆ˜ì •
 update orders
 set sales_rep_id = 100
 where sales_rep_id is null;
 
--- order_items Å×ÀÌºí¿¡ ·¹ÄÚµå insert
+-- order_items í…Œì´ë¸”ì— ë ˆì½”ë“œ insert
 insert into order_items(order_id, product_id, quantity, price)
 values(100000, 1, 2, 1000);
 
@@ -84,8 +84,8 @@ values(100001, 123, 10, 10000);
 
 select * from order_items;
 
--- orders, order_items Å×ÀÌºí¿¡¼­ 
--- ÁÖ¹® ¹øÈ£, ÁÖ¹® ³¯Â¥, »óÇ° ¾ÆÀÌµğ, »óÇ° ¼ö·®, »óÇ° °¡°İÀ» Á¶È¸
+-- orders, order_items í…Œì´ë¸”ì—ì„œ 
+-- ì£¼ë¬¸ ë²ˆí˜¸, ì£¼ë¬¸ ë‚ ì§œ, ìƒí’ˆ ì•„ì´ë””, ìƒí’ˆ ìˆ˜ëŸ‰, ìƒí’ˆ ê°€ê²©ì„ ì¡°íšŒ
 select o.order_id, o.order_date, i.product_id, i.quantity, i.price
 from orders o join order_items i
 on o.order_id = i.order_id;
@@ -93,8 +93,8 @@ on o.order_id = i.order_id;
 commit;
 
 -- DML(Data Manipulation Language): insert, update, delete
--- commitÀ» ¸í½ÃÀûÀ¸·Î ¼öÇàÇÑ °æ¿ì¿¡ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿µ±¸È÷ ÀúÀå
--- rollbackÀ» »ç¿ëÇØ¼­ ÃÖÁ¾ commit »óÅÂ·Î µÇµ¹¸± ¼öµµ ÀÖÀ½.
+-- commitì„ ëª…ì‹œì ìœ¼ë¡œ ìˆ˜í–‰í•œ ê²½ìš°ì— ë°ì´í„°ë² ì´ìŠ¤ì— ì˜êµ¬íˆ ì €ì¥
+-- rollbackì„ ì‚¬ìš©í•´ì„œ ìµœì¢… commit ìƒíƒœë¡œ ë˜ëŒë¦´ ìˆ˜ë„ ìˆìŒ.
 select * from order_items;
 delete from order_items;
 rollback;
@@ -102,7 +102,7 @@ select * from order_items;
 
 
 -- DDL(Data Definition Language): create, alter, truncate, drop
--- DDL ¹®ÀåÀº ¼öÇà ÈÄ ÀÚµ¿À¸·Î commit µÊ.
+-- DDL ë¬¸ì¥ì€ ìˆ˜í–‰ í›„ ìë™ìœ¼ë¡œ commit ë¨.
 truncate table order_items;
 select * from order_items;
 rollback;

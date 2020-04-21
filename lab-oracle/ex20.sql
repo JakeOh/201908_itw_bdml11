@@ -1,37 +1,37 @@
--- Å×ÀÌºí ¼öÁ¤
--- Å×ÀÌºíÀÇ ÄÃ·³ ÀÌ¸§ º¯°æ
+-- í…Œì´ë¸” ìˆ˜ì •
+-- í…Œì´ë¸”ì˜ ì»¬ëŸ¼ ì´ë¦„ ë³€ê²½
 alter table ex02 rename column ex_id to eid;
 
--- Å×ÀÌºíÀÇ ÄÃ·³ µ¥ÀÌÅÍ Å¸ÀÔ º¯°æ
+-- í…Œì´ë¸”ì˜ ì»¬ëŸ¼ ë°ì´í„° íƒ€ì… ë³€ê²½
 alter table ex02 modify ex_text varchar2(100);
 
--- Å×ÀÌºí¿¡ »õ·Î¿î ÄÃ·³ Ãß°¡
+-- í…Œì´ë¸”ì— ìƒˆë¡œìš´ ì»¬ëŸ¼ ì¶”ê°€
 alter table ex02 add ex_date date;
 
--- Å×ÀÌºí¿¡¼­ ÄÃ·³ »èÁ¦
+-- í…Œì´ë¸”ì—ì„œ ì»¬ëŸ¼ ì‚­ì œ
 alter table ex02 drop column ex_date;
 
--- Å×ÀÌºí ÄÃ·³¿¡ Á¦¾à Á¶°Ç Ãß°¡
+-- í…Œì´ë¸” ì»¬ëŸ¼ì— ì œì•½ ì¡°ê±´ ì¶”ê°€
 alter table ex02
 add constraint pk_ex02 primary key (eid);
--- ÄÃ·³¿¡ null ¶Ç´Â Áßº¹µÈ °ªÀÌ ÀÖ´Â °æ¿ì´Â PK ÁöÁ¤ÇÒ ¼ö ¾øÀ½.
+-- ì»¬ëŸ¼ì— null ë˜ëŠ” ì¤‘ë³µëœ ê°’ì´ ìˆëŠ” ê²½ìš°ëŠ” PK ì§€ì •í•  ìˆ˜ ì—†ìŒ.
 
 select * from ex02;
 
 update ex02 set eid = 2 where eid is null;
 
--- null °¡´É ÄÃ·³¿¡ not null Á¦¾à Á¶°Ç Ãß°¡
+-- null ê°€ëŠ¥ ì»¬ëŸ¼ì— not null ì œì•½ ì¡°ê±´ ì¶”ê°€
 alter table ex02
 add constraint nn_ex02 check (ex_text is not null);
 
--- ÄÃ·³¿¡ ÁöÁ¤µÈ Á¦¾à Á¶°Ç »èÁ¦ 
+-- ì»¬ëŸ¼ì— ì§€ì •ëœ ì œì•½ ì¡°ê±´ ì‚­ì œ 
 alter table ex02
 drop constraint nn_ex02;
 
 desc ex02;
 
--- Å×ÀÌºí vs »ç¿ëÀÚ °èÁ¤
--- »ç¿ëÀÚ °èÁ¤ create/alter/dropÀº system °èÁ¤¿¡¼­ ¼öÇà
+-- í…Œì´ë¸” vs ì‚¬ìš©ì ê³„ì •
+-- ì‚¬ìš©ì ê³„ì • create/alter/dropì€ system ê³„ì •ì—ì„œ ìˆ˜í–‰
 create table ex_test (...);
 create user scott2 identified by tiger;
 
@@ -73,8 +73,8 @@ alter table hw_emp add constraint pk_hw_emp primary key (empno);
 drop table hw_emp;
 
 
--- sequence: ¾î¶² ±ÔÄ¢¿¡ ¸Â´Â ¿¬¼ÓµÈ ¼ıÀÚµéÀ» ÀÚµ¿À¸·Î »ı¼ºÇØ ÁÖ´Â °´Ã¼
--- ½ÃÄö½º(sequence)ÀÇ ¸ñÀû
+-- sequence: ì–´ë–¤ ê·œì¹™ì— ë§ëŠ” ì—°ì†ëœ ìˆ«ìë“¤ì„ ìë™ìœ¼ë¡œ ìƒì„±í•´ ì£¼ëŠ” ê°ì²´
+-- ì‹œí€€ìŠ¤(sequence)ì˜ ëª©ì 
 select max(empno) from emp;
 
 create sequence seq1;

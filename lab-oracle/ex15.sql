@@ -1,24 +1,24 @@
--- Á¦¾à Á¶°Ç 2
+-- ì œì•½ ì¡°ê±´ 2
 /*
 1.
-create table Å×ÀÌºíÀÌ¸§ (
-    ÄÃ·³ÀÌ¸§1 µ¥ÀÌÅÍÅ¸ÀÔ constraint Á¦¾àÁ¶°ÇÀÌ¸§ Á¦¾àÁ¶°Ç³»¿ë, 
-    ÄÃ·³ÀÌ¸§2 µ¥ÀÌÅÍÅ¸ÀÔ constraint Á¦¾àÁ¶°ÇÀÌ¸§ Á¦¾àÁ¶°Ç³»¿ë,
+create table í…Œì´ë¸”ì´ë¦„ (
+    ì»¬ëŸ¼ì´ë¦„1 ë°ì´í„°íƒ€ì… constraint ì œì•½ì¡°ê±´ì´ë¦„ ì œì•½ì¡°ê±´ë‚´ìš©, 
+    ì»¬ëŸ¼ì´ë¦„2 ë°ì´í„°íƒ€ì… constraint ì œì•½ì¡°ê±´ì´ë¦„ ì œì•½ì¡°ê±´ë‚´ìš©,
     ...
 );
 
 
 2.
-create table Å×ÀÌºíÀÌ¸§ (
-    ÄÃ·³ÀÌ¸§1 µ¥ÀÌÅÍÅ¸ÀÔ,
-    ÄÃ·³ÀÌ¸§2 µ¥ÀÌÅÍÅ¸ÀÔ,
+create table í…Œì´ë¸”ì´ë¦„ (
+    ì»¬ëŸ¼ì´ë¦„1 ë°ì´í„°íƒ€ì…,
+    ì»¬ëŸ¼ì´ë¦„2 ë°ì´í„°íƒ€ì…,
     ...,
-    constraint Á¦¾àÁ¶°ÇÀÌ¸§ Á¦¾àÁ¶°Ç³»¿ë,
-    constraint Á¦¾àÁ¶°ÇÀÌ¸§ Á¦¾àÁ¶°Ç³»¿ë,
+    constraint ì œì•½ì¡°ê±´ì´ë¦„ ì œì•½ì¡°ê±´ë‚´ìš©,
+    constraint ì œì•½ì¡°ê±´ì´ë¦„ ì œì•½ì¡°ê±´ë‚´ìš©,
     ...
 );
 
-(ÁÖÀÇ) not null Á¦¾à Á¶°ÇÀº 1¹ø ¹æ¹ı¸¸ °¡´É
+(ì£¼ì˜) not null ì œì•½ ì¡°ê±´ì€ 1ë²ˆ ë°©ë²•ë§Œ ê°€ëŠ¥
 */
 
 create table ex08 (
@@ -41,11 +41,11 @@ create table ex_emp2 (
 );
 
 
--- ÇÏ³ªÀÇ Å×ÀÌºí¿¡¼­ µÎ°³ ÀÌ»óÀÇ ÄÃ·³À» ¹­¾î¼­ PK ÁöÁ¤
+-- í•˜ë‚˜ì˜ í…Œì´ë¸”ì—ì„œ ë‘ê°œ ì´ìƒì˜ ì»¬ëŸ¼ì„ ë¬¶ì–´ì„œ PK ì§€ì •
 create table ex09 (
     col1 number primary key,
     col2 varchar2(20) primary key
-);  -- Å×ÀÌºíÀº ¿ÀÁ÷ ÇÑ°³ÀÇ PK¸¸ °¡Áú ¼ö ÀÖ±â ¶§¹®¿¡ ¿À·ù ¹ß»ı
+);  -- í…Œì´ë¸”ì€ ì˜¤ì§ í•œê°œì˜ PKë§Œ ê°€ì§ˆ ìˆ˜ ìˆê¸° ë•Œë¬¸ì— ì˜¤ë¥˜ ë°œìƒ
 
 create table ex09 (
     col1 number,
@@ -58,9 +58,9 @@ insert into ex09 values(2, 'a');
 insert into ex09 values(100, null);
 select * from ex09;
 
-insert into ex_dept values(30, 'ÀÎ»çºÎ');
--- insert ~ select ±¸¹®:
--- ´Ù¸¥ Å×ÀÌºí¿¡¼­ selectÇÑ ³»¿ëÀ» Å×ÀÌºí¿¡ insertÇÏ´Â ¹æ¹ı
+insert into ex_dept values(30, 'ì¸ì‚¬ë¶€');
+-- insert ~ select êµ¬ë¬¸:
+-- ë‹¤ë¥¸ í…Œì´ë¸”ì—ì„œ selectí•œ ë‚´ìš©ì„ í…Œì´ë¸”ì— insertí•˜ëŠ” ë°©ë²•
 insert into ex_emp2 (empno, ename, deptno)
 select empno, ename, deptno from emp;
 
@@ -69,8 +69,8 @@ select e.empno, e.ename, e.deptno, d.dname
 from ex_emp2 e join ex_dept d
         on e.deptno = d.deptno;
         
--- Å×ÀÌºí º¹»ç: Å×ÀÌºíÀ» »ı¼ºÇÒ ¶§ ´Ù¸¥ Å×ÀÌºíÀÇ ±¸Á¶¿Í µ¥ÀÌÆ®¸¦ ±×´ë·Î °¡Á®¿À´Â ¹æ¹ı.
--- create ~ as select ±¸¹®
+-- í…Œì´ë¸” ë³µì‚¬: í…Œì´ë¸”ì„ ìƒì„±í•  ë•Œ ë‹¤ë¥¸ í…Œì´ë¸”ì˜ êµ¬ì¡°ì™€ ë°ì´íŠ¸ë¥¼ ê·¸ëŒ€ë¡œ ê°€ì ¸ì˜¤ëŠ” ë°©ë²•.
+-- create ~ as select êµ¬ë¬¸
 create table ex_emp3
 as select * from emp;
 

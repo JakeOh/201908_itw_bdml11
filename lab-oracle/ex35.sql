@@ -1,57 +1,57 @@
 /*
-1. ÀÍ¸í(¹«¸í) ºí·Ï(anonymous block): ÀÌ¸§À» ÁöÁ¤ÇÏÁö ¾ÊÀº PL/SQL ºí·Ï
-    - ¿À¶óÅ¬ ¼­¹ö¿¡ ÀúÀåµÇÁö ¸øÇÔ.
-    - ½ºÅ©¸³Æ® ÆÄÀÏ(*.sql)¿¡´Â ÀúÀå °¡´É.
-    - ½ÇÇàµÉ ¶§¸¶´Ù »õ·Î ÄÄÆÄÀÏµÊ.
+1. ìµëª…(ë¬´ëª…) ë¸”ë¡(anonymous block): ì´ë¦„ì„ ì§€ì •í•˜ì§€ ì•Šì€ PL/SQL ë¸”ë¡
+    - ì˜¤ë¼í´ ì„œë²„ì— ì €ì¥ë˜ì§€ ëª»í•¨.
+    - ìŠ¤í¬ë¦½íŠ¸ íŒŒì¼(*.sql)ì—ëŠ” ì €ì¥ ê°€ëŠ¥.
+    - ì‹¤í–‰ë  ë•Œë§ˆë‹¤ ìƒˆë¡œ ì»´íŒŒì¼ë¨.
 
-2. ÀúÀå ¼­ºê ÇÁ·Î±×·¥(stored sub program): ÀÌ¸§ÀÌ ÀÖ´Â PL/SQL ºí·Ï
-    - ÇÁ·Î½ÃÀú(procedure), ÇÔ¼ö(function), ÆĞÅ°Áö(package), Æ®¸®°Å(trigger)
-    - ¿À¶óÅ¬ ¼­¹ö¿¡ ÀúÀåµÇ´Â °´Ã¼ -> Àç»ç¿ë(re-use)ÀÌ °¡´É
-    - ¿À¶óÅ¬ ¼­¹ö¿¡ ÀúÀåµÉ ¶§ ÄÄÆÄÀÏ µÊ -> ½ÇÇà ¼Óµµ°¡ ºü¸§.
+2. ì €ì¥ ì„œë¸Œ í”„ë¡œê·¸ë¨(stored sub program): ì´ë¦„ì´ ìˆëŠ” PL/SQL ë¸”ë¡
+    - í”„ë¡œì‹œì €(procedure), í•¨ìˆ˜(function), íŒ¨í‚¤ì§€(package), íŠ¸ë¦¬ê±°(trigger)
+    - ì˜¤ë¼í´ ì„œë²„ì— ì €ì¥ë˜ëŠ” ê°ì²´ -> ì¬ì‚¬ìš©(re-use)ì´ ê°€ëŠ¥
+    - ì˜¤ë¼í´ ì„œë²„ì— ì €ì¥ë  ë•Œ ì»´íŒŒì¼ ë¨ -> ì‹¤í–‰ ì†ë„ê°€ ë¹ ë¦„.
 
-3. ÇÁ·Î½ÃÀú(procedure)
-create [or replace] procedure ÇÁ·Î½ÃÀúÀÌ¸§[(
-    ÆÄ¶ó¹ÌÅÍ1 [mode] Å¸ÀÔ,
-    ÆÄ¶ó¹ÌÅÍ2 [mode] Å¸ÀÔ, 
+3. í”„ë¡œì‹œì €(procedure)
+create [or replace] procedure í”„ë¡œì‹œì €ì´ë¦„[(
+    íŒŒë¼ë¯¸í„°1 [mode] íƒ€ì…,
+    íŒŒë¼ë¯¸í„°2 [mode] íƒ€ì…, 
     ...
 )]
 is
-    -- ¼±¾ğºÎ: º¯¼ö, Ä¿¼­ ¼±¾ğ
+    -- ì„ ì–¸ë¶€: ë³€ìˆ˜, ì»¤ì„œ ì„ ì–¸
 begin
-    -- ½ÇÇàºÎ: ÀıÂ÷ÀûÀ¸·Î Ã³¸®ÇÒ ÄÚµåµé;
-[exception ¿¹¿Ü Ã³¸®ºÎ]
+    -- ì‹¤í–‰ë¶€: ì ˆì°¨ì ìœ¼ë¡œ ì²˜ë¦¬í•  ì½”ë“œë“¤;
+[exception ì˜ˆì™¸ ì²˜ë¦¬ë¶€]
 
 end;
 */
 
 set serveroutput on;
 
--- ÇÁ·Î½ÃÀú »ı¼º
+-- í”„ë¡œì‹œì € ìƒì„±
 create or replace procedure my_proc1
 is
     v_empno emp.empno%type := 7788;
     v_ename emp.ename%type;
 begin
     select ename into v_ename from emp where empno = v_empno;
-    dbms_output.put_line('ÀÌ¸§: ' || v_ename);
+    dbms_output.put_line('ì´ë¦„: ' || v_ename);
 end;
 /
 
 
--- ÇÁ·Î½ÃÀú ½ÇÇà
+-- í”„ë¡œì‹œì € ì‹¤í–‰
 begin
     -- my_proc1();
-    my_proc1;  -- ÆÄ¶ó¹ÌÅÍ¸¦ °®Áö ¾Ê´Â ÇÁ·Î½ÃÀú¸¦ È£ÃâÇÒ ¶§´Â () »ı·« °¡´É
+    my_proc1;  -- íŒŒë¼ë¯¸í„°ë¥¼ ê°–ì§€ ì•ŠëŠ” í”„ë¡œì‹œì €ë¥¼ í˜¸ì¶œí•  ë•ŒëŠ” () ìƒëµ ê°€ëŠ¥
 end;
 /
 
--- ÇÁ·Î½ÃÀú È®ÀÎ
+-- í”„ë¡œì‹œì € í™•ì¸
 select * from user_source where name = upper('my_proc1');
 
--- ÇÁ·Î½ÃÀú »èÁ¦
+-- í”„ë¡œì‹œì € ì‚­ì œ
 drop procedure my_proc1;
 
--- ÆÄ¶ó¹ÌÅÍ¸¦ °®´Â ÇÁ·Î½ÃÀú »ı¼º
+-- íŒŒë¼ë¯¸í„°ë¥¼ ê°–ëŠ” í”„ë¡œì‹œì € ìƒì„±
 create or replace procedure my_proc2(
     p_empno emp.empno%type
 )
@@ -63,7 +63,7 @@ begin
 end;
 /
 
--- ÇÁ·Î½ÃÀú ½ÇÇà
+-- í”„ë¡œì‹œì € ì‹¤í–‰
 declare
     cursor my_cursor is
         select empno from emp;
@@ -74,18 +74,18 @@ begin
 end;
 /
 
--- ÇÁ·Î½ÃÀú ÆÄ¶ó¹ÌÅÍÀÇ ¸ğµå(mode)
--- in: ÇÁ·Î½ÃÀú¸¦ È£ÃâÇÒ ¶§ Àü´ŞÇÑ °ªÀ» ÀúÀåÇÏ´Â ¸Å°³º¯¼ö(parameter)
--- out: ÇÁ·Î½ÃÀú¸¦ È£ÃâÇÑ °÷À¸·Î °ªÀ» ¹İÈ¯ÇÒ ¶§ »ç¿ëÇÏ´Â ¸Å°³º¯¼ö
--- in out: °ªÀ» Àü´Ş¹Ş±âµµ ÇÏ°í, °ªÀ» ¹İÈ¯ÇÏ±âÇÏµµ ÇÏ´Â ¸Å°³º¯¼ö
--- ÇÁ·Î½ÃÀú ÆÄ¶ó¹ÌÅÍÀÇ ±âº» ¸ğµå´Â inÀÌ±â ¶§¹®¿¡, º¸Åë inÀº »ı·«
+-- í”„ë¡œì‹œì € íŒŒë¼ë¯¸í„°ì˜ ëª¨ë“œ(mode)
+-- in: í”„ë¡œì‹œì €ë¥¼ í˜¸ì¶œí•  ë•Œ ì „ë‹¬í•œ ê°’ì„ ì €ì¥í•˜ëŠ” ë§¤ê°œë³€ìˆ˜(parameter)
+-- out: í”„ë¡œì‹œì €ë¥¼ í˜¸ì¶œí•œ ê³³ìœ¼ë¡œ ê°’ì„ ë°˜í™˜í•  ë•Œ ì‚¬ìš©í•˜ëŠ” ë§¤ê°œë³€ìˆ˜
+-- in out: ê°’ì„ ì „ë‹¬ë°›ê¸°ë„ í•˜ê³ , ê°’ì„ ë°˜í™˜í•˜ê¸°í•˜ë„ í•˜ëŠ” ë§¤ê°œë³€ìˆ˜
+-- í”„ë¡œì‹œì € íŒŒë¼ë¯¸í„°ì˜ ê¸°ë³¸ ëª¨ë“œëŠ” inì´ê¸° ë•Œë¬¸ì—, ë³´í†µ inì€ ìƒëµ
 
 create or replace procedure my_proc3(
-    in_empno emp.empno%type, -- in ¸ğµå ÆÄ¶ó¹ÌÅÍ
-    out_ename out emp.ename%type, -- out ¸ğµå ÆÄ¶ó¹ÌÅÍ
+    in_empno emp.empno%type, -- in ëª¨ë“œ íŒŒë¼ë¯¸í„°
+    out_ename out emp.ename%type, -- out ëª¨ë“œ íŒŒë¼ë¯¸í„°
     out_deptno out emp.deptno%type
 )
-is  -- ¼±¾ğºÎÀÇ ÄÚµå°¡ ¾ø´õ¶óµµ is´Â »ı·«ÇÏ¸é ¾ÈµÊ!
+is  -- ì„ ì–¸ë¶€ì˜ ì½”ë“œê°€ ì—†ë”ë¼ë„ isëŠ” ìƒëµí•˜ë©´ ì•ˆë¨!
 begin
     select ename, deptno into out_ename, out_deptno
     from emp
@@ -114,16 +114,16 @@ end;
 declare
     v_test number := 10;
 begin
-    dbms_output.put_line('ÇÁ·Î½ÃÀú È£Ãâ Àü v_test = ' || v_test);
-    my_proc4(v_test);  -- ÇÁ·Î½ÃÀú È£Ãâ
-    dbms_output.put_line('ÇÁ·Î½ÃÀú È£Ãâ ÈÄ v_test = ' || v_test);
+    dbms_output.put_line('í”„ë¡œì‹œì € í˜¸ì¶œ ì „ v_test = ' || v_test);
+    my_proc4(v_test);  -- í”„ë¡œì‹œì € í˜¸ì¶œ
+    dbms_output.put_line('í”„ë¡œì‹œì € í˜¸ì¶œ í›„ v_test = ' || v_test);
 end;
 /
 
--- ±âº»°ªÀ» °®´Â ÇÁ·Î½ÃÀúÀÇ ÆÄ¶ó¹ÌÅÍ
+-- ê¸°ë³¸ê°’ì„ ê°–ëŠ” í”„ë¡œì‹œì €ì˜ íŒŒë¼ë¯¸í„°
 create or replace procedure my_proc5(
-    param1 number,          -- ±âº»°ªÀÌ ÁöÁ¤µÇÁö ¾ÊÀº ÆÄ¶ó¹ÌÅÍ
-    param2 number := 123    -- ±âº»°ªÀÌ ÁöÁ¤µÈ ÆÄ¶ó¹ÌÅÍ
+    param1 number,          -- ê¸°ë³¸ê°’ì´ ì§€ì •ë˜ì§€ ì•Šì€ íŒŒë¼ë¯¸í„°
+    param2 number := 123    -- ê¸°ë³¸ê°’ì´ ì§€ì •ëœ íŒŒë¼ë¯¸í„°
 )
 is
 begin
@@ -138,14 +138,14 @@ end;
 /
 
 /*
-ÇÁ·Î½ÃÀú: get_total_sal
-ÆÄ¶ó¹ÌÅÍ: 
-    (1) p_empno - in ¸ğµå, emp Å×ÀÌºíÀÇ empno Å¸ÀÔ
-    (2) p_total - out ¸ğµå, ¼ıÀÚ Å¸ÀÔ
-    (3) p_tax - in ¸ğµå, ¼ıÀÚ Å¸ÀÔ, ±âº»°ª = 0.05
-±â´É: Àü´Ş¹ŞÀº »ç¹øÀ¸·Î sal, commÀ» °Ë»ö
-    -> total = (sal + comm) * (1 - tax)¸¦ ¹İÈ¯
-    -> commÀÌ nullÀÎ °æ¿ì´Â 0À¸·Î ´ëÃ¼ÇØ¼­ °è»ê
+í”„ë¡œì‹œì €: get_total_sal
+íŒŒë¼ë¯¸í„°: 
+    (1) p_empno - in ëª¨ë“œ, emp í…Œì´ë¸”ì˜ empno íƒ€ì…
+    (2) p_total - out ëª¨ë“œ, ìˆ«ì íƒ€ì…
+    (3) p_tax - in ëª¨ë“œ, ìˆ«ì íƒ€ì…, ê¸°ë³¸ê°’ = 0.05
+ê¸°ëŠ¥: ì „ë‹¬ë°›ì€ ì‚¬ë²ˆìœ¼ë¡œ sal, commì„ ê²€ìƒ‰
+    -> total = (sal + comm) * (1 - tax)ë¥¼ ë°˜í™˜
+    -> commì´ nullì¸ ê²½ìš°ëŠ” 0ìœ¼ë¡œ ëŒ€ì²´í•´ì„œ ê³„ì‚°
 */    
 create or replace procedure get_total_sal (
     p_empno in emp.empno%type,
@@ -153,7 +153,7 @@ create or replace procedure get_total_sal (
     p_tax number := 0.05
 )
 is
-    -- emp Å×ÀÌºí¿¡¼­ ÇØ´ç »ç¹øÀÇ ±Ş¿©(sal)¿Í »ó¿©±İ(comm)À» ÀúÀåÇÒ º¯¼ö
+    -- emp í…Œì´ë¸”ì—ì„œ í•´ë‹¹ ì‚¬ë²ˆì˜ ê¸‰ì—¬(sal)ì™€ ìƒì—¬ê¸ˆ(comm)ì„ ì €ì¥í•  ë³€ìˆ˜
     v_sal emp.sal%type;
     v_comm emp.comm%type;
 begin
@@ -170,7 +170,7 @@ begin
     
 exception
     when others then
-        dbms_output.put_line(p_empno || ' »ç¹ø µ¥ÀÌÅÍ´Â ¾ø½À´Ï´Ù!');
+        dbms_output.put_line(p_empno || ' ì‚¬ë²ˆ ë°ì´í„°ëŠ” ì—†ìŠµë‹ˆë‹¤!');
         p_total := 0;
 end;
 /
