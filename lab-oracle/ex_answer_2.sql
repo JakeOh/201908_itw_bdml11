@@ -154,9 +154,9 @@ begin
     for r in cur loop
         v_is_mgr := is_manager(r.empno);
         if v_is_mgr = 'm' then
-            DBMS_OUTPUT.PUT_LINE(r.ename || ', ' || '°ü¸®ÀÚ');
+            DBMS_OUTPUT.PUT_LINE(r.ename || ', ' || 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
         else
-            DBMS_OUTPUT.PUT_LINE(r.ename || ', ' || '»ç¿ø');
+            DBMS_OUTPUT.PUT_LINE(r.ename || ', ' || 'ï¿½ï¿½ï¿½');
         end if;
     end loop;
 end;
@@ -250,14 +250,14 @@ declare
     v_result rec_result;
 begin
     for r1 in cursor1 loop
-        DBMS_OUTPUT.PUT_LINE('Á÷¾÷: ' || r1.job);
+        DBMS_OUTPUT.PUT_LINE('ï¿½ï¿½ï¿½ï¿½: ' || r1.job);
 
         for r2 in cursor2(r1.job) loop
             DBMS_OUTPUT.PUT_LINE(r2.ename || ', ' || r2.sal || ', ' || r2.job);
         end loop;
 
         DBMS_OUTPUT.PUT_LINE('---------------');
-        DBMS_OUTPUT.PUT_LINE('ÅäÅ»: ' || r1.tot_sal);
+        DBMS_OUTPUT.PUT_LINE('ï¿½ï¿½Å»: ' || r1.tot_sal);
         DBMS_OUTPUT.PUT_LINE(' ');
     end loop;
 end;

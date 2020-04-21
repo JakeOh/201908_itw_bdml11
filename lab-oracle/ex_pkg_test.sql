@@ -1,4 +1,4 @@
--- ex_pkg.spl¿¡¼­ ÀÛ¼ºÇÑ my_stat ÆĞÅ°ÁöÀÇ ÇÔ¼öµéÀ» Å×½ºÆ®
+-- ex_pkg.splì—ì„œ ì‘ì„±í•œ my_stat íŒ¨í‚¤ì§€ì˜ í•¨ìˆ˜ë“¤ì„ í…ŒìŠ¤íŠ¸
 set serveroutput on;
 
 declare

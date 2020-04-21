@@ -48,7 +48,7 @@ declare
     alphas CharArray := CharArray('a', 'b', 'c');
     cnt number;
 begin
-    dbms_output.put_line('(1) Áßº¹ ¼ø¿­');
+    dbms_output.put_line('(1) ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½');
     cnt := 1;
     for i in 1..alphas.count loop
         for j in 1..alphas.count loop
@@ -58,7 +58,7 @@ begin
     end loop;
     
     dbms_output.new_line;
-    dbms_output.put_line('(2) ¼ø¿­');
+    dbms_output.put_line('(2) ï¿½ï¿½ï¿½ï¿½');
     cnt := 1;
     for i in 1..alphas.count loop
         for j in 1..alphas.count loop
@@ -69,7 +69,7 @@ begin
     end loop;
     
     dbms_output.new_line;
-    dbms_output.put_line('(3) Á¶ÇÕ');
+    dbms_output.put_line('(3) ï¿½ï¿½ï¿½ï¿½');
     cnt := 1;
     for i in 1..alphas.count loop
         for j in (i + 1)..alphas.count loop
@@ -79,7 +79,7 @@ begin
     end loop;
     
     dbms_output.new_line;
-    dbms_output.put_line('(4) Áßº¹ Á¶ÇÕ');
+    dbms_output.put_line('(4) ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½');
     cnt := 1;
     for i in 1..alphas.count loop
         for j in i..alphas.count loop
@@ -97,7 +97,7 @@ declare
     alphas CharArray := CharArray('a', 'b', 'c', 'd', 'e');
     cnt number;
 begin
-    dbms_output.put_line('(1) Áßº¹ ¼ø¿­');
+    dbms_output.put_line('(1) ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½');
     cnt := 1;
     for i in 1..alphas.count loop
         for j in 1..alphas.count loop
@@ -109,7 +109,7 @@ begin
     end loop;
     
     dbms_output.new_line;
-    dbms_output.put_line('(2) ¼ø¿­');
+    dbms_output.put_line('(2) ï¿½ï¿½ï¿½ï¿½');
     cnt := 1;
     for i in 1..alphas.count loop
         for j in 1..alphas.count loop
@@ -123,7 +123,7 @@ begin
     end loop;
     
     dbms_output.new_line;
-    dbms_output.put_line('(3) Á¶ÇÕ');
+    dbms_output.put_line('(3) ï¿½ï¿½ï¿½ï¿½');
     cnt := 1;
     for i in 1..alphas.count loop
         for j in (i + 1)..alphas.count loop
@@ -135,7 +135,7 @@ begin
     end loop;
     
     dbms_output.new_line;
-    dbms_output.put_line('(4) Áßº¹ Á¶ÇÕ');
+    dbms_output.put_line('(4) ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½');
     cnt := 1;
     for i in 1..alphas.count loop
         for j in i..alphas.count loop

@@ -1,51 +1,51 @@
--- ÆĞÅ°Áö ¸í¼¼(specification) ÀÛ¼º
+-- íŒ¨í‚¤ì§€ ëª…ì„¸(specification) ì‘ì„±
 create or replace package my_stat
 is
-    -- ¼ıÀÚ Å¸ÀÔÀ» ÀúÀåÇÏ°í, ÀÎµ¦½º´Â ¾çÀÇ Á¤¼öÀÎ index-by tableÀ» ¼±¾ğ: NumberArray
+    -- ìˆ«ì íƒ€ì…ì„ ì €ì¥í•˜ê³ , ì¸ë±ìŠ¤ëŠ” ì–‘ì˜ ì •ìˆ˜ì¸ index-by tableì„ ì„ ì–¸: NumberArray
     type NumberArray is table of number index by pls_integer;
     
     /**
-     * sum: ÆÄ¶ó¹ÌÅÍ¿¡ Àü´Ş¹ŞÀº ¹è¿­¿¡ ÀÖ´Â ¸ğµç ¿ø¼ÒµéÀÇ ÇÕÀ» ¸®ÅÏ
+     * sum: íŒŒë¼ë¯¸í„°ì— ì „ë‹¬ë°›ì€ ë°°ì—´ì— ìˆëŠ” ëª¨ë“  ì›ì†Œë“¤ì˜ í•©ì„ ë¦¬í„´
      * @param arr   NumberArray
      */
     function sum(arr NumberArray) return number;
     
     /**
-     * avg: ÆÄ¶ó¹ÌÅÍ¿¡ Àü´Ş¹ŞÀº ¹è¿­¿¡ ÀÖ´Â ¸ğµç ¿ø¼ÒµéÀÇ Æò±ÕÀ» °è»êÇØ¼­ ¸®ÅÏ
+     * avg: íŒŒë¼ë¯¸í„°ì— ì „ë‹¬ë°›ì€ ë°°ì—´ì— ìˆëŠ” ëª¨ë“  ì›ì†Œë“¤ì˜ í‰ê· ì„ ê³„ì‚°í•´ì„œ ë¦¬í„´
      * @param arr   NumberArray
-     * @param digit number  ¸®ÅÏ°ª(Æò±Õ)ÀÇ ¼Ò¼ıÁ¡ ÀÌÇÏ ÀÚ¸´¼ö, ±âº»°ªÀº 3
+     * @param digit number  ë¦¬í„´ê°’(í‰ê· )ì˜ ì†Œìˆ«ì  ì´í•˜ ìë¦¿ìˆ˜, ê¸°ë³¸ê°’ì€ 3
      */
     function avg(arr NumberArray, digit number := 3) return number;
     
     /**
-     * var: ÆÄ¶ó¹ÌÅÍ¿¡ Àü´Ş¹ŞÀº ¹è¿­¿¡ ÀÖ´Â ¸ğµç ¿ø¼ÒµéÀÇ ºĞ»êÀ» °è»êÇØ¼­ ¸®ÅÏ
+     * var: íŒŒë¼ë¯¸í„°ì— ì „ë‹¬ë°›ì€ ë°°ì—´ì— ìˆëŠ” ëª¨ë“  ì›ì†Œë“¤ì˜ ë¶„ì‚°ì„ ê³„ì‚°í•´ì„œ ë¦¬í„´
      * @param arr   NumberArray
-     * @param digit number  ¸®ÅÏ°ª(ºĞ»ê)ÀÇ ¼Ò¼ıÁ¡ ÀÌÇÏ ÀÚ¸´¼ö, ±âº»°ªÀº 3
+     * @param digit number  ë¦¬í„´ê°’(ë¶„ì‚°)ì˜ ì†Œìˆ«ì  ì´í•˜ ìë¦¿ìˆ˜, ê¸°ë³¸ê°’ì€ 3
      */
     function var(arr NumberArray, digit number := 3) return number;
    
     /**
-     * std: ÆÄ¶ó¹ÌÅÍ¿¡ Àü´Ş¹ŞÀº ¹è¿­¿¡ ÀÖ´Â ¸ğµç ¿ø¼ÒµéÀÇ Ç¥ÁØÆíÂ÷¸¦ °è»êÇØ¼­ ¸®ÅÏ
+     * std: íŒŒë¼ë¯¸í„°ì— ì „ë‹¬ë°›ì€ ë°°ì—´ì— ìˆëŠ” ëª¨ë“  ì›ì†Œë“¤ì˜ í‘œì¤€í¸ì°¨ë¥¼ ê³„ì‚°í•´ì„œ ë¦¬í„´
      * @param arr   NumberArray
-     * @param digit number  ¸®ÅÏ°ª(Ç¥ÁØÆíÂ÷)ÀÇ ¼Ò¼ıÁ¡ ÀÌÇÏ ÀÚ¸´¼ö, ±âº»°ªÀº 3
+     * @param digit number  ë¦¬í„´ê°’(í‘œì¤€í¸ì°¨)ì˜ ì†Œìˆ«ì  ì´í•˜ ìë¦¿ìˆ˜, ê¸°ë³¸ê°’ì€ 3
      */
     function std(arr NumberArray, digit number := 3) return number;
      
     /**
-     * max: ÆÄ¶ó¹ÌÅÍ¿¡ Àü´Ş¹ŞÀº ¹è¿­¿¡ ÀÖ´Â ¸ğµç ¿ø¼Òµé Áß¿¡¼­ ÃÖ´ñ°ªÀ» ¸®ÅÏ
+     * max: íŒŒë¼ë¯¸í„°ì— ì „ë‹¬ë°›ì€ ë°°ì—´ì— ìˆëŠ” ëª¨ë“  ì›ì†Œë“¤ ì¤‘ì—ì„œ ìµœëŒ“ê°’ì„ ë¦¬í„´
      * @param arr   NumberArray
      */
     function max(arr NumberArray) return number;
      
      /**
-     * min: ÆÄ¶ó¹ÌÅÍ¿¡ Àü´Ş¹ŞÀº ¹è¿­¿¡ ÀÖ´Â ¸ğµç ¿ø¼Òµé Áß¿¡¼­ ÃÖ¼Ú°ªÀ» ¸®ÅÏ
+     * min: íŒŒë¼ë¯¸í„°ì— ì „ë‹¬ë°›ì€ ë°°ì—´ì— ìˆëŠ” ëª¨ë“  ì›ì†Œë“¤ ì¤‘ì—ì„œ ìµœì†Ÿê°’ì„ ë¦¬í„´
      * @param arr   NumberArray
      */ 
     function min(arr NumberArray) return number;
 end;
 /
 
--- ÆĞÅ°Áö º»¹®(body) ÀÛ¼º
+-- íŒ¨í‚¤ì§€ ë³¸ë¬¸(body) ì‘ì„±
 create or replace package body my_stat
 is
 
@@ -65,16 +65,16 @@ is
     is
         v_result number;
     begin
-        -- Æò±Õ = ÇÕ°è / °¹¼ö;
+        -- í‰ê·  = í•©ê³„ / ê°¯ìˆ˜;
         v_result := my_stat.sum(arr) / arr.count;
         return round(v_result, digit);
     end avg;
     
     function var(arr NumberArray, digit number := 3) return number
     is
-        v_avg number;  -- ¹è¿­ ¿ø¼ÒµéÀÇ Æò±Õ
-        v_ss number;  -- Á¦°ö ÇÕ(sum of squares)
-        v_var number;  -- ºĞ»ê(variance)
+        v_avg number;  -- ë°°ì—´ ì›ì†Œë“¤ì˜ í‰ê· 
+        v_ss number;  -- ì œê³± í•©(sum of squares)
+        v_var number;  -- ë¶„ì‚°(variance)
     begin
         v_avg := my_stat.avg(arr, digit);
         
@@ -98,7 +98,7 @@ is
     
     function max(arr NumberArray) return number
     is
-        v_result number;  --  ÃÖ´ñ°ªÀ» ÀúÀåÇÒ º¯¼ö
+        v_result number;  --  ìµœëŒ“ê°’ì„ ì €ì¥í•  ë³€ìˆ˜
     begin
         v_result := arr(1);
         for i in 2..arr.count loop
