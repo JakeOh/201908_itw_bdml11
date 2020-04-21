@@ -1,9 +1,9 @@
-1. Å×ÀÌºí º¹»ç SQL ¹® ÀÛ¼º
-  1) emp Å×ÀÌºíÀ» º¹»çÇØ¼­ emp2¸¦ »ý¼º
-  2) dept Å×ÀÌºíÀ» º¹»çÇØ¼­ dept2¸¦ »ý¼º
-  3) salgrade Å×ÀÌºíÀ» º¹»çÇØ¼­ salgrade2¸¦ »ý¼º
+1. í…Œì´ë¸” ë³µì‚¬ SQL ë¬¸ ìž‘ì„±
+  1) emp í…Œì´ë¸”ì„ ë³µì‚¬í•´ì„œ emp2ë¥¼ ìƒì„±
+  2) dept í…Œì´ë¸”ì„ ë³µì‚¬í•´ì„œ dept2ë¥¼ ìƒì„±
+  3) salgrade í…Œì´ë¸”ì„ ë³µì‚¬í•´ì„œ salgrade2ë¥¼ ìƒì„±
 
-2. dept2 Å×ÀÌºí¿¡ ¾Æ·¡¿Í °°Àº ºÎ¼­ Á¤º¸¸¦ µî·ÏÇÏ´Â SQL ¹® ÀÛ¼º
+2. dept2 í…Œì´ë¸”ì— ì•„ëž˜ì™€ ê°™ì€ ë¶€ì„œ ì •ë³´ë¥¼ ë“±ë¡í•˜ëŠ” SQL ë¬¸ ìž‘ì„±
   deptno  dname   loc
   -----------------------
   50      ORACLE  Seoul
@@ -11,15 +11,15 @@
   70      DDL     Pusan
   80      DML     Incheon
 
-3. 2¿¡¼­ µî·ÏÇÑ ºÎ¼­¿¡¼­ ±Ù¹«ÇÏ´Â »ç¿ø Á¤º¸(empno, ename, job, mgr, hiredate, sal, comm)¸¦ ÀÚÀ¯·Ó°Ô emp2 Å×ÀÌºí¿¡ µî·ÏÇÏ´Â SQL ¹® ÀÛ¼º
+3. 2ì—ì„œ ë“±ë¡í•œ ë¶€ì„œì—ì„œ ê·¼ë¬´í•˜ëŠ” ì‚¬ì› ì •ë³´(empno, ename, job, mgr, hiredate, sal, comm)ë¥¼ ìžìœ ë¡­ê²Œ emp2 í…Œì´ë¸”ì— ë“±ë¡í•˜ëŠ” SQL ë¬¸ ìž‘ì„±
 
-4. emp2 Å×ÀÌºí¿¡¼­ 20¹ø ºÎ¼­¿¡¼­ ±Ù¹«ÇÏ´Â »ç¿øµéÀÇ Æò±Õ ±Þ¿©º¸´Ù ¸¹Àº ±Þ¿©¸¦ ¹Þ´Â »ç¿øµéÀ» 80¹ø ºÎ¼­·Î ¿Å±â´Â SQL ¹® ÀÛ¼º
+4. emp2 í…Œì´ë¸”ì—ì„œ 20ë²ˆ ë¶€ì„œì—ì„œ ê·¼ë¬´í•˜ëŠ” ì‚¬ì›ë“¤ì˜ í‰ê·  ê¸‰ì—¬ë³´ë‹¤ ë§Žì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ë“¤ì„ 80ë²ˆ ë¶€ì„œë¡œ ì˜®ê¸°ëŠ” SQL ë¬¸ ìž‘ì„±
 
-5. emp2 Å×ÀÌºíÀÇ »ç¿øµé Áß¿¡, 10¹ø ºÎ¼­ÀÇ »ç¿ø Áß ÀÔ»çÀÏÀÌ °¡Àå ´ÊÀº »ç¶÷º¸´Ù ´õ ´Ê°Ô ÀÔ»çÇÑ »ç¿øµéÀÇ ±Þ¿©¸¦ 10% ÀÎ»óÇÏ°í, ºÎ¼­¸¦ 70¹øÀ¸·Î ÀÌµ¿ÇÏ´Â SQL ¹® ÀÛ¼º
+5. emp2 í…Œì´ë¸”ì˜ ì‚¬ì›ë“¤ ì¤‘ì—, 10ë²ˆ ë¶€ì„œì˜ ì‚¬ì› ì¤‘ ìž…ì‚¬ì¼ì´ ê°€ìž¥ ëŠ¦ì€ ì‚¬ëžŒë³´ë‹¤ ë” ëŠ¦ê²Œ ìž…ì‚¬í•œ ì‚¬ì›ë“¤ì˜ ê¸‰ì—¬ë¥¼ 10% ì¸ìƒí•˜ê³ , ë¶€ì„œë¥¼ 70ë²ˆìœ¼ë¡œ ì´ë™í•˜ëŠ” SQL ë¬¸ ìž‘ì„±
 
-6. emp2 Å×ÀÌºíÀÇ »ç¿øµé Áß ±Þ¿© µî±ÞÀÌ 5ÀÎ »ç¿øÀ» »èÁ¦ÇÏ´Â SQL ¹® ÀÛ¼º
+6. emp2 í…Œì´ë¸”ì˜ ì‚¬ì›ë“¤ ì¤‘ ê¸‰ì—¬ ë“±ê¸‰ì´ 5ì¸ ì‚¬ì›ì„ ì‚­ì œí•˜ëŠ” SQL ë¬¸ ìž‘ì„±
 
-7. ¸ðµç ÀÛ¾÷ °á°ú¸¦ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿µ±¸È÷ ÀúÀå
+7. ëª¨ë“  ìž‘ì—… ê²°ê³¼ë¥¼ ë°ì´í„°ë² ì´ìŠ¤ì— ì˜êµ¬ížˆ ì €ìž¥
 
 
 

@@ -1,15 +1,15 @@
-1. emp Å×ÀÌºí°ú ¶È°°Àº ±¸Á¶(ÄÃ·³ÀÌ¸§, µ¥ÀÌÅÍ Å¸ÀÔ)À» °®´Â Å×ÀÌºíÀ» hw_emp¶ó´Â ÀÌ¸§À¸·Î »ý¼º
+1. emp í…Œì´ë¸”ê³¼ ë˜‘ê°™ì€ êµ¬ì¡°(ì»¬ëŸ¼ì´ë¦„, ë°ì´í„° íƒ€ìž…)ì„ ê°–ëŠ” í…Œì´ë¸”ì„ hw_empë¼ëŠ” ì´ë¦„ìœ¼ë¡œ ìƒì„±
 
-2. hw_emp Å×ÀÌºí¿¡ »õ·Î¿î ÄÃ·³À» Ãß°¡
-   ÄÃ·³ ÀÌ¸§: etc
-   µ¥ÀÌÅÍ Å¸ÀÔ: ÃÖ´ë 20 bytes °¡º¯ ±æÀÌ ¹®ÀÚ¿­
+2. hw_emp í…Œì´ë¸”ì— ìƒˆë¡œìš´ ì»¬ëŸ¼ì„ ì¶”ê°€
+   ì»¬ëŸ¼ ì´ë¦„: etc
+   ë°ì´í„° íƒ€ìž…: ìµœëŒ€ 20 bytes ê°€ë³€ ê¸¸ì´ ë¬¸ìžì—´
 
-3. etc ÄÃ·³ÀÌ 100 bytes±îÁö ¹®ÀÚ¿­À» ÀúÀåÇÒ ¼ö ÀÖµµ·Ï º¯°æ
+3. etc ì»¬ëŸ¼ì´ 100 bytesê¹Œì§€ ë¬¸ìžì—´ì„ ì €ìž¥í•  ìˆ˜ ìžˆë„ë¡ ë³€ê²½
 
-4. etc ÄÃ·³ÀÇ ÀÌ¸§À» remark·Î º¯°æ
+4. etc ì»¬ëŸ¼ì˜ ì´ë¦„ì„ remarkë¡œ ë³€ê²½
 
-5. emp Å×ÀÌºíÀÇ µ¥ÀÌÅÍ¸¦ ¸ðµÎ hw_emp¿¡ ÀúÀå. remark ÄÃ·³ÀÇ °ªÀº ¸ðµÎ null
+5. emp í…Œì´ë¸”ì˜ ë°ì´í„°ë¥¼ ëª¨ë‘ hw_empì— ì €ìž¥. remark ì»¬ëŸ¼ì˜ ê°’ì€ ëª¨ë‘ null
 
-6. hw_emp Å×ÀÌºíÀÇ empno ÄÃ·³¿¡ °íÀ¯Å° Á¦¾à Á¶°ÇÀ» Ãß°¡
+6. hw_emp í…Œì´ë¸”ì˜ empno ì»¬ëŸ¼ì— ê³ ìœ í‚¤ ì œì•½ ì¡°ê±´ì„ ì¶”ê°€
 
-7. hw_emp »èÁ¦
+7. hw_emp ì‚­ì œ
